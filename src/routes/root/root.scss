@@ -1,0 +1,19 @@
+.navbar {
+  height: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .navbarlinkcontainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .navbarlinks {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 23px;
+  }
+}
