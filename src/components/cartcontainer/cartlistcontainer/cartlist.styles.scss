@@ -1,0 +1,15 @@
+.cart-card-container {
+  padding: 1em;
+  display: flex;
+  width: 75vw;
+  height: inherit;
+  flex-flow: column;
+  //justify-content: space-evenly;
+  // margin-right: 250px; /* Adjust this value to match your sidebar width */
+  //padding: 10px;
+}
+@media (max-width: 1467px) {
+  .cart-card-container {
+    width: 96vw;
+  }
+}

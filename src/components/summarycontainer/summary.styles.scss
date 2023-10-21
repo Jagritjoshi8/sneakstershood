@@ -1,0 +1,84 @@
+.summary-container {
+  width: 25vw;
+  margin: 30px;
+  .calculation-container {
+    padding: 0px 25px 10px 15px;
+    border: 1px dashed rgb(162, 42, 209);
+    margin-bottom: 15px;
+
+    .titlevaluepair {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: 20px;
+      b {
+        font-size: 20px;
+      }
+      .spprice {
+        font-size: 30px;
+      }
+      .fprice {
+        color: purple;
+      }
+    }
+    .og-price {
+      b {
+        font-size: 25px;
+      }
+    }
+    .total-amount {
+      b {
+        font-size: 45px;
+      }
+    }
+  }
+  .savings-discount {
+    p {
+      margin: 20px;
+      color: green;
+      font-size: 23px;
+      b {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .cartorder-buttons {
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    button {
+      width: 97%;
+      height: 60px;
+      font-size: 25px;
+      border-radius: 0.6em;
+      margin-bottom: 15px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+    .clearcart {
+      background-color: lightcoral;
+      border: 5px solid red;
+    }
+    .placeorder {
+      background-color: lightgreen;
+      border: 5px solid green;
+    }
+  }
+}
+
+@media (max-width: 1437px) {
+  .summary-container {
+    width: 94vw;
+    .cartorder-buttons {
+      flex-flow: row;
+      button {
+        width: 48%;
+      }
+    }
+  }
+}

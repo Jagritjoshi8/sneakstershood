@@ -1,0 +1,21 @@
+.product-card-container {
+  padding: 1em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin-left: 250px; /* Adjust this value to match your sidebar width */
+  padding: 10px;
+}
+// .footercontainer {
+//   background-color: rgb(215, 196, 252);
+//   margin-left: 240px;
+//   height: 150px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+.footercontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

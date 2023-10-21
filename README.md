@@ -1,5 +1,6 @@
 # Getting Started with Create React App
 
+what about coding, nisha singla[redux toolkit]
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

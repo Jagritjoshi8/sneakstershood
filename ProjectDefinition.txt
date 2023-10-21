@@ -1,0 +1,69 @@
+=>Project Name: "Sneaksters Hood"
+=>Project slogan: "Perfect Platform for Buying & Selling of trendy and funky Sneaker collections and much more"
+
+=>project objective: "To create a new age genration sneaker platform where a user get all facilities like buying a sneaker, get latest sneaker news, post their sneaker stories ,get nearest sneaker store locaton, sneaker communication channels, price drop mail alert. For seller a complete Sales Dashborad and new product launch facilities"
+
+=>Poject Higlight Features: 
+-> Animated UI [3D effects, parallax effect, interactive transition effects]
+-> Payment Gateway[RazorPay]
+-> Map Integeration[Geocoding Map]
+-> Sneaker Communication channel [Chat App]
+-> Sneakers News Sections [News App]
+-> Sneaker personlized Story Genrator[Story Posting Feature]
+--> Admin Dashboard [Graph Charts, pie charts, statistics ]
+->AI Chatbot [Additional Feature]
+->AI Voice Assistant [Additional Feature]
+
+
+=>Project architecture: My project conatains three type of users & all three have different functionality and power: 
+1)Coustomer, 
+2)Seller, 
+3)Admin
+
+------------------------------------------------
+1) For coustomers:
+For Sneaker buying users Website has most  visually attractive and interactive UI and contains smooth user experience.
+website conatins following pages and subpages:
+
+i)Home/Landing page: Contains Navbar, Hero video, Trending/Hot-pick Sneaker section, Latest Sneaker Section, Hero Product presentation section, Sneaker Stories section, footer 
+
+ii)Product Page: It contains all Product list randomly fetched from api. It also contains Filter component including filter by price, ratings, categories, size, brand, isAvailable, trending and sort by price, search by name also. product card includes AddToCart and AddToWishlist button(works only when user is signed-in).
+ 
+iii)Product Details Page: contains all details, specification of selected sneaker, Avg-rating of sneaker, reviews of sneaker. 
+
+iv)Wishlist Page: contains all products in wishlist and button to AddToCart product.
+
+V)Cart Page: It Contains Product cards which are added to cart, in this you can increase/decrease/remove product from cart. This page also includes Summary Component which calculates Orignal Total, Discount, Special Price, Delivery Charge & Total Amount. It aslo contains Coupon Section which contains all available offers.
+
+vi)checkout page: Contains bill of your order, all odered product image, address, Total price which re-directs to payment gateway
+
+vii)Payment Gateway: Razor Pay is used with all varities of option of payment, demo payment option , change language option.
+
+viii) Sign-In/Sign-Up/Profile page: A Standard Sign-up page which includes inputs for Display name, email, profile-picture uploader/ AI genrated avtar, phone-no,age, gender, address,password, confirm password. sign-in page with  email and password. Profile page with profile picture and 3 sections: My Info, Order Details, My Address. It includes Map Api (Forward & Reverse Geocoding Map) for address detection.
+
+ix) Sneaker communication Channels: This is Unique Feature of my website which includes different channels for Sneaker lovers and sneaker sellers which includes disscussion sbout new sneakers, requesting specific sneaker, Sneaker #hastags and much more exciting stuff.
+
+X) Sneaker News: All news of sneaker world is fetched from Sneaker.news.api and sort by latest news and new product launch news.
+
+
+-------------------------------------------------------
+2) For Sellers:
+Sellers are local sneaker's retaillers whom are interested in collecting top-notch quality sneakers and sell it on good price to sneaker lovers.
+For sellers all functionality and web ui pages are different:
+
+i)Statistics page: It is very important page as it includes all orders , transactions, total earning, graph chart of 7days sale and other statistics.
+
+ii)Create Product: It is dashboard where seller can create new product and can lauch in product sections of coustomers. It includes Sneaker Name, Brand Name, Sneaker Image uploader, price, discount,size, colors, etc details.
+
+iii)Orders: It includes the order list of products which seller have to deliver to coustomer. Options like dispatched, delivered and cancell order is available to seller
+
+
+-----------------------------------------------------
+3)For Admin: 
+Admin is creator and maintainer of app and access to all power and functionality of app.
+i) Admin Dashboard: includes total ernings, total sales, Total transactions, Graph Chart of previous sales.
+ii) All Users Details dashboard
+iii) All Sellers Details dashboard
+iv) Sneaker News Dashboard
+
+

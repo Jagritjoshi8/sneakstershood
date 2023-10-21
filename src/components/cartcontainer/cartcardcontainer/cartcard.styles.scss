@@ -1,0 +1,46 @@
+.cart-card {
+  padding: 1em;
+  box-shadow: 0px 0px 46px -4px rgb(238, 238, 238);
+  margin: 1em 1em 2em 1em;
+  border-radius: 1.3em;
+  // width: 95vw;
+  // min-width: 75vw;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  //background-color: lightgrey;
+  background-color: rgb(227, 217, 230);
+
+  .cart-icon :hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  .cart-card-image {
+    background-color: rgb(246, 246, 246);
+
+    border-radius: 0.8em;
+    height: inherit;
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0px;
+
+    img {
+      height: 100%;
+      width: 100px;
+      object-fit: cover;
+      padding-right: 5px;
+      padding-left: -20px;
+    }
+  }
+  .quantity-card {
+    width: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}

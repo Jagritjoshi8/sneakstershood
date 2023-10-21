@@ -1,11 +1,15 @@
 .navbar {
-  height: 90px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(241, 224, 229);
 
   .navbarlinkcontainer {
-    width: 50%;
+    width: auto;
     height: 100%;
     display: flex;
     align-items: center;

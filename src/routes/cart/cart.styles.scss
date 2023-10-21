@@ -1,0 +1,21 @@
+@media (min-width: 1118px) {
+  .cart-page-container {
+    display: flex;
+  }
+  .cart-side-container {
+    flex-grow: 1;
+    // position: fixed;
+    // top: 20;
+    // right: 0;
+  }
+  .cart-container {
+    flex-grow: 1;
+  }
+}
+@media (max-width: 1387px) {
+  .cart-page-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+  }
+}

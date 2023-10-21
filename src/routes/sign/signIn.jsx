@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router";
+import { Navigate } from "react-router";
+import FormInput from "../../components/authenticaton/formInput.component";
+import { UserContext } from "../../contexts/user.context";
 import "./signIn.scss";
 
 const SignIn = () => {
   // State to hold form input values
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { setCurrentUser } = useContext(UserContext);
+  let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     let result = await fetch("http://localhost:8000/users/login", {
@@ -22,18 +27,20 @@ const SignIn = () => {
       alert("SignIn Successfull");
       setEmail("");
       setPassword("");
+      setCurrentUser(result);
+      navigate("/profile");
     } else {
       alert(`Warning: ${result.message}`);
     }
   };
 
   return (
-    <div className="sign-up-form">
+    <div className="container">
       <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
+      <form onSubmit={handleSubmit} className="form-inner-container">
+        <div className="left-column">
+          <FormInput
+            label="Email"
             type="email"
             id="email"
             name="email"
@@ -41,10 +48,8 @@ const SignIn = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
+          <FormInput
+            label="Password"
             type="password"
             id="password"
             name="password"
@@ -53,6 +58,7 @@ const SignIn = () => {
             required
           />
         </div>
+
         <button type="submit">Sign In</button>
       </form>
     </div>
@@ -60,16 +66,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-// import { useState, useEffect } from "react";
-// import "./signIn.scss";
-
-// const SignIn = () => {
-//   return (
-//     <div>
-//       <h2>Sign-IN Form</h2>
-//     </div>
-//   );
-// };
-
-// export default SignIn;
