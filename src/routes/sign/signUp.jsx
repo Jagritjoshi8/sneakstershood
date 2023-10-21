@@ -1,21 +1,53 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../components/authenticaton/formInput.component";
 import { UserContext } from "../../contexts/user.context";
 import "./signIn.scss";
+import { signupUser } from "../../features/authSlice";
 
 const SignUp = () => {
   // State to hold form input values
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [phonenumber, setPhonenumber] = useState("");
-  const [address, setAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-  const { setCurrentUser } = useContext(UserContext);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    age: "",
+    gender: "",
+    phonenumber: "",
+    address: "",
+    password: "",
+    passwordConfirm: "",
+  });
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [age, setAge] = useState("");
+  // const [gender, setGender] = useState("");
+  // const [phonenumber, setPhonenumber] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [passwordConfirm, setPasswordConfirm] = useState("");
+  // const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
+
+  useEffect(() => {
+    if (auth._id) {
+      setUser({
+        name: "",
+        email: "",
+        age: "",
+        gender: "",
+        phonenumber: "",
+        address: "",
+        password: "",
+        passwordConfirm: "",
+      });
+    }
+  }, [auth._id, navigate]);
+
   // // Handle form submission
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -29,36 +61,38 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let result = await fetch("http://localhost:8000/users/signup", {
-      method: "post",
-      body: JSON.stringify({
-        name,
-        email,
-        age,
-        gender,
-        phonenumber,
-        address,
-        password,
-        passwordConfirm,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    result = await result.json();
-    console.warn(result);
-    //console.log(result.token);
-    if (result.status === "success") {
-      alert("Data saved succesfully");
-      setEmail("");
-      setName("");
-      setPassword("");
-      setPasswordConfirm("");
-      setCurrentUser(result);
-      navigate("/profile");
-    } else {
-      alert(`Warning: ${result.message}`);
-    }
+    dispatch(signupUser(user));
+
+    // let result = await fetch("http://localhost:8000/users/signup", {
+    //   method: "post",
+    //   body: JSON.stringify({
+    //     name,
+    //     email,
+    //     age,
+    //     gender,
+    //     phonenumber,
+    //     address,
+    //     password,
+    //     passwordConfirm,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // result = await result.json();
+    // console.warn(result);
+    // //console.log(result.token);
+    // if (result.status === "success") {
+    //   alert("Data saved succesfully");
+    //   setEmail("");
+    //   setName("");
+    //   setPassword("");
+    //   setPasswordConfirm("");
+    //   setCurrentUser(result);
+    //   navigate("/profile");
+    // } else {
+    //   alert(`Warning: ${result.message}`);
+    // }
   };
 
   return (
@@ -72,8 +106,7 @@ const SignUp = () => {
               type="text"
               id="name"
               name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setUser({ ...user, name: e.target.value })}
               required
             />
 
@@ -82,8 +115,7 @@ const SignUp = () => {
               type="age"
               id="age"
               name="age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
+              onChange={(e) => setUser({ ...user, age: e.target.value })}
               required
             />
 
@@ -92,8 +124,9 @@ const SignUp = () => {
               type="phonenumber"
               id="phonenumber"
               name="phonenumber"
-              value={phonenumber}
-              onChange={(e) => setPhonenumber(e.target.value)}
+              onChange={(e) =>
+                setUser({ ...user, phonenumber: e.target.value })
+              }
               required
             />
 
@@ -102,8 +135,7 @@ const SignUp = () => {
               type="password"
               id="password"
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
               required
             />
           </div>
@@ -113,17 +145,15 @@ const SignUp = () => {
               type="email"
               id="email"
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
               required
             />
             <div className="form-group">
               <label>Gender:</label>
               <select
                 name="gender"
-                value={gender}
                 id="gender"
-                onChange={(e) => setGender(e.target.value)}
+                onChange={(e) => setUser({ ...user, gender: e.target.value })}
                 required
               >
                 <option>Select Gender</option>
@@ -147,8 +177,7 @@ const SignUp = () => {
               <textarea
                 id="address"
                 name="address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={(e) => setUser({ ...user, address: e.target.value })}
                 required
                 rows="2"
                 cols="22"
@@ -168,12 +197,16 @@ const SignUp = () => {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              value={passwordConfirm}
-              onChange={(e) => setPasswordConfirm(e.target.value)}
+              onChange={(e) =>
+                setUser({ ...user, passwordConfirm: e.target.value })
+              }
               required
             />
           </div>
         </div>
+        {auth.signupStatus === "rejected" ? (
+          <p>Warning: {auth.signupError.message}</p>
+        ) : null}
         <button type="submit">Sign Up</button>
       </form>
 

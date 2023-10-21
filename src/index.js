@@ -21,9 +21,11 @@ import { productsApi } from "./features/productsApi";
 import cartReducer, { getTotals } from "./features/cartSlice";
 import wishlistReducer from "./features/wishlistSlice";
 import Wishlist from "./routes/wishlist/wishlist";
+import authReducer from "./features/authSlice";
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     products: productsReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
