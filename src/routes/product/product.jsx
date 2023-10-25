@@ -1,26 +1,31 @@
 import { useState, useEffect, useContext } from "react";
 import "./product.scss";
 import { Outlet } from "react-router";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProductListContainer from "../../components/productcontainer/productlistcontainer/productlist.component";
 import FilterContainer from "../../components/filtercontainer/filtercontainer.component";
 
 const Product = () => {
+  const auth = useSelector((state) => state.auth);
+  const userLoaded = auth.userLoaded;
   return (
-    <div className="page-container">
-      <FilterContainer />
-      <ProductListContainer className="products-container" />
-      {/* {products.map((data) => {
-        return (
-          <div key={data.id}>
-            <h2>{data.name}</h2>
-            <p>{data.original_price}</p>
+    <div>
+      {!userLoaded ? (
+        <div className="cart-empty">
+          <p> Please Sign In First </p>
+          <div className="start-shopping">
+            <button>
+              <Link to="/sign-in"> Sign IN</Link>
+            </button>
           </div>
-        );
-      })} */}
-
-      {/* <h2>this is product section</h2>
-      <Outlet />
-      <h3>this is fixed filter component</h3> */}
+        </div>
+      ) : (
+        <div className="page-container">
+          <FilterContainer />
+          <ProductListContainer className="products-container" />
+        </div>
+      )}
     </div>
   );
 };

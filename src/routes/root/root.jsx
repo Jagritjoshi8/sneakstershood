@@ -14,7 +14,9 @@ import ScrollToTop from "../../components/extra/scrolltotop/scrolltotop.componen
 import { getTotals } from "../../features/cartSlice";
 
 const Root = () => {
-  const { currentUser } = useContext(UserContext);
+  // const { currentUser } = useContext(UserContext);
+  const auth = useSelector((state) => state.auth);
+  const userLoaded = auth.userLoaded;
   //console.log(currentUser);
   const cart = useSelector((state) => state.cart);
   const { cartTotalQuantity } = cart;
@@ -62,9 +64,9 @@ const Root = () => {
             </Badge>
             {/* {cartTotalQuantity} */}
           </Link>
-          {currentUser ? (
+          {userLoaded ? (
             <Link to="/profile" className="navbarlinks">
-              Hi 👋 <b>{currentUser.name}</b>
+              Hi 👋 <b>{auth.name}</b>
             </Link>
           ) : (
             <Link to="sign-up" className="navbarlinks">

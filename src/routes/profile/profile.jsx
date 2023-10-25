@@ -1,17 +1,23 @@
 import React, { useState, useContext } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../../contexts/user.context";
 import { useNavigate } from "react-router";
+import jwtDecode from "jwt-decode";
 import "./profile.scss";
+import { signoutUser } from "../../features/authSlice";
 
 const Profile = () => {
   // State to hold form input values
   //   const [email, setEmail] = useState("");
   //   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(UserContext);
+  const auth = useSelector((state) => state.auth);
+  const token = auth.token;
+  const tokendata = jwtDecode(token);
   const signOutHandler = async () => {
-    setCurrentUser(null);
+    dispatch(signoutUser());
     navigate("/sign-in");
   };
   return (
@@ -20,26 +26,26 @@ const Profile = () => {
       <div className="profile-details">
         <p>
           <img
-            src={`https://robohash.org/${currentUser.name}4?set=set5&size=250x250`}
+            src={`https://robohash.org/${tokendata.name}4?set=set5&size=250x250`}
           />
         </p>
         <p>
-          <strong>Name:</strong> {currentUser.name}
+          <strong>Name:</strong> {tokendata.name}
         </p>
         <p>
-          <strong>Email:</strong> {currentUser.email}
+          <strong>Email:</strong> {tokendata.email}
         </p>
         <p>
-          <strong>Age:</strong> {currentUser.age}
+          <strong>Age:</strong> {tokendata.age}
         </p>
         <p>
-          <strong>Gender:</strong> {currentUser.gender}
+          <strong>Gender:</strong> {tokendata.gender}
         </p>
         <p>
-          <strong>Phone Number:</strong> {currentUser.phonenumber}
+          <strong>Phone Number:</strong> {tokendata.phonenumber}
         </p>
         <p>
-          <strong>Address:</strong> {currentUser.address}
+          <strong>Address:</strong> {tokendata.address}
         </p>
       </div>
       <button className="sign-out-button" onClick={signOutHandler}>

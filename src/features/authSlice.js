@@ -42,10 +42,60 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+export const signinUser = createAsyncThunk(
+  "auth/signinUser",
+  async (values, { rejectWithValue }) => {
+    try {
+      const userdata = await axios.post(`${url}/users/login`, {
+        email: values.email,
+        password: values.password,
+      });
+
+      localStorage.setItem("token", userdata.data.token);
+
+      return userdata.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    loadUser(state, action) {
+      const token = state.token;
+      if (token) {
+        const currenttoken = jwtDecode(token);
+        return {
+          ...state,
+          token,
+          _id: currenttoken.id,
+          name: currenttoken.name,
+          email: currenttoken.email,
+          userLoaded: true,
+        };
+      }
+    },
+    signoutUser(state, action) {
+      localStorage.removeItem("token");
+      toast.error("Signed Out 💔");
+      return {
+        ...state,
+        token: "",
+        name: "",
+        email: "",
+        _id: "",
+        signupStatus: "",
+        signupError: "",
+        signinStatus: "",
+        signinError: "",
+        userLoaded: false,
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(signupUser.pending, (state, action) => {
       return { ...state, signupStatus: "pending" };
@@ -53,15 +103,15 @@ const authSlice = createSlice({
     builder.addCase(signupUser.fulfilled, (state, action) => {
       if (action.payload) {
         const tokendata = jwtDecode(action.payload.token);
-        toast.success("Signed Up Successfully");
+        toast.success("Signed Up Successfully 💚 ");
         return {
           ...state,
           token: action.payload.token,
-          name: action.payload.name,
-          email: action.payload.email,
-          id: tokendata.id,
-          _id: action.payload._id,
+          name: tokendata.name,
+          email: tokendata.email,
+          _id: tokendata.id,
           signupStatus: "success",
+          userLoaded: true,
         };
       } else return state;
     });
@@ -73,7 +123,35 @@ const authSlice = createSlice({
         signupError: action.payload,
       };
     });
+
+    builder.addCase(signinUser.pending, (state, action) => {
+      return { ...state, signinStatus: "pending" };
+    });
+    builder.addCase(signinUser.fulfilled, (state, action) => {
+      if (action.payload) {
+        const tokendata = jwtDecode(action.payload.token);
+        toast.success("Signed In Successfully 💚 ");
+        return {
+          ...state,
+          token: action.payload.token,
+          name: tokendata.name,
+          email: tokendata.email,
+          _id: tokendata.id,
+          signinStatus: "success",
+          userLoaded: true,
+        };
+      } else return state;
+    });
+    builder.addCase(signinUser.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        signinStatus: "rejected",
+        signinError: action.payload,
+      };
+    });
   },
 });
 
+export const { loadUser, signoutUser } = authSlice.actions;
 export default authSlice.reducer;

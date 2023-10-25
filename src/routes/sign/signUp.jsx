@@ -18,6 +18,7 @@ const SignUp = () => {
     password: "",
     passwordConfirm: "",
   });
+
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
   // const [age, setAge] = useState("");
@@ -35,18 +36,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (auth._id) {
-      setUser({
-        name: "",
-        email: "",
-        age: "",
-        gender: "",
-        phonenumber: "",
-        address: "",
-        password: "",
-        passwordConfirm: "",
-      });
+      navigate("/profile");
     }
-  }, [auth._id, navigate]);
+  }, [auth, navigate]);
 
   // // Handle form submission
   // const handleSubmit = (e) => {

@@ -21,7 +21,7 @@ import { productsApi } from "./features/productsApi";
 import cartReducer, { getTotals } from "./features/cartSlice";
 import wishlistReducer from "./features/wishlistSlice";
 import Wishlist from "./routes/wishlist/wishlist";
-import authReducer from "./features/authSlice";
+import authReducer, { loadUser } from "./features/authSlice";
 
 const store = configureStore({
   reducer: {
@@ -37,6 +37,7 @@ const store = configureStore({
 });
 store.dispatch(productsFetch());
 store.dispatch(getTotals());
+store.dispatch(loadUser(null));
 
 const router = createBrowserRouter([
   {
