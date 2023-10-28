@@ -1,32 +1,54 @@
 .profile-container {
-  max-width: 400px;
-  margin: 0 auto;
+  //max-width: 400px;
+  height: 80vh;
+  margin: 50px;
   padding: 20px;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-
+  box-shadow: 0px 2px 8px rgba(0.2, 0.2, 0.8, 0.9);
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  // text-align: center;
+  overflow-y: auto;
+  scrollbar-color: #fff #fff;
   h2 {
     color: #333;
   }
+  .profile-hero-section {
+    display: flex;
+    .profile-hero-details {
+      display: flex;
+      flex-flow: column;
 
+      justify-content: center;
+      margin-left: 30px;
+    }
+    //justify-content: center;
+  }
   .profile-details {
-    margin-top: 20px;
+    // margin-top: 20px;
 
     p {
-      margin: 50px 0;
-      font-size: 16px;
+      // margin: 50px 0;
+      font-size: 19px;
     }
   }
 
+  .my-personalinfo-section {
+    //margin-top: 5px;
+
+    p {
+      // margin: 50px 0;
+      font-size: 26px;
+    }
+  }
   .sign-out-button {
     background-color: #ff6347; /* Red color for sign out */
     color: #fff;
     border: none;
     border-radius: 3px;
     padding: 10px 20px;
+    margin-left: 20px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -45,4 +67,9 @@
       text-decoration: underline;
     }
   }
+}
+
+.profile-container ::-webkit-scrollbar-thumb {
+  background-color: white;
+  color: #ddd; /* Change the scrollbar thumb color to white */
 }

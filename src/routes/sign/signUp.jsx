@@ -1,11 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../components/authenticaton/formInput.component";
 import { UserContext } from "../../contexts/user.context";
 import "./signIn.scss";
 import { signupUser } from "../../features/authSlice";
 
+const DemoPaper = styled(Paper)(({ theme }) => ({
+  width: 900,
+  height: 520,
+  padding: theme.spacing(2),
+  ...theme.typography.body2,
+  // textAlign: "center",
+}));
 const SignUp = () => {
   // State to hold form input values
   const [user, setUser] = useState({

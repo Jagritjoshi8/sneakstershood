@@ -22,6 +22,7 @@ import cartReducer, { getTotals } from "./features/cartSlice";
 import wishlistReducer from "./features/wishlistSlice";
 import Wishlist from "./routes/wishlist/wishlist";
 import authReducer, { loadUser } from "./features/authSlice";
+import orderReducer from "./features/orderSlice";
 
 const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ const store = configureStore({
     products: productsReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
+    order: orderReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {

@@ -10,23 +10,27 @@ const Product = () => {
   const auth = useSelector((state) => state.auth);
   const userLoaded = auth.userLoaded;
   return (
-    <div>
-      {!userLoaded ? (
-        <div className="cart-empty">
-          <p> Please Sign In First </p>
-          <div className="start-shopping">
-            <button>
-              <Link to="/sign-in"> Sign IN</Link>
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="page-container">
-          <FilterContainer />
-          <ProductListContainer className="products-container" />
-        </div>
-      )}
+    <div className="page-container">
+      <FilterContainer />
+      <ProductListContainer className="products-container" />
     </div>
+    // <div>
+    //   {!userLoaded ? (
+    //     <div className="cart-empty">
+    //       <p> Please Sign In First </p>
+    //       <div className="start-shopping">
+    //         <button>
+    //           <Link to="/sign-in"> Sign IN</Link>
+    //         </button>
+    //       </div>
+    //     </div>
+    //   ) : (
+    //     <div className="page-container">
+    //       <FilterContainer />
+    //       <ProductListContainer className="products-container" />
+    //     </div>
+    //   )}
+    // </div>
   );
 };
 

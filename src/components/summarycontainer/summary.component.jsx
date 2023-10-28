@@ -1,14 +1,22 @@
 import "./summary.styles.scss";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../features/cartSlice";
-
+import { useNavigate } from "react-router";
+import CheckoutModal from "../checkoutmodal/checkoutmodal.component";
 const SummaryContainer = ({ cart }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClearCart = () => {
     dispatch(clearCart());
   };
   const isCouponApplied = cart.couponSelected.length ? true : false;
+
+  const auth = useSelector((state) => state.auth);
+  const userLoaded = auth.userLoaded;
+
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="summary-container">
@@ -71,7 +79,21 @@ const SummaryContainer = ({ cart }) => {
         <button className="clearcart" onClick={() => handleClearCart()}>
           Clear Cart ❌
         </button>
-        <button className="placeorder">Place Order ✅ </button>
+        {!userLoaded ? (
+          <button className="signin-first" onClick={() => navigate("/sign-in")}>
+            SignIn First to Checkout ➡️
+          </button>
+        ) : (
+          <>
+            <button className="placeorder" onClick={() => setOpenModal(true)}>
+              Place Order ✅{" "}
+            </button>
+            <CheckoutModal
+              open={openModal}
+              onClose={() => setOpenModal(false)}
+            />
+          </>
+        )}
       </div>
     </div>
   );
