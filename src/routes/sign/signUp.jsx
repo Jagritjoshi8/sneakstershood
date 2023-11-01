@@ -213,9 +213,9 @@ const SignUp = () => {
 
       <h2>OR</h2>
 
-      <p>Already have an account? </p>
+      <h3>Already have an account? </h3>
       <Link to="/sign-in">
-        <b>SIGN IN</b>
+        <h3 className="signin-button">SIGN IN</h3>
       </Link>
     </div>
   );
