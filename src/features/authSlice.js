@@ -19,18 +19,12 @@ const initialState = {
 
 export const signupUser = createAsyncThunk(
   "auth/signupUser",
-  async (values, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
+    for (let pair of formData.entries()) {
+      console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
+    }
     try {
-      const userdata = await axios.post(`${url}/users/signup`, {
-        name: values.name,
-        email: values.email,
-        password: values.password,
-        passwordConfirm: values.passwordConfirm,
-        age: values.age,
-        gender: values.gender,
-        phonenumber: values.phonenumber,
-        address: values.address,
-      });
+      const userdata = await axios.post(`${url}/users/signup`, formData);
 
       localStorage.setItem("token", userdata.data.token);
 
