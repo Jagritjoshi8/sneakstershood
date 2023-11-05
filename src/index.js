@@ -23,11 +23,13 @@ import wishlistReducer from "./features/wishlistSlice";
 import Wishlist from "./routes/wishlist/wishlist";
 import authReducer, { loadUser } from "./features/authSlice";
 import orderReducer from "./features/orderSlice";
+import productfiltersReducer from "./features/productfiltersSlice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     products: productsReducer,
+    productfilters: productfiltersReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
     order: orderReducer,

@@ -17,6 +17,19 @@
 .orderid-pending {
   display: flex;
   justify-content: space-between;
+  .inner-orderid-container {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .neworder-info {
+      padding: 4px 15px;
+      color: #ffffff;
+      font-weight: 500;
+      background-color: rgb(40, 175, 134);
+      border-radius: 0.5em;
+    }
+  }
   .p2 {
     padding: 5px;
     color: #dddddd;
@@ -27,7 +40,7 @@
 }
 .delivery-date-address {
   display: flex;
-  margin-top: -20px;
+  margin-top: -18px;
   margin-bottom: -20px;
 
   .p2 {

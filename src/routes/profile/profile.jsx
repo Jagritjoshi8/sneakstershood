@@ -93,11 +93,14 @@ const Profile = () => {
           variant="fullWidth"
           aria-label="basic tabs example"
         >
-          <Tab label="My Personal Info" {...a11yProps(0)} />
-          <Tab label="My Orders" {...a11yProps(1)} />
+          <Tab label="My Orders" {...a11yProps(0)} />
+          <Tab label="My Personal Info" {...a11yProps(1)} />
           <Tab label="My Address" {...a11yProps(2)} />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
+          <MyOrderContainer orderDetails={order.orderDetails} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
           <div>
             <div className="my-personalinfo-section">
               {" "}
@@ -122,9 +125,7 @@ const Profile = () => {
             </div>
           </div>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <MyOrderContainer orderDetails={order.orderDetails} />
-        </CustomTabPanel>
+
         <CustomTabPanel value={value} index={2}>
           Item Three
         </CustomTabPanel>

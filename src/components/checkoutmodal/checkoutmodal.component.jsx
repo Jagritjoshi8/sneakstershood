@@ -55,8 +55,7 @@ const CheckoutModal = ({ open, onClose }) => {
           const { data } = await axios.post(verifyUrl, response);
           dispatch(clearCart());
           localStorage.removeItem("cartItems");
-          navigate("/");
-          console.log(data);
+          navigate("/profile");
         } catch (error) {
           console.log(error);
         }

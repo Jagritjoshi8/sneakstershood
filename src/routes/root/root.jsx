@@ -69,8 +69,8 @@ const Root = () => {
               Hi 👋 <b>{auth.name}</b>
             </Link>
           ) : (
-            <Link to="sign-up" className="navbarlinks">
-              SignUp
+            <Link to="sign-in" className="navbarlinks">
+              SignIn
             </Link>
           )}
         </div>

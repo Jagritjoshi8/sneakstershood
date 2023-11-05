@@ -1,39 +1,166 @@
 import "./filtercontainer.styles.scss";
+import {
+  addCategories,
+  addPrice,
+  addRatings,
+  addSort,
+  resetFilters,
+} from "../../features/productfiltersSlice";
+
+import { useDispatch, useSelector } from "react-redux";
 const FilterContainer = () => {
+  const dispatch = useDispatch();
+  const productfilters = useSelector((state) => state.productfilters);
   return (
     <div className="filter-container">
-      <h1>Filters</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-        facere, rem enim quis impedit dignissimos repellat alias earum
-        exercitationem eaque accusamus tenetur cum dolorum officia. Consequatur
-        ut accusantium illum fugiat. Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Eos nihil dolorem architecto vel deleniti dolores
-        repellat incidunt est! Aliquam nostrum, expedita ea officiis quaerat
-        voluptas eos illo? Error, aspernatur iusto? Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Delectus tempora excepturi doloribus
-        eveniet labore illo, similique quia culpa enim illum, quos perferendis
-        sint eligendi ullam distinctio. Voluptate molestias adipisci suscipit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias earum
-        quibusdam recusandae soluta unde, maxime nostrum nisi eos? Modi dolores
-        illum deserunt ex veniam accusantium omnis corporis consequuntur officia
-        corrupti. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab
-        saepe aut optio expedita dignissimos odio dicta suscipit pariatur minima
-        ex maxime sequi, error aliquam, facere enim ducimus. Nemo, omnis
-        molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-        commodi voluptas, veritatis quae sunt delectus, accusamus incidunt quas
-        iure ad deleniti possimus omnis eaque enim? Architecto quis accusantium
-        quidem tenetur? Lorem ipsum dolor, sit amet consectetur adipisicing
-        elit. Velit, ipsa ea? Officiis iure cumque qui quo, alias minima vel
-        fugiat earum fugit ratione veritatis totam impedit quis vitae cum quas!
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-        exercitationem aspernatur nostrum possimus, quo consequatur quidem
-        tempore porro? Molestias quidem eaque provident possimus distinctio
-        officiis! Rerum odit nostrum labore. Inventore! Lorem ipsum dolor sit
-        amet consectetur, adipisicing elit. Ipsam unde doloremque, aliquam
-        distinctio maxime nostrum aliquid! Totam nesciunt quaerat aspernatur
-        repellendus nam nemo numquam culpa incidunt sequi optio. Nulla, labore!
-      </p>
+      <div className="filter-header">
+        <h1>Filters</h1>
+        <button className="reset-btn" onClick={() => dispatch(resetFilters())}>
+          Reset
+        </button>
+      </div>
+      <div className="filter-types-container">
+        <div className="price-container bg">
+          <h3>Price :</h3>
+          <div className="price-input-container">
+            <label htmlFor="below-200">
+              Below $200
+              <input
+                checked={productfilters.price.find((price) =>
+                  price.min === 0 ? true : false
+                )}
+                onChange={() => dispatch(addPrice({ min: 0, max: 200 }))}
+                id="below-200"
+                type="checkbox"
+              />
+            </label>
+
+            <label htmlFor="201-999">
+              $201 - $999
+              <input
+                checked={productfilters.price.find((price) =>
+                  price.min === 201 ? true : false
+                )}
+                onChange={() => dispatch(addPrice({ min: 201, max: 999 }))}
+                id="201-999"
+                type="checkbox"
+              />
+            </label>
+
+            <label htmlFor="1000-1999">
+              $1000 - $1999
+              <input
+                checked={productfilters.price.find((price) =>
+                  price.min === 1000 ? true : false
+                )}
+                onChange={() => dispatch(addPrice({ min: 1000, max: 1999 }))}
+                id="1000-1999"
+                type="checkbox"
+              />
+            </label>
+
+            <label htmlFor="above 2000">
+              Over $2000
+              <input
+                checked={productfilters.price.find((price) =>
+                  price.min === 2000 ? true : false
+                )}
+                onChange={() => dispatch(addPrice({ min: 2000, max: 5000 }))}
+                id="above 2000"
+                type="checkbox"
+              />
+            </label>
+          </div>
+        </div>
+        <div className="ratings-container bg">
+          <h3>Ratings (min) :</h3>
+          <div className="input-range">
+            <datalist id="markers">
+              <option label="0" value="0">
+                0
+              </option>
+              <option label="2.5" value="2.5">
+                2.5
+              </option>
+              <option label="5.0" value="5">
+                5
+              </option>
+            </datalist>
+            <input
+              step="0.1"
+              onChange={(e) => dispatch(addRatings(Number(e.target.value)))}
+              list="markers"
+              id="price"
+              type="range"
+              min="0"
+              max="5.0"
+              value={productfilters.rating}
+            />
+          </div>
+        </div>
+
+        <div className="category-container bg">
+          <h3>Categories</h3>
+          <div className="category-input-container">
+            <label>
+              Men's wear
+              <input
+                checked={productfilters.categories.includes("men")}
+                onChange={() => dispatch(addCategories("men"))}
+                id="category-mens"
+                type="checkbox"
+              />
+            </label>
+            <label>
+              Women's wear
+              <input
+                checked={productfilters.categories.includes("women")}
+                onChange={() => dispatch(addCategories("women"))}
+                id="category-mens"
+                type="checkbox"
+              />
+            </label>
+            <label>
+              Kid's wear
+              <input
+                checked={productfilters.categories.includes("kid")}
+                onChange={() => dispatch(addCategories("kid"))}
+                id="category-mens"
+                type="checkbox"
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="sorting-container bg">
+          <h3>Sort by price</h3>
+
+          <div className="sorting-input-container">
+            <label htmlFor="high-to-low">
+              High To Low 📉{" "}
+              <input
+                checked={productfilters.sort === "HighToLow"}
+                onChange={() => dispatch(addSort("HighToLow"))}
+                name="sort"
+                id="high-to-low"
+                type="radio"
+              />
+            </label>
+
+            <label htmlFor="low-to-high">
+              Low To High 📈
+              <input
+                checked={productfilters.sort === "LowToHigh"}
+                onChange={() => dispatch(addSort("LowToHigh"))}
+                name="sort"
+                id="low-to-high"
+                type="radio"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+      {/* //innerfiltercontainer */}
     </div>
   );
 };

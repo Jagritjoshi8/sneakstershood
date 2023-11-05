@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
 const initialState = {
-  wishlistItems: [],
+  // wishlistItems: [],
+  wishlistItems: localStorage.getItem("wishlistItems")
+    ? JSON.parse(localStorage.getItem("wishlistItems"))
+    : [],
   wishlistQuantity: 0,
 };
 
@@ -20,10 +23,18 @@ const wishlistSlice = createSlice({
         );
         state.wishlistItems = nextWishListItems;
         toast(`🔶 "${action.payload.name}" is removed from wishlist🙁`);
+        localStorage.setItem(
+          "wishlistItems",
+          JSON.stringify(state.wishlistItems)
+        );
       } else {
         state.wishlistItems.push(action.payload);
         toast.success(
           `"${action.payload.name}" is added to wishlist successfully 🎉`
+        );
+        localStorage.setItem(
+          "wishlistItems",
+          JSON.stringify(state.wishlistItems)
         );
       }
     },

@@ -27,6 +27,11 @@ import {
 import "swiper/css/bundle";
 const MyOrderContainer = ({ orderDetails }) => {
   const navigate = useNavigate();
+  // console.log(orderDetails.userOrder);
+  // const order = orderDetails.userOrder;
+  // const reversedOrders = order.reverse();
+  // console.log("revorder", reversedOrders);
+  // }
   return (
     <div className="myorder-container">
       {orderDetails.length < 1 ? (
@@ -37,15 +42,30 @@ const MyOrderContainer = ({ orderDetails }) => {
             Your Total Orders:{"  "}
             {orderDetails.totalOrders}
           </h2>
-          {orderDetails.userOrder.map((order) => {
+          {orderDetails.userOrder.map((order, index) => {
             return (
               <div key="order._id" className="full-order-container">
                 <div className="orderid-pending">
+                  <div className="inner-orderid-container">
+                    <p>
+                      <span>OrderNo: {index + 1}</span>
+                    </p>
+                    {orderDetails.userOrder.length === index + 1 ? (
+                      <p className="neworder-info">New Order</p>
+                    ) : (
+                      <p></p>
+                    )}
+                  </div>
+
+                  <p className="p2">Pending</p>
+                </div>
+                <div className="delivery-date-address">
+                  {" "}
                   <p>
                     <span>OrderID:</span> {order._id}
                   </p>
-                  <p className="p2">Pending</p>
                 </div>
+
                 <div className="delivery-date-address">
                   <p>
                     <span>Delivery Date:</span> {order.deliveryDate}
