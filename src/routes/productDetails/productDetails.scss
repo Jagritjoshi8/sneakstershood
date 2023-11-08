@@ -1,0 +1,10 @@
+.productDetail-page-container {
+  display: flex;
+  flex-flow: column;
+  .header {
+    h1 {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

@@ -10,6 +10,7 @@ const initialState = {
   name: "",
   email: "",
   _id: "",
+  profileimg: "",
   signupStatus: "",
   signupError: "",
   signinStatus: "",
@@ -69,6 +70,7 @@ const authSlice = createSlice({
           _id: currenttoken.id,
           name: currenttoken.name,
           email: currenttoken.email,
+          profileimg: currenttoken.profileimg,
           userLoaded: true,
         };
       }
@@ -82,6 +84,7 @@ const authSlice = createSlice({
         name: "",
         email: "",
         _id: "",
+        profileimg: "",
         signupStatus: "",
         signupError: "",
         signinStatus: "",
@@ -104,6 +107,7 @@ const authSlice = createSlice({
           name: tokendata.name,
           email: tokendata.email,
           _id: tokendata.id,
+          profileimg: tokendata.profileimg,
           signupStatus: "success",
           userLoaded: true,
         };
@@ -131,6 +135,7 @@ const authSlice = createSlice({
           name: tokendata.name,
           email: tokendata.email,
           _id: tokendata.id,
+          profileimg: tokendata.profileimg,
           signinStatus: "success",
           userLoaded: true,
         };

@@ -24,12 +24,15 @@ import Wishlist from "./routes/wishlist/wishlist";
 import authReducer, { loadUser } from "./features/authSlice";
 import orderReducer from "./features/orderSlice";
 import productfiltersReducer from "./features/productfiltersSlice";
+import ProductDetails from "./routes/productDetails/productDetails";
+import reviewReducer from "./features/reviewSlice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     products: productsReducer,
     productfilters: productfiltersReducer,
+    review: reviewReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
     order: orderReducer,
@@ -56,6 +59,11 @@ const router = createBrowserRouter([
         path: "product",
         element: <Product />,
       },
+      {
+        path: "product-details/:productId",
+        element: <ProductDetails />,
+      },
+
       {
         path: "cart",
         element: <Cart />,

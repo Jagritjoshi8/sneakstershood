@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "./home.scss";
-import HeroContainer from "../../components/herocontainer/herocontainer.component";
+import HeroContainer from "../../components/homecontainers/herocontainer/herocontainer.component";
+import PromotionalLinesContainer from "../../components/homecontainers/promtionallinescontainer/promotionalLines.component";
+import HeroVideoContainer from "../../components/homecontainers/herovideocontainer/herovideocontainer.component";
 
 const Home = () => {
   const containeritems = [
@@ -18,7 +20,9 @@ const Home = () => {
 
   return (
     <div className="app">
-      <HeroContainer container={containeritems} />
+      {/* <HeroContainer container={containeritems} /> */}
+      <HeroVideoContainer />
+      <PromotionalLinesContainer />
       <div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae

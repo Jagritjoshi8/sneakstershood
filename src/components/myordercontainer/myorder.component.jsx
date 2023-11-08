@@ -27,10 +27,10 @@ import {
 import "swiper/css/bundle";
 const MyOrderContainer = ({ orderDetails }) => {
   const navigate = useNavigate();
-  // console.log(orderDetails.userOrder);
-  // const order = orderDetails.userOrder;
-  // const reversedOrders = order.reverse();
-  // console.log("revorder", reversedOrders);
+  console.log(orderDetails);
+  const order = orderDetails.userOrder;
+  const reversedOrders = order?.slice().reverse();
+  console.log("revorder", reversedOrders);
   // }
   return (
     <div className="myorder-container">
@@ -38,19 +38,23 @@ const MyOrderContainer = ({ orderDetails }) => {
         <div>You Have No Order Placed </div>
       ) : (
         <div>
-          <h2>
-            Your Total Orders:{"  "}
-            {orderDetails.totalOrders}
-          </h2>
-          {orderDetails.userOrder.map((order, index) => {
+          <div className="total-order">
+            <h2>
+              ► Your Total Orders:{"  "}
+              {orderDetails.totalOrders}
+            </h2>
+          </div>
+          {reversedOrders.map((order, index) => {
             return (
               <div key="order._id" className="full-order-container">
                 <div className="orderid-pending">
                   <div className="inner-orderid-container">
                     <p>
-                      <span>OrderNo: {index + 1}</span>
+                      <span>
+                        OrderNo: {orderDetails.userOrder.length - index}
+                      </span>
                     </p>
-                    {orderDetails.userOrder.length === index + 1 ? (
+                    {index === 0 ? (
                       <p className="neworder-info">New Order</p>
                     ) : (
                       <p></p>
@@ -75,7 +79,7 @@ const MyOrderContainer = ({ orderDetails }) => {
                   </p>
                 </div>
                 <p>
-                  <span>Amount Paid:</span> ₹{order.order.amount} ✅
+                  <span>Amount Paid:</span> ₹{order.order.amount / 100} ✅
                 </p>
                 <div className="order-items-container">
                   <Swiper

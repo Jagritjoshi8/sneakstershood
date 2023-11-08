@@ -16,6 +16,18 @@
   }
   .profile-hero-section {
     display: flex;
+    .profileimg-view {
+      width: 200px;
+      height: 200px;
+      border: 5px solid rgb(109, 15, 138); /* Adjust the border color and width as needed */
+      border-radius: 50%; /* Make the container circular */
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the circular container */
+      }
+    }
     .profile-hero-details {
       display: flex;
       flex-flow: column;
@@ -36,10 +48,21 @@
 
   .my-personalinfo-section {
     //margin-top: 5px;
+    display: flex;
+    // align-items: center;
+    // justify-content: center;
+    .i1 {
+      margin-top: -35px;
+      // margin-left: 50px;
+    }
+    .i2 {
+      margin-top: 20px;
+      margin-left: 180px;
+    }
 
     p {
-      // margin: 50px 0;
       font-size: 26px;
+      color: purple;
     }
   }
   .sign-out-button {
@@ -72,4 +95,14 @@
 .profile-container ::-webkit-scrollbar-thumb {
   background-color: white;
   color: #ddd; /* Change the scrollbar thumb color to white */
+}
+.tabsize {
+  font-size: 23px;
+  font-weight: 700;
+}
+@media (max-width: 1497px) {
+  .i1 {
+    width: 2px;
+    visibility: collapse;
+  }
 }

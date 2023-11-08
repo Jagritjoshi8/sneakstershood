@@ -1,0 +1,14 @@
+.productDetail-second-page {
+  border-top: 4px solid purple;
+  display: flex;
+  justify-content: space-evenly;
+
+  height: 89vh;
+  //   background-color: rgb(238, 215, 248);
+}
+@media (max-width: 1740px) {
+  .productDetail-second-page {
+    flex-flow: column;
+    height: inherit;
+  }
+}

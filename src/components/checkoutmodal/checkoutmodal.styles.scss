@@ -93,8 +93,9 @@
 
     .closeBtn {
       position: fixed;
-      top: 8px;
-      right: 8px;
+      top: 1px;
+      right: 18px;
+      z-index: 120;
       &:hover {
         cursor: pointer;
         opacity: 0.8;
@@ -150,10 +151,18 @@
   }
 }
 
-@media (min-width: 1467px) {
+@media (min-width: 1597px) {
   .overlay {
     .modalContainer {
       flex-flow: row-reverse;
+      .content {
+        width: 60%;
+        height: 800px;
+        position: fixed;
+        // top: 10px;
+        right: 1px;
+        overflow-y: auto;
+      }
       .modal-img {
         margin: auto;
         visibility: visible;

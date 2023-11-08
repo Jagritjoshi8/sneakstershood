@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Tilt from "react-parallax-tilt";
+import swal from "sweetalert";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router";
 import { clearCart } from "../../features/cartSlice";
@@ -55,7 +56,19 @@ const CheckoutModal = ({ open, onClose }) => {
           const { data } = await axios.post(verifyUrl, response);
           dispatch(clearCart());
           localStorage.removeItem("cartItems");
+          swal({
+            title: "Hurray!!! 🎉",
+            text: "Your Order is Placed for delivery! 🔥",
+            icon: "success",
+            button: "Aww yess!",
+          });
           navigate("/profile");
+          // swal({
+          //   title: "Hurray!!!",
+          //   text: "Your Order is Placed !",
+          //   icon: "success",
+          //   button: "Aww yess!",
+          // });
         } catch (error) {
           console.log(error);
         }
@@ -95,6 +108,7 @@ const CheckoutModal = ({ open, onClose }) => {
               className="cart-icon"
             />
           </p>
+
           <div className="content">
             <div>
               <h1> Your Order Is Reday !!</h1>
@@ -131,7 +145,7 @@ const CheckoutModal = ({ open, onClose }) => {
                 {cart.cartItems.map((product) => {
                   srno++;
                   return (
-                    <tr key="product.id">
+                    <tr key={product.id}>
                       <td>{srno}</td>
                       <td>
                         <Link to={`/product-details/${product.id}`}>
@@ -190,17 +204,17 @@ const CheckoutModal = ({ open, onClose }) => {
                 </tr>
               </table>
             </div>
-          </div>
-          <div className="btnContainer">
-            <button className="btnOutline" onClick={onClose}>
-              <span className="bold">NO</span>, thanks
-            </button>
-            <button
-              className="btnPrimary"
-              onClick={() => checkoutHandler(cart.cartFTotalAmount)}
-            >
-              <span className="bold">YES</span>, Proceed To Pay
-            </button>
+            <div className="btnContainer">
+              <button className="btnOutline" onClick={onClose}>
+                <span className="bold">NO</span>, thanks
+              </button>
+              <button
+                className="btnPrimary"
+                onClick={() => checkoutHandler(cart.cartFTotalAmount)}
+              >
+                <span className="bold">YES</span>, Proceed To Pay
+              </button>
+            </div>
           </div>
         </div>
         <img

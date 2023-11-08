@@ -52,6 +52,13 @@ const Profile = () => {
   const tokendata = jwtDecode(token);
   const order = useSelector((state) => state.order);
   const [value, setValue] = useState(0);
+  let imageURL;
+  if (tokendata.profileimg) {
+    imageURL = `http://localhost:8000/${tokendata.profileimg}`;
+  } else {
+    imageURL = `https://robohash.org/${tokendata.name}4?set=set5&size=250x250`;
+  }
+  //console.log(imageURL);
 
   useEffect(() => {
     dispatch(getUserOrder(tokendata.id));
@@ -68,9 +75,13 @@ const Profile = () => {
       {/* <h2>Profile</h2> */}
       <div className="profile-details">
         <div className="profile-hero-section">
-          <img
+          <div className="profileimg-view">
+            <img src={imageURL} />
+          </div>
+
+          {/* <img
             src={`https://robohash.org/${tokendata.name}4?set=set5&size=250x250`}
-          />
+          /> */}
           <div className="profile-hero-details">
             <p>
               <strong>Name:</strong> {tokendata.name}
@@ -93,16 +104,32 @@ const Profile = () => {
           variant="fullWidth"
           aria-label="basic tabs example"
         >
-          <Tab label="My Orders" {...a11yProps(0)} />
-          <Tab label="My Personal Info" {...a11yProps(1)} />
-          <Tab label="My Address" {...a11yProps(2)} />
+          <Tab
+            label={<span className="tabsize">My Orders</span>}
+            {...a11yProps(0)}
+            className="tab1"
+          />
+          <Tab
+            label={<span className="tabsize">My Personal Info</span>}
+            {...a11yProps(1)}
+          />
+          <Tab
+            label={<span className="tabsize">My Address</span>}
+            {...a11yProps(2)}
+          />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
           <MyOrderContainer orderDetails={order.orderDetails} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <div>
-            <div className="my-personalinfo-section">
+          <div className="my-personalinfo-section">
+            <img
+              src="https://i.pinimg.com/originals/89/26/b3/8926b38fa8cddebab8f4f1866bf09002.png"
+              height="500px"
+              width="750px"
+              className="i1"
+            />
+            <div>
               {" "}
               <p>
                 <strong>Name:</strong> {tokendata.name}
@@ -123,6 +150,11 @@ const Profile = () => {
                 <strong>Address:</strong> {tokendata.address}
               </p>
             </div>
+            <img
+              src=" https://purpleant.io/wp-content/uploads/2022/10/Privacy-policy-amico-1-1.png"
+              height="350px"
+              className="i2"
+            />
           </div>
         </CustomTabPanel>
 

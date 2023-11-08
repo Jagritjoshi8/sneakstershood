@@ -20,4 +20,48 @@
     cursor: pointer;
     font-size: 23px;
   }
+  .profileimg-view {
+    width: 70px;
+    height: 70px;
+    border: 4px solid rgb(109, 15, 138); /* Adjust the border color and width as needed */
+    border-radius: 50%; /* Make the container circular */
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure the image covers the circular container */
+    }
+  }
+}
+.dropdown-menu {
+  // display: none;
+  position: absolute;
+  margin-top: 2px;
+  margin-right: 2px;
+  padding: 15px;
+  // top: 100;
+  right: 0;
+  background-color: rgb(241, 224, 229);
+  border-radius: 0.7em;
+  //border: 1px solid #ccc;
+  box-shadow: 0 2px 2px rgba(253, 253, 253, 0.1);
+  z-index: 1;
+  .d2 {
+    margin-top: 8px;
+  }
+}
+
+.dropdown-menu div {
+  padding: 04px 10px;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  font-size: 19px;
+  color: rgb(0, 0, 0);
+  // display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1bbf3;
 }
