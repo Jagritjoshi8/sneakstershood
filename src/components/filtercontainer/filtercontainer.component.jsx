@@ -12,7 +12,11 @@ const FilterContainer = () => {
   const dispatch = useDispatch();
   const productfilters = useSelector((state) => state.productfilters);
   return (
-    <div className="filter-container">
+    <div
+      className="filter-container"
+      data-aos="fade-up"
+      data-aos-duration="2500"
+    >
       <div className="filter-header">
         <h1>Filters</h1>
         <button className="reset-btn" onClick={() => dispatch(resetFilters())}>

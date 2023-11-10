@@ -10,6 +10,7 @@ import SignUp from "./routes/sign/signUp";
 import SignIn from "./routes/sign/signIn";
 import { UserProvider } from "./contexts/user.context";
 import { ProductsProvider } from "./contexts/products.context";
+import AOSInitializer from "./components/extra/aosInitalizer/aosInitializer";
 import Profile from "./routes/profile/profile";
 import Cart from "./routes/cart/cart";
 
@@ -26,10 +27,14 @@ import orderReducer from "./features/orderSlice";
 import productfiltersReducer from "./features/productfiltersSlice";
 import ProductDetails from "./routes/productDetails/productDetails";
 import reviewReducer from "./features/reviewSlice";
+import SignUpSeller from "./routes/sign/signUpSeller";
+import authSellerReducer, { loadSeller } from "./features/authSellerSlice";
+import SellerRoot from "./routes/seller/sellerRoot/sellerRoot";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
+    authseller: authSellerReducer,
     products: productsReducer,
     productfilters: productfiltersReducer,
     review: reviewReducer,
@@ -45,6 +50,7 @@ const store = configureStore({
 store.dispatch(productsFetch());
 store.dispatch(getTotals());
 store.dispatch(loadUser(null));
+store.dispatch(loadSeller(null));
 
 const router = createBrowserRouter([
   {
@@ -77,6 +83,10 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
+        path: "sign-up-seller",
+        element: <SignUpSeller />,
+      },
+      {
         path: "sign-in",
         element: <SignIn />,
       },
@@ -86,6 +96,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "seller",
+    element: <SellerRoot />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -93,7 +107,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <UserProvider>
-        <RouterProvider router={router} />
+        <AOSInitializer>
+          <RouterProvider router={router} />
+        </AOSInitializer>
       </UserProvider>
     </Provider>
   </React.StrictMode>

@@ -32,7 +32,12 @@ const CartCard = ({ product }) => {
     dispatch(addToCart(product));
   };
   return (
-    <div className="cart-card">
+    <div
+      className="cart-card"
+      data-aos="flip-up"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1800"
+    >
       <DeleteIcon
         sx={{ fontSize: 38 }}
         color="secondary"

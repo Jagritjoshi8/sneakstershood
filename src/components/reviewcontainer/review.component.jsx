@@ -8,7 +8,11 @@ const ReviewContainer = ({ selectedProduct }) => {
       {!selectedProduct ? (
         <div>Product doesnt exist</div>
       ) : (
-        <div className="productDetail-second-page">
+        <div
+          className="productDetail-second-page"
+          data-aos="zoom-in-up"
+          data-aos-duration="2500"
+        >
           {" "}
           <GetReviewContainer selectedProduct={selectedProduct} />
           <ReviewFormContainer selectedProduct={selectedProduct} />

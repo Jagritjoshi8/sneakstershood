@@ -3,7 +3,11 @@ import "./promtionalLines.styles.scss";
 
 const PromotionalLinesContainer = () => {
   return (
-    <div className="promo-lines">
+    <div
+      className="promo-lines"
+      data-aos="zoom-in-down"
+      data-aos-duration="1800"
+    >
       <div className="line-red line">
         <div className="line-text">
           Swagy &nbsp; Cool &nbsp; Trendy &nbsp; Premium &nbsp; Iconic &nbsp;

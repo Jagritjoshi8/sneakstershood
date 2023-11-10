@@ -3,7 +3,11 @@ import "./herovideocontainer.styles.scss";
 
 const HeroVideoContainer = () => {
   return (
-    <div className="heroVideo-container">
+    <div
+      className="heroVideo-container"
+      data-aos="fade-up"
+      data-aos-duration="2500"
+    >
       {" "}
       <div className="vid">
         <div className="hero-text">

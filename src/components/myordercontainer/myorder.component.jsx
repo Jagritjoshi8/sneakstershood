@@ -33,7 +33,12 @@ const MyOrderContainer = ({ orderDetails }) => {
   console.log("revorder", reversedOrders);
   // }
   return (
-    <div className="myorder-container">
+    <div
+      className="myorder-container"
+      data-aos="fade-up"
+      // data-aos-easing="linear"
+      data-aos-duration="2500"
+    >
       {orderDetails.length < 1 ? (
         <div>You Have No Order Placed </div>
       ) : (

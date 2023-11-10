@@ -46,7 +46,11 @@ export const CouponsContainer = ({ cart }) => {
   };
 
   return (
-    <div className="coupons-section">
+    <div
+      className="coupons-section"
+      data-aos="fade-left"
+      data-aos-duration="2000"
+    >
       <div
         className="coupon-header"
         onClick={() => setIsCouponClicked(!isCouponClicked)}

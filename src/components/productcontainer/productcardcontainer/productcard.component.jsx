@@ -72,7 +72,13 @@ const ProductCard = ({ data }) => {
       transitionSpeed={2000}
       scale={1.02}
     >
-      <div className="product-card" key={id}>
+      <div
+        className="product-card"
+        key={id}
+        data-aos="fade-right"
+        // data-aos-easing="linear"
+        data-aos-duration="2500"
+      >
         <Link to={`/product-details/${id}`}>
           <div className="product-card-image">
             <Tilt

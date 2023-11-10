@@ -48,6 +48,7 @@ const Profile = () => {
   let navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const auth = useSelector((state) => state.auth);
+
   const token = auth.token;
   const tokendata = jwtDecode(token);
   const order = useSelector((state) => state.order);
@@ -71,7 +72,12 @@ const Profile = () => {
     navigate("/sign-in");
   };
   return (
-    <div className="profile-container">
+    <div
+      className="profile-container"
+      data-aos="zoom-in-up"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1500"
+    >
       {/* <h2>Profile</h2> */}
       <div className="profile-details">
         <div className="profile-hero-section">
@@ -129,7 +135,7 @@ const Profile = () => {
               width="750px"
               className="i1"
             />
-            <div>
+            <div data-aos="fade-in" data-aos-duration="2000">
               {" "}
               <p>
                 <strong>Name:</strong> {tokendata.name}

@@ -10,8 +10,9 @@ import FormInput from "../../components/authenticaton/formInput.component";
 import { UserContext } from "../../contexts/user.context";
 import "./signIn.scss";
 import { signupUser } from "../../features/authSlice";
+import { signupSeller } from "../../features/authSellerSlice";
 
-const SignUp = () => {
+const SignUpSeller = () => {
   // State to hold form input values
   // const [user, setUser] = useState({
   //   name: "",
@@ -26,15 +27,15 @@ const SignUp = () => {
   // });
   // console.log("pimg", user.profileimg);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [businessEmail, setBusinessEmail] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
-  const [address, setAddress] = useState("");
+  const [pancardnumber, setPanCardNumber] = useState("");
+  const [businessAddress, setBusinessAddress] = useState("");
+  const [businessType, setBusinessType] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [profileimg, setProfileimg] = useState(null);
+  const [logoimg, setLogoimg] = useState(null);
   const [previewURL, setPreviewURL] = useState(
     "https://vignette.wikia.nocookie.net/tumblr-survivor-athena/images/7/7a/Blank_Avatar.png/revision/latest/scale-to-width-down/477?cb=20161204161729"
   );
@@ -42,14 +43,15 @@ const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const auth = useSelector((state) => state.auth);
-  console.log(auth);
+  const authseller = useSelector((state) => state.authseller);
+  console.log(authseller);
+  //   console.log(auth);
 
   useEffect(() => {
-    if (auth._id) {
-      navigate("/profile");
+    if (authseller._id) {
+      navigate("/seller");
     }
-  }, [auth, navigate]);
+  }, [authseller, navigate]);
 
   // // Handle form submission
   // const handleSubmit = (e) => {
@@ -61,26 +63,26 @@ const SignUp = () => {
   //   console.log("Confirm Password:", confirmPassword);
   //   // You can send a request to your backend for user registration here
   // };
-
+  //   const handleSubmit = async (e) => {};
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    console.log("inner name", name);
+    //console.log("inner name", name);
 
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("age", age);
-    formData.append("gender", gender);
+    formData.append("businessName", businessName);
+    formData.append("businessEmail", businessEmail);
+    formData.append("pancardnumber", pancardnumber);
+    formData.append("businessType", businessType);
     formData.append("phonenumber", phonenumber);
-    formData.append("address", address);
+    formData.append("businessAddress", businessAddress);
     formData.append("password", password);
     formData.append("passwordConfirm", passwordConfirm);
-    formData.append("profileimg", profileimg);
+    formData.append("logoimg", logoimg);
 
     // for (let pair of formData.entries()) {
     //   console.log(`actulformdata:${pair[0]}: ${pair[1]}`);
     // }
-    dispatch(signupUser(formData));
+    dispatch(signupSeller(formData));
   };
   // let result = await fetch("http://localhost:8000/users/signup", {
   //   method: "post",
@@ -115,40 +117,23 @@ const SignUp = () => {
 
   return (
     <div className="container">
-      <div
-        className="are-you-seller"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
-        Are You Seller?{" "}
-        <Link to="/sign-up-seller">
-          <p className="sign-up-seller-link">Sign Up As Seller</p>
-        </Link>
-      </div>
-      <h2 data-aos="fade-up" data-aos-duration="2000">
-        Sign Up
-      </h2>
-      <form
-        onSubmit={handleSubmit}
-        encType="multipart/form-data"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
+      <h2>Sign Up As Seller</h2>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="profile-img-container">
           <div className="c1">
             <img src={previewURL} alt="Profile Preview" width="250" />
           </div>
           <div className="c2">
-            <label>Upload Your Profile Picture: </label>
+            <label>Upload Your Business Logo: </label>
             <input
               type="file"
               accept="image/*"
-              id="profileimg"
-              name="profileimg"
+              id="logoimg"
+              name="logoimg"
               required
               onChange={(e) => {
                 const selectedFile = e.target.files[0];
-                setProfileimg(selectedFile);
+                setLogoimg(selectedFile);
                 if (selectedFile) {
                   const imageURL = URL.createObjectURL(selectedFile);
                   setPreviewURL(imageURL);
@@ -160,67 +145,32 @@ const SignUp = () => {
         <div className="form-inner-container">
           <div className="left-column">
             <FormInput
-              label="Name"
-              placeHolder="Enter Your Name Here.."
+              label="Business Name"
+              placeHolder="Enter Your's Busines Name Here.."
               type="text"
-              id="name"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
+              id="businessName"
+              name="businessName"
+              onChange={(e) => setBusinessName(e.target.value)}
               required
             />
-
-            {/* <FormInput
-              label="Age"
-              type="age"
-              id="age"
-              name="age"
-              onChange={(e) => setAge(e.target.value)}
+            <FormInput
+              label="PAN Card Number"
+              type="number"
+              id="pancardnumber"
+              name="pancardnumber"
+              placeHolder="Enter Your PAN Card Number Here.."
+              onChange={(e) => setPanCardNumber(e.target.value)}
               required
-            /> */}
-            <div className="select-group">
-              <label className="l1">Age:</label>
-              <FormControl
-                variant="standard"
-                sx={{ m: 1, width: "49%", minHeight: 60 }}
-              >
-                <InputLabel id="demo-simple-select-standard-label">
-                  Select Age
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  label=" Select Age"
-                  sx={{
-                    backgroundColor: "white",
-                    fontSize: "20px",
-                    paddingLeft: "10px",
-                  }}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={15}>15-19</MenuItem>
-                  <MenuItem value={20}>20-24</MenuItem>
-                  <MenuItem value={25}>25-29</MenuItem>
-                  <MenuItem value={30}>30-34</MenuItem>
-                  <MenuItem value={35}>35-39</MenuItem>{" "}
-                  <MenuItem value={40}>40+</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-
+            />
             <FormInput
               label="Phone Number"
-              type="phonenumber"
+              type="number"
               id="phonenumber"
               name="phonenumber"
               placeHolder="Enter Your Phone Number Here.."
               onChange={(e) => setPhonenumber(e.target.value)}
               required
             />
-
             <FormInput
               label="Password"
               type="password"
@@ -233,29 +183,29 @@ const SignUp = () => {
           </div>
           <div className="right-column">
             <FormInput
-              label="Email"
+              label="Business Email"
               type="email"
-              id="email"
-              name="email"
-              placeHolder="Enter Your Email Here.."
-              onChange={(e) => setEmail(e.target.value)}
+              id="businessEmail"
+              name="businessEmail"
+              placeHolder="Enter Your Business Email Here.."
+              onChange={(e) => setBusinessEmail(e.target.value)}
               required
             />
             <div className="select-group">
-              <label className="l1">Gender:</label>
+              <label className="l1">Business Type:</label>
               <FormControl
                 variant="standard"
                 sx={{ m: 1, width: "49%", minHeight: 60 }}
               >
                 <InputLabel id="demo-simple-select-standard-label">
-                  Select Gender
+                  Select Business Type
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-standard-label"
                   id="demo-simple-select-standard"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  label=" Select Gender"
+                  value={businessType}
+                  onChange={(e) => setBusinessType(e.target.value)}
+                  label=" Select Business Type"
                   sx={{
                     backgroundColor: "white",
                     fontSize: "20px",
@@ -265,9 +215,9 @@ const SignUp = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={"male"}>Male</MenuItem>
-                  <MenuItem value={"female"}>Female</MenuItem>
-                  <MenuItem value={"others"}>Others</MenuItem>
+                  <MenuItem value={"wholesale"}>Wholesale</MenuItem>
+                  <MenuItem value={"reatail"}>Retail</MenuItem>
+                  <MenuItem value={"individual"}>Individual</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -282,12 +232,12 @@ const SignUp = () => {
             /> */}
 
             <div className="form-group">
-              <label>Address:</label>
+              <label>Business Address:</label>
               <textarea
-                id="address"
-                name="address"
-                placeHolder="Enter Your Address Here.."
-                onChange={(e) => setAddress(e.target.value)}
+                id="businessAddress"
+                name="businessAddress"
+                placeHolder="Enter Your Business Address Here.."
+                onChange={(e) => setBusinessAddress(e.target.value)}
                 required
                 rows="2"
                 cols="22"
@@ -315,8 +265,8 @@ const SignUp = () => {
         </div>
         <div className="button-warning-container">
           <div>
-            {auth.signupStatus === "rejected" ? (
-              <p>Warning: {auth.signupError.message}</p>
+            {authseller.signupStatus === "rejected" ? (
+              <p>Warning: {authseller.signupError.message}</p>
             ) : null}
           </div>
           <button type="submit">Sign Up</button>
@@ -333,4 +283,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpSeller;

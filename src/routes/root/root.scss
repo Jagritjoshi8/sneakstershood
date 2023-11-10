@@ -8,6 +8,24 @@
   justify-content: space-between;
   background-color: rgb(241, 224, 229);
 
+  .sneakershood-logo-name {
+    display: flex;
+    // align-items: center;
+    // z-index: -1000;
+    .sneakershood-name {
+      font-family: Gilroy-Heavy;
+      margin-top: 15px;
+      font-size: 3rem;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgb(188, 160, 201);
+      transition: all 0.3s linear;
+      &:hover {
+        color: rgb(193, 134, 223);
+        cursor: pointer;
+      }
+    }
+  }
+
   .navbarlinkcontainer {
     width: auto;
     height: 100%;
@@ -64,4 +82,12 @@
 
 .dropdown-menu a:hover {
   background-color: #f1bbf3;
+}
+@media (max-width: 1100px) {
+  .sneakershood-logo-name {
+    .sneakershood-name {
+      visibility: collapse;
+      font-size: 0px;
+    }
+  }
 }

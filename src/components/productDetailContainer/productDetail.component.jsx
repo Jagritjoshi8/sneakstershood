@@ -44,7 +44,11 @@ const ProductDetailContainer = ({ selectedProduct }) => {
     }
   };
   return (
-    <div className="productDetail-container">
+    <div
+      className="productDetail-container"
+      data-aos="zoom-in-up"
+      data-aos-duration="2500"
+    >
       {!selectedProduct ? (
         <div>Product doesnt exist</div>
       ) : (

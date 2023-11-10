@@ -30,7 +30,9 @@ const SignIn = () => {
 
   return (
     <div className="container">
-      <h2>Sign In</h2>
+      <h2 data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
+        Sign In
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className="form-inner-container">
           <div className="sketchfab-embed-wrapper threeD-sneaker-container">
@@ -53,13 +55,19 @@ const SignIn = () => {
               {" "}
             </iframe>{" "}
           </div>
-          <div className="left-column">
+          <div
+            className="left-column"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-easing="linear"
+          >
             <FormInput
               label="Email"
               type="email"
               id="email"
               name="email"
               value={email}
+              placeHolder="Enter Your Email Here.."
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -69,6 +77,7 @@ const SignIn = () => {
               id="password"
               name="password"
               value={password}
+              placeHolder="Enter Your Password Here.."
               onChange={(e) => setPassword(e.target.value)}
               required
             />

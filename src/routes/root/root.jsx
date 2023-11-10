@@ -27,12 +27,6 @@ const Root = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, wishlist, dispatch]);
@@ -42,7 +36,15 @@ const Root = () => {
       <ScrollToTop />
       <div className="navbar">
         <Link to="/">
-          <img src={shoeimg} width="90px" height="80px" />
+          <div className="sneakershood-logo-name">
+            {" "}
+            <img
+              src="/assets/images/products-images/image-kids-1.png"
+              width="90px"
+              height="85px"
+            />
+            <p className="sneakershood-name"> Sneakers Hood </p>
+          </div>
         </Link>
         <div className="navbarlinkcontainer">
           <Link to="product" className="navbarlinks">
@@ -94,44 +96,19 @@ const Root = () => {
           ) : (
             <div>
               {location.pathname === "/sign-in" ? (
-                <Link to="/sign-in" className="navbarlinks">
-                  Sign In
+                <Link to="/sign-up" className="navbarlinks">
+                  Sign Up
                 </Link>
               ) : (
-                <Link
-                  to="/sign-up"
-                  className="navbarlinks"
-                  onClick={toggleDropdown}
-                >
-                  Sign Up
+                <Link to="/sign-in" className="navbarlinks">
+                  Sign In
                 </Link>
               )}
             </div>
           )}
         </div>
-        {/* {isDropdownOpen && (
-          <ul className="dropdown-menu">
-            <li>
-              <Link to="/sign-up/seller">As Seller</Link>
-            </li>
-            <li>
-              <Link to="/sign-up">As Customer</Link>
-            </li>
-          </ul>
-        )} */}
       </div>
-      {isDropdownOpen && (
-        <div className="dropdown-menu">
-          <div className="d1">
-            <Link to="/sign-up/seller">☞As Seller</Link>
-          </div>
-          <div className="d2">
-            <Link to="/sign-up" onClick={toggleDropdown}>
-              ☞As Customer
-            </Link>
-          </div>
-        </div>
-      )}
+
       <Outlet />
       {/* <div className="footercontainer">
         <h3>this is footer</h3>

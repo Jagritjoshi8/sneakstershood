@@ -19,7 +19,11 @@ const SummaryContainer = ({ cart }) => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div className="summary-container">
+    <div
+      className="summary-container"
+      data-aos="fade-left"
+      data-aos-duration="2000"
+    >
       <div className="calculation-container">
         <div>
           <h1>Summary</h1>
