@@ -27,9 +27,11 @@ import orderReducer from "./features/orderSlice";
 import productfiltersReducer from "./features/productfiltersSlice";
 import ProductDetails from "./routes/productDetails/productDetails";
 import reviewReducer from "./features/reviewSlice";
-import SignUpSeller from "./routes/sign/signUpSeller";
+import SignUpSeller from "./routes/sign/seller/signUpSeller";
 import authSellerReducer, { loadSeller } from "./features/authSellerSlice";
 import SellerRoot from "./routes/seller/sellerRoot/sellerRoot";
+import SignInSeller from "./routes/sign/seller/signInSeller";
+import SellerProduct from "./routes/seller/sellerProduct/sellerProduct";
 
 const store = configureStore({
   reducer: {
@@ -91,6 +93,10 @@ const router = createBrowserRouter([
         element: <SignIn />,
       },
       {
+        path: "sign-in-seller",
+        element: <SignInSeller />,
+      },
+      {
         path: "profile",
         element: <Profile />,
       },
@@ -99,6 +105,24 @@ const router = createBrowserRouter([
   {
     path: "seller",
     element: <SellerRoot />,
+    children:[
+      {
+        path:"summary",
+        element:<div> Summary</div>
+    },
+    {
+      path:"products",
+      element: <SellerProduct />
+    },
+    {
+      path:"orders",
+      element:<div>Orders</div>
+    },
+    {
+      path:"users",
+      element:<div>users</div>
+    }
+    ]
   },
 ]);
 

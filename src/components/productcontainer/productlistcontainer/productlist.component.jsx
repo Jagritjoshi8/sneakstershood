@@ -27,7 +27,15 @@ const ProductListContainer = () => {
   return (
     <div className="product-card-container">
       {!sortedProducts ? (
-        <p>no matching products</p>
+        <div className="no-matching-product" data-aos="fade-right"
+        // data-aos-easing="linear"
+        data-aos-duration="2500"
+  >
+        <h1>Oops..!! No Matching Product</h1>
+        
+        <img src="https://www.adda247.com/images/no-result-found.png"/>
+      </div>
+        
       ) : (
         <>
           {sortedProducts.map((data) => {

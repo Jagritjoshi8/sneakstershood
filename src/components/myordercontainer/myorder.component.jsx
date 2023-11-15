@@ -147,7 +147,7 @@ const MyOrderContainer = ({ orderDetails }) => {
                                     className="order-linkbutton"
                                     sx={{ fontSize: 38 }}
                                     color="secondary"
-                                    className="cart-icon"
+                      
                                     onClick={() =>
                                       navigate(`/product-details/${product.id}`)
                                     }

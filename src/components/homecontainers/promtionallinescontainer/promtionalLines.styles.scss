@@ -25,10 +25,11 @@
 .line {
   position: absolute;
   display: flex;
-  width: 110%;
+  width: 117%;
+  overflow-x: hidden;
 }
 
-.line-red {
+.line-violet {
   background: rgb(221, 189, 252);
   height: 134px;
   line-height: 118px;
@@ -38,12 +39,12 @@
   filter: drop-shadow(0 0 0.75rem #dadada);
 }
 
-.line-red .line-text {
+.line-violet .line-text {
   background: rgb(221, 189, 252);
   //   background: rgb(226, 203, 150);
 }
 
-.line-violet {
+.line-red {
   background: rgb(248, 195, 195);
   height: 120px;
   line-height: 100px;
@@ -51,9 +52,10 @@
   transform: rotate(-7.68deg) translate(-200px, 100px);
   top: 110px;
   filter: drop-shadow(0 0 0.75rem #dadada);
+  
 }
 
-.line-violet .line-text {
+.line-red .line-text {
   background: rgb(248, 195, 195);
 }
 

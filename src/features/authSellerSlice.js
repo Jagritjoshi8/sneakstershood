@@ -40,24 +40,24 @@ export const signupSeller = createAsyncThunk(
   }
 );
 
-// export const signinSeller = createAsyncThunk(
-//   "auth/signinUser",
-//   async (values, { rejectWithValue }) => {
-//     try {
-//       const userdata = await axios.post(`${url}/users/login`, {
-//         email: values.email,
-//         password: values.password,
-//       });
+export const signinSeller = createAsyncThunk(
+  "authseller/signinSeller",
+  async (values, { rejectWithValue }) => {
+    try {
+      const sellerdata = await axios.post(`${url}/sellers/signin-seller`, {
+        businessEmail: values.businessEmail,
+        password: values.password,
+      });
 
-//       localStorage.setItem("token", userdata.data.token);
+      localStorage.setItem("sellertoken", sellerdata.data.token);
 
-//       return userdata.data;
-//     } catch (error) {
-//       console.log(error.response.data);
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+      return sellerdata.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const authSellerSlice = createSlice({
   name: "authseller",
@@ -71,28 +71,28 @@ const authSellerSlice = createSlice({
           ...state,
           sellertoken,
           _id: currenttoken.id,
-          name: currenttoken.name,
-          email: currenttoken.email,
-          profileimg: currenttoken.profileimg,
-          userLoaded: true,
+          businessName: currenttoken.businesName,
+        businessEmail: currenttoken.businessEmail,
+          logoimg: currenttoken.logoimg,
+          sellerLoaded: true,
         };
       }
     },
     signoutSeller(state, action) {
-      localStorage.removeItem("token");
+      localStorage.removeItem("sellertoken");
       toast.error("Signed Out 💔");
       return {
         ...state,
-        token: "",
-        name: "",
-        email: "",
+        sellertoken: "",
+        businessName: "",
+        businessEmail: "",
         _id: "",
-        profileimg: "",
+        logoimg: "",
         signupStatus: "",
         signupError: "",
         signinStatus: "",
         signinError: "",
-        userLoaded: false,
+        sellerLoaded: false,
       };
     },
   },
@@ -106,11 +106,11 @@ const authSellerSlice = createSlice({
         toast.success("Signed Up Successfully 💚 ");
         return {
           ...state,
-          token: action.payload.token,
+          sellertoken: action.payload.token,
           businessName: tokendata.businessName,
-          businessEmail: tokendata.email,
+          businessEmail: tokendata.businessEmail,
           _id: tokendata.id,
-          logoimg: tokendata.profileimg,
+          logoimg: tokendata.logoimg,
           signupStatus: "success",
           sellerLoaded: true,
         };
@@ -125,35 +125,35 @@ const authSellerSlice = createSlice({
       };
     });
 
-    // builder.addCase(signinSeller.pending, (state, action) => {
-    //   return { ...state, signinStatus: "pending" };
-    // });
-    // builder.addCase(signinSeller.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     const tokendata = jwtDecode(action.payload.token);
-    //     toast.success("Signed In Successfully 💚 ");
-    //     return {
-    //       ...state,
-    //       token: action.payload.token,
-    //       name: tokendata.name,
-    //       email: tokendata.email,
-    //       _id: tokendata.id,
-    //       profileimg: tokendata.profileimg,
-    //       signinStatus: "success",
-    //       userLoaded: true,
-    //     };
-    //   } else return state;
-    // });
-    // builder.addCase(signinSeller.rejected, (state, action) => {
-    //   //   alert(`${action.payload.message}`);
-    //   return {
-    //     ...state,
-    //     signinStatus: "rejected",
-    //     signinError: action.payload,
-    //   };
-    // });
+    builder.addCase(signinSeller.pending, (state, action) => {
+      return { ...state, signinStatus: "pending" };
+    });
+    builder.addCase(signinSeller.fulfilled, (state, action) => {
+      if (action.payload) {
+        const tokendata = jwtDecode(action.payload.token);
+        toast.success("Signed In Successfully 💚 ");
+        return {
+          ...state,
+          sellertoken: action.payload.token,
+          businessName: tokendata.businessName,
+          businessEmail: tokendata.businessEmail,
+          _id: tokendata.id,
+          logoimg: tokendata.logoimg,
+          signupStatus: "success",
+          sellerLoaded: true,
+        };
+      } else return state;
+    });
+    builder.addCase(signinSeller.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        signinStatus: "rejected",
+        signinError: action.payload,
+      };
+    });
   },
 });
 
-export const { loadSeller } = authSellerSlice.actions;
+export const { loadSeller,signoutSeller } = authSellerSlice.actions;
 export default authSellerSlice.reducer;

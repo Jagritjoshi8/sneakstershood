@@ -30,6 +30,16 @@ const SignIn = () => {
 
   return (
     <div className="container">
+      <div
+        className="are-you-seller"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        Are You Seller?{" "}
+        <Link to="/sign-in-seller">
+          <p className="sign-up-seller-link">Sign In As Seller</p>
+        </Link>
+      </div>
       <h2 data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
         Sign In
       </h2>

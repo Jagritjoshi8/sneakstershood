@@ -6,11 +6,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
-import FormInput from "../../components/authenticaton/formInput.component";
-import { UserContext } from "../../contexts/user.context";
-import "./signIn.scss";
-import { signupUser } from "../../features/authSlice";
-import { signupSeller } from "../../features/authSellerSlice";
+import FormInput from "../../../components/authenticaton/formInput.component";
+import { UserContext } from "../../../contexts/user.context";
+import "./signSeller.scss";
+import { signupUser } from "../../../features/authSlice";
+import { signupSeller } from "../../../features/authSellerSlice";
 
 const SignUpSeller = () => {
   // State to hold form input values
@@ -37,7 +37,7 @@ const SignUpSeller = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [logoimg, setLogoimg] = useState(null);
   const [previewURL, setPreviewURL] = useState(
-    "https://vignette.wikia.nocookie.net/tumblr-survivor-athena/images/7/7a/Blank_Avatar.png/revision/latest/scale-to-width-down/477?cb=20161204161729"
+    "https://png.pngtree.com/png-clipart/20210912/original/pngtree-your-logo-poster-png-image_6728130.jpg"
   );
   // const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ const SignUpSeller = () => {
 
   useEffect(() => {
     if (authseller._id) {
-      navigate("/seller");
+      navigate("/seller/summary");
     }
   }, [authseller, navigate]);
 
@@ -116,7 +116,7 @@ const SignUpSeller = () => {
   // }
 
   return (
-    <div className="container">
+    <div className="containers">
       <h2>Sign Up As Seller</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="profile-img-container">
@@ -276,8 +276,8 @@ const SignUpSeller = () => {
       <h2>OR</h2>
 
       <h3>Already have an account? </h3>
-      <Link to="/sign-in">
-        <h3 className="sign-other-button">SIGN IN</h3>
+      <Link to="/sign-in-seller">
+        <h3 className="sign-other-button">SIGN IN AS SELLER</h3>
       </Link>
     </div>
   );

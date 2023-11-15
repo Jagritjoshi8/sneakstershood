@@ -18,13 +18,15 @@ const Cart = () => {
   return (
     <div className="cart-page">
       {cart.cartItems.length === 0 ? (
-        <div className="cart-empty">
-          <p>Your Cart is Empty</p>
-          <div className="start-shopping">
-            <button>
-              <Link to="/product"> Start Shopping</Link>
+        <div className="cart-empty"
+        data-aos="fade-up"
+        data-aos-duration="2500">
+          <h1>Your Cart is Empty</h1>
+          <button className="start-shopping-button">
+              <Link to="/product"> Start Shopping ⇒</Link>
             </button>
-          </div>
+          
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7236766-5875081.png"/>
         </div>
       ) : (
         <div className="cart-page-container">
