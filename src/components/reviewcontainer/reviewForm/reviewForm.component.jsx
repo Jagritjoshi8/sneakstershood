@@ -41,7 +41,7 @@ const ReviewFormContainer = ({ selectedProduct }) => {
     event.preventDefault();
     dispatch(
       addReview({
-        productId: selectedProduct.id,
+        productId: selectedProduct._id,
         reviewData: { rating, comment, user },
       })
     );
@@ -72,6 +72,7 @@ const ReviewFormContainer = ({ selectedProduct }) => {
                 sx={{ fontSize: 50 }}
                 // defaultValue={2}
                 onChange={(event, newValue) => {
+                  console.log("nwvalue", newValue);
                   setRating(newValue);
                 }}
                 onChangeActive={(event, newHover) => {

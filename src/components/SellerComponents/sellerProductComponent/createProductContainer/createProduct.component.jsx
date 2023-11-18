@@ -8,13 +8,12 @@ import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../../authenticaton/formInput.component";
 import { UserContext } from "../../../../contexts/user.context";
-import "./createProduct.styles.scss"
+import "./createProduct.styles.scss";
 import { signupUser } from "../../../../features/authSlice";
 import { signupSeller } from "../../../../features/authSellerSlice";
 import { createProduct } from "../../../../features/productSlice";
 
 const CreateProductContainer = () => {
-
   const [name, setName] = useState("");
   const [original_price, setOriginalPrice] = useState("");
   const [discountper, setDiscountPer] = useState("");
@@ -23,8 +22,8 @@ const CreateProductContainer = () => {
   const [size, setSize] = useState("");
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
-  const [qualityType,setQualityType]= useState("");
-  const [description,setDescription]= useState("");
+  const [qualityType, setQualityType] = useState("");
+  const [description, setDescription] = useState("");
   const [productimg, setProductimg] = useState(null);
   const [previewURL, setPreviewURL] = useState(
     "https://djjpswami.com/images/no_album_cover.jpg"
@@ -34,8 +33,9 @@ const CreateProductContainer = () => {
   const dispatch = useDispatch();
 
   const authseller = useSelector((state) => state.authseller);
-  //console.log(authseller);
-  //   console.log(auth);
+  const products = useSelector((state) => state.products);
+  console.log("name", authseller);
+  console.log("pro", products);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,14 +51,26 @@ const CreateProductContainer = () => {
     formData.append("brand", brand);
     formData.append("color", color);
     formData.append("qualityType", qualityType);
+    formData.append("description", description);
     formData.append("productimg", productimg);
-    formData.append("sellerId",authseller._id);
-    formData.append("sellerName",authseller.businessName);
+    formData.append("sellerId", authseller._id);
+    formData.append("sellerName", authseller.businessName);
 
     // for (let pair of formData.entries()) {
     //   console.log(`actulformdata:${pair[0]}: ${pair[1]}`);
     // }
     dispatch(createProduct(formData));
+    setName("");
+    setOriginalPrice("");
+    setDiscountPer("");
+    setBrand("");
+    setCategoryName("");
+    setColor("");
+    setSize("");
+    setDescription("");
+    setProductimg("");
+    setQualityType("");
+    setPreviewURL("https://djjpswami.com/images/no_album_cover.jpg");
   };
 
   return (
@@ -97,6 +109,7 @@ const CreateProductContainer = () => {
               name="name"
               onChange={(e) => setName(e.target.value)}
               required
+              value={name}
             />
             <FormInput
               label="Original Price"
@@ -106,6 +119,7 @@ const CreateProductContainer = () => {
               placeHolder="Enter Orginal Price Of Product Here.."
               onChange={(e) => setOriginalPrice(e.target.value)}
               required
+              value={original_price}
             />
             <FormInput
               label="Discount % "
@@ -115,6 +129,7 @@ const CreateProductContainer = () => {
               placeHolder="Enter % Discount Here..."
               onChange={(e) => setDiscountPer(e.target.value)}
               required
+              value={discountper}
             />
             <FormInput
               label="Sneaker Size"
@@ -124,6 +139,7 @@ const CreateProductContainer = () => {
               placeHolder="Enter Sneaker Size Here.."
               onChange={(e) => setSize(e.target.value)}
               required
+              value={size}
             />
           </div>
           <div className="right-column">
@@ -135,6 +151,7 @@ const CreateProductContainer = () => {
               placeHolder="Enter Sneaker's Brand Here.."
               onChange={(e) => setBrand(e.target.value)}
               required
+              value={brand}
             />
             <div className="select-group">
               <label className="l1">Product Category:</label>
@@ -155,7 +172,7 @@ const CreateProductContainer = () => {
                     // backgroundColor: "white",
                     fontSize: "20px",
                     paddingLeft: "10px",
-                    border: "1px solid #ccc;"
+                    border: "1px solid #ccc;",
                   }}
                 >
                   <MenuItem value="">
@@ -195,29 +212,31 @@ const CreateProductContainer = () => {
               placeHolder="Enter Color Of Sneaker Here.."
               onChange={(e) => setColor(e.target.value)}
               required
+              value={color}
             />
           </div>
         </div>
-        <div className="product-descriptions" >
-              <label>Sneaker's Description:</label>
-              <textarea
-                id="description"
-                name="description"
-                placeHolder="Enter Description Of Sneaker Here.."
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                rows="3"
-                cols="70"
-              ></textarea>
-            </div>
-            
+        <div className="product-descriptions">
+          <label>Sneaker's Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            placeHolder="Enter Description Of Sneaker Here.."
+            onChange={(e) => setDescription(e.target.value)}
+            required
+            rows="3"
+            cols="20"
+            value={description}
+          ></textarea>
+        </div>
+
         <div className="button-warning-container">
           <div>
-            {authseller.signupStatus === "rejected" ? (
-              <p>Warning: {authseller.signupError.message}</p>
+            {products.creatingStatus === "rejected" ? (
+              <p>Warning: {products.creatingError.message}</p>
             ) : null}
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit">Create Product</button>
         </div>
       </form>
     </div>

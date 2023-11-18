@@ -1,0 +1,27 @@
+.action-btn-container {
+  display: flex;
+  .dbtn {
+    background-color: red;
+    padding: 1px 8px;
+    margin: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 0.4em;
+  }
+  .ebtn {
+    background-color: rgb(0, 162, 255);
+    padding: 1px 8px;
+    margin: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 0.4em;
+  }
+  .vbtn {
+    background-color: rgb(7, 189, 46);
+    padding: 1px 8px;
+    margin: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 0.4em;
+  }
+}

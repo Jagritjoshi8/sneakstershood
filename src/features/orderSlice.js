@@ -17,8 +17,6 @@ export const getUserOrder = createAsyncThunk(
         `${url}/payments/getuserorder/${userid}`
       );
 
-      //   localStorage.setItem("token", userdata.data.token);
-
       return userOrder?.data;
     } catch (error) {
       console.log(error.response.data);

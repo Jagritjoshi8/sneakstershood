@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Navigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../../components/authenticaton/formInput.component";
- import "./signSeller.scss";
+import "./signSeller.scss";
 import { signinUser } from "../../../features/authSlice";
 import { Link } from "react-router-dom";
 import { signinSeller } from "../../../features/authSellerSlice";
@@ -22,7 +22,7 @@ const SignInSeller = () => {
 
   useEffect(() => {
     if (authseller._id) {
-      navigate("/seller/summary");
+      navigate("/seller/seller-profile");
     }
   }, [authseller, navigate]);
   const handleSubmit = async (e) => {
@@ -32,14 +32,29 @@ const SignInSeller = () => {
 
   return (
     <div className="containers">
-          <h2 data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
+      <h2 data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
         Sign In As Seller
       </h2>
       <form onSubmit={handleSubmit}>
         <div className="form-inner-container">
-            <div class="sketchfab-embed-wrapper threeD-sneaker-container"> <iframe   height="700"
-              width="680" title="Robot Playground" frameborder="0"  allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/59fc99d8dcb146f3a6c16dbbcc4680da/embed?autostart=1&ui_hint=0"> </iframe> </div>
-        
+          <div class="sketchfab-embed-wrapper threeD-sneaker-container">
+            {" "}
+            <iframe
+              height="770"
+              width="900"
+              title="Robot Playground"
+              frameborder="0"
+              allow="autoplay; fullscreen; xr-spatial-tracking"
+              xr-spatial-tracking
+              execution-while-out-of-viewport
+              execution-while-not-rendered
+              web-share
+              src="https://sketchfab.com/models/59fc99d8dcb146f3a6c16dbbcc4680da/embed?autostart=1&ui_hint=0"
+            >
+              {" "}
+            </iframe>{" "}
+          </div>
+
           <div
             className="left-column"
             data-aos="fade-up"

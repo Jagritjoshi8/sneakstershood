@@ -5,10 +5,13 @@ import toast from "react-hot-toast";
 
 const initialState = {
   items: [],
+  sellerProducts: [],
   fetchingStatus: null,
   fetchingError: null,
   creatingStatus: null,
   creatingError: null,
+  sFetchingStatus: null,
+  sFetchingErroe: null,
 };
 
 export const productsFetch = createAsyncThunk(
@@ -23,6 +26,20 @@ export const productsFetch = createAsyncThunk(
   }
 );
 
+export const getSellerProducts = createAsyncThunk(
+  "products/getSellerProducts",
+  async (sellerid, { rejectWithValue }) => {
+    try {
+      const sellerProductdata = await axios.get(
+        `${url}/sneakers/getSellerProducts/${sellerid}`
+      );
+
+      return sellerProductdata?.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 export const createProduct = createAsyncThunk(
   "products/createProduct",
   async (formData, { rejectWithValue }) => {
@@ -42,7 +59,6 @@ export const createProduct = createAsyncThunk(
     }
   }
 );
-
 
 const productsSlice = createSlice({
   name: "products",
@@ -90,7 +106,28 @@ const productsSlice = createSlice({
         creatingError: action.payload,
       };
     });
-  }
+
+    builder.addCase(getSellerProducts.pending, (state, action) => {
+      return { ...state, sFetchingStatus: "pending" };
+    });
+    builder.addCase(getSellerProducts.fulfilled, (state, action) => {
+      if (action.payload) {
+        return {
+          ...state,
+          sFetchingStatus: "success",
+          sellerProducts: action.payload.sellerProducts,
+        };
+      } else return state;
+    });
+    builder.addCase(getSellerProducts.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        sFetchingStatus: "rejected",
+        sFetchingError: action.payload,
+      };
+    });
+  },
 });
 
 export default productsSlice.reducer;

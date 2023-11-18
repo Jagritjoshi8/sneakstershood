@@ -1,3 +1,18 @@
+.highlight-background {
+  width: 100vw;
+  height: 98vh;
+  display: flex;
+}
+.blur-background {
+  width: 25vw;
+  margin-top: 80px;
+  background-color: rgb(240, 213, 255);
+  //background-color: rgb(214, 234, 252);
+  filter: blur(50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .HighlightProductContainer {
   width: 50vw;
   margin-left: auto;
@@ -7,35 +22,91 @@
   flex-flow: column;
   align-items: center;
   padding: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0px 2px 8px rgba(0.2, 0.2, 0.8, 0.9);
+  padding-bottom: -30px;
+  background-color: #faeeff;
+
+  //border: 1px solid #ddd;
+  border-radius: 0.9em;
+  box-shadow: 0px 0px 12px rgba(0.2, 0.2, 1.8, 1.9);
+  //   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   h1 {
-    font-size: 40px;
+    font-size: 70px;
     color: purple;
+
+    margin-top: -10px;
+    margin-bottom: 20px;
   }
   .c1 {
     width: 80%;
     display: flex;
     flex-flow: column;
     align-items: center;
+    .product-name {
+      font-size: 32px;
+      margin-top: -50px;
+      color: rgb(93, 4, 165);
+    }
     .description {
-      font-size: 30px;
-      color: blue;
+      font-size: 23px;
+      color: rgb(71, 4, 102);
       font-style: italic;
     }
+    .explore-more-button {
+      background-color: rgb(93, 4, 165);
+      margin-top: -15px;
+      width: 30%;
+      border: none;
+      border-radius: 0.4em;
+      padding: 10px 20px;
+      font-size: 25px;
+      //   margin-top: 10px;
+      //   margin-bottom: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      a {
+        color: white;
+      }
+
+      &:hover {
+        opacity: 0.7;
+        // z-index: 130;
+      }
+    }
+    .highlight-details {
+      width: 110%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      font-size: 30px;
+
+      .p2 {
+        display: flex;
+        align-items: center;
+        .s1 {
+          font-weight: 700;
+          margin-right: 8px;
+        }
+        .discount-price {
+          margin-left: 8px;
+        }
+      }
+    }
     .highlight-card-images {
-      height: 50%;
-      width: 100%;
-      //   background-color: #f5f5f5;
-      //   border: 1px solid #ddd;
-      //   border-radius: 5px;
-      box-shadow: 0px 2px 8px rgba(0.2, 0.2, 0.8, 0.9);
+      margin-top: -35px;
+      margin-bottom: -25px;
+      margin-left: 20px;
+      height: 65%;
+      width: 110%;
+      overflow: hidden;
+      padding-left: 25px;
+      //   box-shadow: 0px 2px 8px rgba(0.2, 0.2, 0.8, 0.9);
       img {
         margin-top: -120px;
-        margin-bottom: -50px;
         height: 800px;
+
+        &:hover {
+          cursor: zoom-in;
+        }
       }
     }
   }

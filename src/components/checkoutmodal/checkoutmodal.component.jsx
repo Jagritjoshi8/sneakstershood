@@ -144,11 +144,19 @@ const CheckoutModal = ({ open, onClose }) => {
                 </tr>
                 {cart.cartItems.map((product) => {
                   srno++;
+                  let bkimg;
+                  if (product) {
+                    if (product.img?.includes("uploads")) {
+                      bkimg = `http://localhost:8000/${product.img}`;
+                    } else {
+                      bkimg = product.img;
+                    }
+                  }
                   return (
-                    <tr key={product.id}>
+                    <tr key={product._id}>
                       <td>{srno}</td>
                       <td>
-                        <Link to={`/product-details/${product.id}`}>
+                        <Link to={`/product-details/${product._id}`}>
                           <div className="cart-card-image">
                             <Tilt
                               transitionSpeed={2000}
@@ -156,7 +164,7 @@ const CheckoutModal = ({ open, onClose }) => {
                               tiltMaxAngleY={35}
                               scale={1.4}
                             >
-                              <img src={product.img} />
+                              <img src={bkimg} />
                             </Tilt>
                             <h3>{product.name}</h3>
                           </div>

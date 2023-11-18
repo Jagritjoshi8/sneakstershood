@@ -15,7 +15,7 @@ import { setWishList } from "../../../features/wishlistSlice";
 
 const ProductCard = ({ data }) => {
   const {
-    id,
+    _id,
     name,
     original_price,
     discounted_price,
@@ -28,7 +28,12 @@ const ProductCard = ({ data }) => {
     isInWishList,
   } = data;
   //₹
-
+  let bkimg;
+  if (img.includes("uploads")) {
+    bkimg = `http://localhost:8000/${img}`;
+  } else {
+    bkimg = img;
+  }
   const cart = useSelector((state) => state.cart);
   const wishlist = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
@@ -43,7 +48,7 @@ const ProductCard = ({ data }) => {
 
   const isProductInCart = (product) => {
     const itemIndex = cart.cartItems.findIndex(
-      (item) => item.id === product.id
+      (item) => item._id === product._id
     );
 
     if (itemIndex >= 0) {
@@ -54,7 +59,7 @@ const ProductCard = ({ data }) => {
   };
   const verifyisInWishList = (product) => {
     const itemIndex = wishlist.wishlistItems.findIndex(
-      (item) => item.id === product.id
+      (item) => item._id === product._id
     );
 
     if (itemIndex >= 0) {
@@ -65,7 +70,7 @@ const ProductCard = ({ data }) => {
   };
   return (
     <Tilt
-      key={id}
+      key={_id}
       tiltMaxAngleX={5}
       tiltMaxAngleY={5}
       glareEnable={false}
@@ -74,12 +79,12 @@ const ProductCard = ({ data }) => {
     >
       <div
         className="product-card"
-        key={id}
-        data-aos="fade-right"
-        // data-aos-easing="linear"
-        data-aos-duration="2500"
+        key={_id}
+        // data-aos="fade-right"
+        // // data-aos-easing="linear"
+        // data-aos-duration="2500"
       >
-        <Link to={`/product-details/${id}`}>
+        <Link to={`/product-details/${_id}`}>
           <div className="product-card-image">
             <Tilt
               transitionSpeed={2000}
@@ -87,7 +92,7 @@ const ProductCard = ({ data }) => {
               tiltMaxAngleY={15}
               scale={1.18}
             >
-              <img src={img} />
+              <img src={bkimg} />
             </Tilt>
           </div>
         </Link>

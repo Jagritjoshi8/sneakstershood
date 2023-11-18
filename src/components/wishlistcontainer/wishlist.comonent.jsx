@@ -1,4 +1,6 @@
 import "./wishlist.styles.scss";
+import { useDispatch } from "react-redux";
+import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ProductCard from "../productcontainer/productcardcontainer/productcard.component";
 
@@ -14,8 +16,13 @@ import {
 } from "swiper/modules";
 
 import "swiper/css/bundle";
+import { clearWishList } from "../../features/wishlistSlice";
 
 const WishListContainer = ({ wishlist }) => {
+  const dispatch = useDispatch();
+  const handleClearWishlist = () => {
+    dispatch(clearWishList());
+  };
   return (
     <div className="wishlist-page">
       <div className="wishlist-page-header">
@@ -42,10 +49,10 @@ const WishListContainer = ({ wishlist }) => {
           // loop={true}
           // centeredSlides={true}
           // centeredSlidesBounds={true}
-          //   autoplay={{
-          //     delay: 1000,
-          //     disableOnInteraction: false,
-          //   }}
+          // autoplay={{
+          //   delay: 1500,
+          //   disableOnInteraction: false,
+          // }}
           keyboard={{
             enabled: true,
           }}
@@ -56,12 +63,22 @@ const WishListContainer = ({ wishlist }) => {
         >
           {wishlist.map((data) => {
             return (
-              <SwiperSlide key={data.id} className="wishlist-swiperslide">
-                <ProductCard data={data} key={data.id} />
+              <SwiperSlide key={data._id} className="wishlist-swiperslide">
+                <ProductCard data={data} key={data._id} />
               </SwiperSlide>
             );
           })}
         </Swiper>
+      </div>
+      <div className="clear-wishlist-btn">
+        <button
+          className="clearwishlist"
+          // data-aos="fade-left"
+          // data-aos-duration="2000"
+          onClick={() => handleClearWishlist()}
+        >
+          Clear Wishlist <DeleteIcon sx={{ fontSize: 32 }} />
+        </button>
       </div>
     </div>
   );

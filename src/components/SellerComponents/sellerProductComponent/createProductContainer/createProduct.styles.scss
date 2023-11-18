@@ -1,27 +1,25 @@
 .create-product-container {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    //justify-content: space-evenly;
-    //max-width: 800px;
-    // min-height: 100vh;
-    // min-width: 100vw;
-    // //background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
-   //background-color:rgb(5, 1, 28);
-   // background-size: 100vw;
-    
-  
-    // background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color:  #500874;
-    font-weight: 600;
-   
-  
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  //justify-content: space-evenly;
+  //max-width: 800px;
+  // min-height: 100vh;
+  // min-width: 100vw;
+  // //background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
+  //background-color:rgb(5, 1, 28);
+  // background-size: 100vw;
+
+  // background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #500874;
+  font-weight: 600;
+
   .form-inner-container {
     display: flex;
     flex: 1;
-    width: 100%;
+    width: 75vw;
     // margin-left: 170px;
     justify-content: space-around;
     align-items: center;
@@ -30,20 +28,19 @@
     //   border-radius: 5px;
     //flex-wrap: wrap;
     //background-color: #0077b6;
-    
-  
+
     .left-column {
       width: 45%;
       display: flex;
       flex-flow: column;
       //border: 1px dotted grey;
       padding: 5px;
-  
+
       .form-group {
         display: flex;
         justify-content: space-between;
         align-items: first baseline;
-  
+
         //border: 1px dotted grey;
         label {
           padding: 15px;
@@ -71,8 +68,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-       
-  
+      margin-bottom: 30px;
+
       MenuItem {
         font-size: 29px;
         border: 1px solid #ccc;
@@ -80,25 +77,25 @@
       }
       //border: 1px dotted grey;
       FormControl {
-          min-width: 50%;
-        }
-        label {
-            padding-left: 10px;
-            font-size: 20px;
-            color: rgb(7, 0, 0);
-            z-index: 1;
-        }
-        .l1 {
-          padding: 15px;
-          font-size: 28px;
-          color: rgb(74, 3, 86);
-        }
+        min-width: 50%;
+      }
+      label {
+        padding-left: 10px;
+        font-size: 20px;
+        color: rgb(7, 0, 0);
+        z-index: 1;
+      }
+      .l1 {
+        padding: 15px;
+        font-size: 28px;
+        color: rgb(74, 3, 86);
+      }
     }
     input,
     select,
     textarea {
       //display: block;
-  
+
       width: 50%;
       margin-bottom: 35px;
       margin-left: 15px;
@@ -110,7 +107,7 @@
         border: 2px solid #8e51ad;
       }
     }
-  
+
     // select {
     //   width: 100%;
     // }
@@ -123,7 +120,7 @@
     //justify-content: center;
     //align-items: center;
     .profile-img-container {
-        margin-top: 10px;
+      margin-top: 10px;
       display: flex;
       // flex-flow: row-reverse;
       justify-content: center;
@@ -132,7 +129,8 @@
         width: 230px;
         height: 230px;
         border: 2px solid rgb(208, 208, 208); /* Adjust the border color and width as needed */
-        border-radius: .6em; /* Make the container circular */
+        border-radius: 0.6em; /* Make the container circular */
+        background-color: #fff;
         overflow: hidden;
         img {
           width: 100%;
@@ -154,28 +152,26 @@
       }
     }
     .product-descriptions {
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
-         width: 95%;
-        justify-content: space-between;
-        align-items: center;
-  
-        //border: 1px dotted grey;
-        label {
-          padding: 15px;
-          font-size: 28px;
-        }
-        textarea{
-            width: 60%;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-          }
-        
-      
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1px;
+      width: 95%;
+      justify-content: space-between;
+      align-items: center;
+
+      //border: 1px dotted grey;
+      label {
+        padding: 15px;
+        font-size: 28px;
       }
+      textarea {
+        width: 76%;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
     .button-warning-container {
       display: flex;
       flex-flow: column;
@@ -193,7 +189,7 @@
       margin-top: 10px;
       cursor: pointer;
       transition: background-color 0.2s;
-  
+
       &:hover {
         background-color: #8339a2; /* Hover background color */
       }
@@ -212,8 +208,6 @@
       .right-column {
         width: 80%;
       }
-  
     }
   }
-  
 }

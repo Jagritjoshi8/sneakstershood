@@ -23,7 +23,7 @@ const ProductDetailContainer = ({ selectedProduct }) => {
   };
   const isProductInCart = (product) => {
     const itemIndex = cart.cartItems.findIndex(
-      (item) => item.id === product.id
+      (item) => item._id === product._id
     );
 
     if (itemIndex >= 0) {
@@ -34,7 +34,7 @@ const ProductDetailContainer = ({ selectedProduct }) => {
   };
   const verifyisInWishList = (product) => {
     const itemIndex = wishlist.wishlistItems.findIndex(
-      (item) => item.id === product.id
+      (item) => item._id === product._id
     );
 
     if (itemIndex >= 0) {
@@ -43,6 +43,15 @@ const ProductDetailContainer = ({ selectedProduct }) => {
       return 0;
     }
   };
+
+  let bkimg;
+  if (selectedProduct) {
+    if (selectedProduct.img?.includes("uploads")) {
+      bkimg = `http://localhost:8000/${selectedProduct.img}`;
+    } else {
+      bkimg = selectedProduct.img;
+    }
+  }
   return (
     <div
       className="productDetail-container"
@@ -61,7 +70,7 @@ const ProductDetailContainer = ({ selectedProduct }) => {
                 tiltMaxAngleY={15}
                 scale={1.18}
               >
-                <img src={selectedProduct.img} />
+                <img src={bkimg} />
               </Tilt>
             </div>
             <div className="product-description-container">
@@ -90,20 +99,31 @@ const ProductDetailContainer = ({ selectedProduct }) => {
                   <p className="trending">Trending</p>
                 )}
               </div>
+              <p className="detail-gender-txt">
+                <b>Size:</b> {selectedProduct.size}
+              </p>
               <p className="detail-brand">
-                <b>Brand:</b> Nike
+                <b>Brand:</b>{" "}
+                {selectedProduct.brand ? selectedProduct.brand : "Nike"}
               </p>
               <p className="detail-seller">
-                <b>Seller Name:</b> Alpha Sneakers
+                <b>Seller Name:</b>{" "}
+                {selectedProduct.sellerName
+                  ? selectedProduct.sellerName
+                  : "Alpha Sneakers"}
               </p>
               <p className="detail-gender-txt">
-                <b>Category:</b> {selectedProduct.category_name}'s Wear
+                <b>Category:</b> {selectedProduct.category_name}'s wear
               </p>
               <p className="detail-quality-txt">
-                <b>Quality Type:</b> Performance Quality
+                <b>Quality Type:</b>{" "}
+                {selectedProduct.qualityType
+                  ? selectedProduct.qualityType
+                  : "Performance Quality"}
               </p>
               <p className="detail-color">
-                <b>Color:</b> Vibrant
+                <b>Color:</b>{" "}
+                {selectedProduct.color ? selectedProduct.color : "Vibrant"}
               </p>
               <p className="detail-description">
                 {" "}
@@ -167,12 +187,12 @@ const ProductDetailContainer = ({ selectedProduct }) => {
       ) : (
         <>
           {sortedProducts.map((selectedProduct) => {
-            return <ProductCard data={data} key={data.id} />;
+            return <ProductCard data={data} key={data._id} />;
           })}
         </>
       )}
       {/* {products.map((data) => {
-        return <ProductCard data={data} key={data.id} />;
+        return <ProductCard data={data} key={data._id} />;
       })} */}
     </div>
   );

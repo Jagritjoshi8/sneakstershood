@@ -1,0 +1,25 @@
+.LatestTransactionContainer {
+  height: 330px;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: rgb(48, 51, 78);
+  color: aliceblue;
+  h2 {
+    margin-top: 0px;
+  }
+  .single-transaction {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-top: 1rem;
+    padding: 0.5rem 0.3rem 0.5rem 2.5rem;
+    border-radius: 3px;
+    background-color: rgba(38, 198, 249, 0.12);
+    p {
+      flex: 1;
+    }
+    &:nth-child(even) {
+      background-color: rgba(102, 108, 255, 0.12);
+    }
+  }
+}

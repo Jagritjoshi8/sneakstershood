@@ -45,18 +45,17 @@
 }
 
 .line-red {
-  background: rgb(248, 195, 195);
+  background: rgb(182, 186, 250);
   height: 120px;
   line-height: 100px;
   z-index: 1;
   transform: rotate(-7.68deg) translate(-200px, 100px);
   top: 110px;
   filter: drop-shadow(0 0 0.75rem #dadada);
-  
 }
 
 .line-red .line-text {
-  background: rgb(248, 195, 195);
+  background: rgb(182, 186, 250);
 }
 
 @keyframes animate-first-screen {

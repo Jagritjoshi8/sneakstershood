@@ -6,6 +6,10 @@ import HeroVideoContainer from "../../components/homecontainers/herovideocontain
 import PopularSneakersContainer from "../../components/homecontainers/popularsneakers/popularsneaker.component";
 import HighlightProductContainer from "../../components/homecontainers/highlightProductcontainer/highlightProduct.component";
 import { useGetAllProductsQuery } from "../../features/productsApi";
+import MensContainer from "../../components/homecontainers/menscontainer/menscontainer.component";
+import WomenContainer from "../../components/homecontainers/womencontainer/womencontainer";
+import KidsContainer from "../../components/homecontainers/kidscontainer/kidscontainer.component";
+import FooterContainer from "../../components/extra/footer/footer.component";
 
 const Home = () => {
   const containeritems = [
@@ -23,7 +27,8 @@ const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const od1 = data?.find((product) => product.name === "Enigma Pro X");
-  console.log("od1", od1);
+  const od2 = data?.find((product) => product.name === "Luminary Synthesis");
+  //console.log("od1", od1);
 
   return (
     <div className="app">
@@ -32,18 +37,13 @@ const Home = () => {
       <PromotionalLinesContainer />
       <PopularSneakersContainer />
       <HighlightProductContainer product={od1} />
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-          praesentium hic sint nulla, et ab, maiores nostrum debitis in labore,
-          blanditiis aliquam reprehenderit. Rerum error eum esse, quisquam
-          doloribus ipsa. Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Rem voluptas molestias vitae laborum a libero ipsa tempore
-          laboriosam eos, fuga cupiditate eaque, aspernatur aperiam eius
-          officiis exercitationem pariatur iste natus.
-        </p>
-        <p>d</p>
-      </div>
+      <MensContainer />
+      <WomenContainer />
+      <HighlightProductContainer product={od2} />
+      <KidsContainer />
+      <FooterContainer />
+
+      <div></div>
     </div>
   );
 };

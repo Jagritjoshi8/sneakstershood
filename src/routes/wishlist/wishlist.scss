@@ -1,43 +1,45 @@
-.wishlist-page{
-   
-.wishlist-empty{
+.wishlist-page {
+  //   flex-grow: 1;
+  //   height: 90vh;
+
+  .wishlist-empty {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
     display: flex;
     flex-flow: column;
     align-items: center;
-    h1{
-        margin-top: 5px;
-        margin-bottom: 10px;
+    h1 {
+      margin-top: 5px;
+      margin-bottom: 10px;
     }
-    img{
-        height: 80%;
-        width: 60%;
-        margin-bottom: -41px;
+    img {
+      //   height: 60%;
+      width: 56%;
+      margin-bottom: -41px;
     }
-    .white{
-        width: 60%;
-        height: 50px;
-        background-color: rgb(255, 255, 255);
+    .white {
+      width: 60%;
+      height: 50px;
+      background-color: rgb(255, 255, 255);
     }
-    
-}}
+  }
+}
 
-.start-shopping-button{
-    background-color: #a878c1; /* Button background color */
-    color: #fff; /* Button text color */
-    width: 20%;
-    border: none;
-    border-radius: 0.4em;
-    padding: 10px 20px;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.start-shopping-button {
+  background-color: #a878c1; /* Button background color */
+  color: #fff; /* Button text color */
+  width: 20%;
+  border: none;
+  border-radius: 0.4em;
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 
-    &:hover {
-      background-color: #ce64c9; /* Hover background color */
-    }
+  &:hover {
+    background-color: #ce64c9; /* Hover background color */
+  }
 }

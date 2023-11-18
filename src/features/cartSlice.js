@@ -12,6 +12,7 @@ const initialState = {
   cartOgTotalAmount: 0,
   cartTotalAmount: 0,
   cartFTotalAmount: 0,
+  openModal: false,
 };
 
 const cartSlice = createSlice({
@@ -20,9 +21,13 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
-      if (itemIndex >= 0) {
+      if (!action.payload.is_stock) {
+        toast.error(
+          `Sorry,"${action.payload.name}" is currently not in stock 😔`
+        );
+      } else if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
         toast.success(`Added one more  "${action.payload.name}" to cart 🤩`);
       } else {
@@ -37,7 +42,7 @@ const cartSlice = createSlice({
 
     removeFromCart(state, action) {
       const nextCartItems = state.cartItems.filter(
-        (cartItem) => cartItem.id !== action.payload.id
+        (cartItem) => cartItem._id !== action.payload._id
       );
       state.cartItems = nextCartItems;
       toast(`🔶 "${action.payload.name}" is removed from cart 🙁`);
@@ -47,7 +52,7 @@ const cartSlice = createSlice({
 
     decreaseCart(state, action) {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
@@ -55,7 +60,7 @@ const cartSlice = createSlice({
         toast(`🔶 Removed one "${action.payload.name}" from cart 😯`);
       } else {
         const nextCartItems = state.cartItems.filter(
-          (cartItem) => cartItem.id !== action.payload.id
+          (cartItem) => cartItem._id !== action.payload._id
         );
         state.cartItems = nextCartItems;
 

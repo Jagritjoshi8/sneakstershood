@@ -10,7 +10,7 @@ import { CouponsContainer } from "../../components/coupons/coupons.component";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
+  const latestCartItems = cart.cartItems?.slice().reverse();
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
@@ -18,19 +18,20 @@ const Cart = () => {
   return (
     <div className="cart-page">
       {cart.cartItems.length === 0 ? (
-        <div className="cart-empty"
-        data-aos="fade-up"
-        data-aos-duration="2500">
+        <div className="cart-empty" data-aos="fade-up" data-aos-duration="2500">
           <h1>Your Cart is Empty</h1>
           <button className="start-shopping-button">
-              <Link to="/product"> Start Shopping ⇒</Link>
-            </button>
-          
-          <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7236766-5875081.png"/>
+            <Link to="/product"> Start Shopping ⇒</Link>
+          </button>
+
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7236766-5875081.png" />
         </div>
       ) : (
         <div className="cart-page-container">
-          <CartListContainer cart={cart.cartItems} className="cart-container" />
+          <CartListContainer
+            cart={latestCartItems}
+            className="cart-container"
+          />
 
           <div className="cart-side-container">
             <CouponsContainer cart={cart} />

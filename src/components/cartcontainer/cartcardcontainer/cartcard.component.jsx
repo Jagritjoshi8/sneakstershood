@@ -12,7 +12,7 @@ import {
 } from "../../../features/cartSlice";
 const CartCard = ({ product }) => {
   const {
-    id,
+    _id,
     name,
     original_price,
     discounted_price,
@@ -21,6 +21,12 @@ const CartCard = ({ product }) => {
     img,
     cartQuantity,
   } = product;
+  let bkimg;
+  if (img.includes("uploads")) {
+    bkimg = `http://localhost:8000/${img}`;
+  } else {
+    bkimg = img;
+  }
   const dispatch = useDispatch();
   const handleRemoveFromCart = (product) => {
     dispatch(removeFromCart(product));
@@ -34,9 +40,9 @@ const CartCard = ({ product }) => {
   return (
     <div
       className="cart-card"
-      data-aos="flip-up"
-      data-aos-easing="ease-out-cubic"
-      data-aos-duration="1800"
+      // data-aos="flip-up"
+      // data-aos-easing="ease-out-cubic"
+      // data-aos-duration="1800"
     >
       <DeleteIcon
         sx={{ fontSize: 38 }}
@@ -44,7 +50,7 @@ const CartCard = ({ product }) => {
         className="cart-icon"
         onClick={() => handleRemoveFromCart(product)}
       />
-      <Link to={`/product-details/${id}`}>
+      <Link to={`/product-details/${_id}`}>
         <div className="cart-card-image">
           <Tilt
             transitionSpeed={2000}
@@ -52,7 +58,7 @@ const CartCard = ({ product }) => {
             tiltMaxAngleY={35}
             scale={1.4}
           >
-            <img src={img} />
+            <img src={bkimg} />
           </Tilt>
           <h3>{name}</h3>
         </div>

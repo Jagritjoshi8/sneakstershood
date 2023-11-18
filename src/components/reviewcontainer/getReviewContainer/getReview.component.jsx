@@ -10,7 +10,7 @@ const GetReviewContainer = ({ selectedProduct }) => {
   const allReviews = useSelector((state) => state.review.allReviews);
   const latestReviews = allReviews?.slice().reverse();
   useEffect(() => {
-    dispatch(getProductReviews(selectedProduct.id));
+    dispatch(getProductReviews(selectedProduct._id));
   }, []);
   //   console.log("final review", review);
   return (

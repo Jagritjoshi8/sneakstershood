@@ -10,6 +10,7 @@ import "./profile.scss";
 import { signoutUser } from "../../features/authSlice";
 import { getUserOrder } from "../../features/orderSlice";
 import MyOrderContainer from "../../components/myordercontainer/myorder.component";
+import MyMapContainer from "../../components/mymapcontainer/mymapcontainer.component";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -165,7 +166,7 @@ const Profile = () => {
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={2}>
-          Item Three
+          <MyMapContainer />
         </CustomTabPanel>
       </div>
       {/* <button className="sign-out-button" onClick={signOutHandler}>

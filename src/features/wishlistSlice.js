@@ -15,11 +15,11 @@ const wishlistSlice = createSlice({
   reducers: {
     setWishList(state, action) {
       const itemIndex = state.wishlistItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
       if (itemIndex >= 0) {
         const nextWishListItems = state.wishlistItems.filter(
-          (wishlistItem) => wishlistItem.id !== action.payload.id
+          (wishlistItem) => wishlistItem._id !== action.payload._id
         );
         state.wishlistItems = nextWishListItems;
         toast(`🔶 "${action.payload.name}" is removed from wishlist🙁`);
@@ -38,8 +38,15 @@ const wishlistSlice = createSlice({
         );
       }
     },
-    getTotalWishList(state, action) {},
+    clearWishList(state, action) {
+      state.wishlistItems = [];
+      toast.error(` Wishlist is Cleared ‼️ 🤯 `);
+      localStorage.setItem(
+        "wishlistItems",
+        JSON.stringify(state.wishlistItems)
+      );
+    },
   },
 });
-export const { setWishList, removeFromWishList } = wishlistSlice.actions;
+export const { setWishList, clearWishList } = wishlistSlice.actions;
 export default wishlistSlice.reducer;

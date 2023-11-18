@@ -1,0 +1,15 @@
+.womenscontainer {
+  .PopularSneakersContainer {
+    .z-rotates-img {
+      transition: transform 0.5s ease-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .top-three-container {
+      .single-pick {
+        background: linear-gradient(to right, #ff4081, #ffab91);
+      }
+    }
+  }
+}

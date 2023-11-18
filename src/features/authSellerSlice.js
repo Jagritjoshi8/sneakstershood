@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import swal from "sweetalert";
 import axios from "axios";
 
 import { url } from "./api";
@@ -71,8 +72,8 @@ const authSellerSlice = createSlice({
           ...state,
           sellertoken,
           _id: currenttoken.id,
-          businessName: currenttoken.businesName,
-        businessEmail: currenttoken.businessEmail,
+          businessName: currenttoken.businessName,
+          businessEmail: currenttoken.businessEmail,
           logoimg: currenttoken.logoimg,
           sellerLoaded: true,
         };
@@ -80,7 +81,7 @@ const authSellerSlice = createSlice({
     },
     signoutSeller(state, action) {
       localStorage.removeItem("sellertoken");
-      toast.error("Signed Out 💔");
+      //   toast.error("Signed Out 💔");
       return {
         ...state,
         sellertoken: "",
@@ -103,7 +104,13 @@ const authSellerSlice = createSlice({
     builder.addCase(signupSeller.fulfilled, (state, action) => {
       if (action.payload) {
         const tokendata = jwtDecode(action.payload.token);
-        toast.success("Signed Up Successfully 💚 ");
+        swal({
+          title: "Welcome!!! 🙏",
+          text: "You Signed Up as seller Successfully..!!🎉",
+          icon: "success",
+          button: "ok",
+        });
+
         return {
           ...state,
           sellertoken: action.payload.token,
@@ -130,8 +137,14 @@ const authSellerSlice = createSlice({
     });
     builder.addCase(signinSeller.fulfilled, (state, action) => {
       if (action.payload) {
+        console.log("sigin payload", action.payload);
         const tokendata = jwtDecode(action.payload.token);
-        toast.success("Signed In Successfully 💚 ");
+        swal({
+          title: "Welcome!!! 🙏",
+          text: "You Signed In as seller Successfully..!!🎉",
+          icon: "success",
+          button: "ok",
+        });
         return {
           ...state,
           sellertoken: action.payload.token,
@@ -139,7 +152,7 @@ const authSellerSlice = createSlice({
           businessEmail: tokendata.businessEmail,
           _id: tokendata.id,
           logoimg: tokendata.logoimg,
-          signupStatus: "success",
+          signinStatus: "success",
           sellerLoaded: true,
         };
       } else return state;
@@ -155,5 +168,5 @@ const authSellerSlice = createSlice({
   },
 });
 
-export const { loadSeller,signoutSeller } = authSellerSlice.actions;
+export const { loadSeller, signoutSeller } = authSellerSlice.actions;
 export default authSellerSlice.reducer;

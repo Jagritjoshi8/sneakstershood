@@ -14,17 +14,25 @@ const SummaryContainer = ({ cart }) => {
   const isCouponApplied = cart.couponSelected.length ? true : false;
 
   const auth = useSelector((state) => state.auth);
+  // const cart = useSelector((state) => state.cart);
   const userLoaded = auth.userLoaded;
 
   const [openModal, setOpenModal] = useState(false);
+  // const handleSetOpenModal = () => {
+  //   if (cart.openModal) {
+  //     cart.openModal = false;
+  //   } else {
+  //     cart.openModal = true;
+  //   }
+  // };
 
   return (
-    <div
-      className="summary-container"
-      data-aos="fade-left"
-      data-aos-duration="2000"
-    >
-      <div className="calculation-container">
+    <div className="summary-container">
+      <div
+        className="calculation-container"
+        data-aos="fade-left"
+        data-aos-duration="2000"
+      >
         <div>
           <h1>Summary</h1>
           <hr />
@@ -67,7 +75,11 @@ const SummaryContainer = ({ cart }) => {
         </div>
       </div>
       {cart.cartOgTotalAmount - cart.cartFTotalAmount > 0 ? (
-        <div className="savings-discount">
+        <div
+          className="savings-discount"
+          data-aos="fade-left"
+          data-aos-duration="2000"
+        >
           <p>
             You saved{" "}
             <b>
@@ -80,16 +92,31 @@ const SummaryContainer = ({ cart }) => {
         <p></p>
       )}
       <div className="cartorder-buttons">
-        <button className="clearcart" onClick={() => handleClearCart()}>
+        <button
+          className="clearcart"
+          data-aos="fade-left"
+          data-aos-duration="2000"
+          onClick={() => handleClearCart()}
+        >
           Clear Cart ❌
         </button>
         {!userLoaded ? (
-          <button className="signin-first" onClick={() => navigate("/sign-in")}>
+          <button
+            className="signin-first"
+            onClick={() => navigate("/sign-in")}
+            data-aos="fade-left"
+            data-aos-duration="2000"
+          >
             SignIn First to Checkout ➡️
           </button>
         ) : (
           <>
-            <button className="placeorder" onClick={() => setOpenModal(true)}>
+            <button
+              className="placeorder"
+              onClick={() => setOpenModal(true)}
+              data-aos="fade-left"
+              data-aos-duration="2000"
+            >
               Place Order ✅{" "}
             </button>
             <CheckoutModal

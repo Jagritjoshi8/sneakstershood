@@ -3,33 +3,32 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  margin-left: 250px; /* Adjust this value to match your sidebar width */
+  margin-left: 270px; /* Adjust this value to match your sidebar width */
   padding: 10px;
-  .no-matching-product{
+  .no-matching-product {
     // margin-left: auto;
     // margin-right: auto;
     width: 80vw;
     display: flex;
     flex-flow: column;
     align-items: center;
-    h1{
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-size: 40px;
+    h1 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 40px;
     }
-    img{
+    img {
       margin-top: 30px;
-        height: 80%;
-        width: 60%;
-        margin-bottom: -41px;
+      height: 80%;
+      width: 60%;
+      margin-bottom: -41px;
     }
-    .white{
-        width: 60%;
-        height: 50px;
-        background-color: rgb(255, 255, 255);
+    .white {
+      width: 60%;
+      height: 50px;
+      background-color: rgb(255, 255, 255);
     }
-    
-}
+  }
 }
 // .footercontainer {
 //   background-color: rgb(215, 196, 252);

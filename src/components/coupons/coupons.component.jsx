@@ -21,10 +21,10 @@ export const CouponsContainer = ({ cart }) => {
   const couponsData = [
     {
       id: 1,
-      name: "FESTIVE SEASON OFFER",
-      description: "Get $20 off on a minimum purchase of $250",
-      minimumPurchase: 250,
-      amount: 20,
+      name: "BUDGET FRIENDLY OFFER",
+      description: "Get $50 off on a minimum purchase of $350",
+      minimumPurchase: 350,
+      amount: 50,
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ export const CouponsContainer = ({ cart }) => {
       toast.success(`Woohoo! ${coupon.name} applied successfully!`);
       handleSetCouponSelected(coupon);
     } else {
-      toast.success(`${coupon.name} removed!`);
+      toast(`🔶 ${coupon.name} removed!`);
       handleSetCouponSelected(coupon);
     }
   };

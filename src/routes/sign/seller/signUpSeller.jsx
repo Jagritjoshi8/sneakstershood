@@ -49,7 +49,7 @@ const SignUpSeller = () => {
 
   useEffect(() => {
     if (authseller._id) {
-      navigate("/seller/summary");
+      navigate("/seller/seller-profile");
     }
   }, [authseller, navigate]);
 
@@ -155,7 +155,7 @@ const SignUpSeller = () => {
             />
             <FormInput
               label="PAN Card Number"
-              type="number"
+              type="text"
               id="pancardnumber"
               name="pancardnumber"
               placeHolder="Enter Your PAN Card Number Here.."
@@ -215,9 +215,9 @@ const SignUpSeller = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={"wholesale"}>Wholesale</MenuItem>
-                  <MenuItem value={"reatail"}>Retail</MenuItem>
-                  <MenuItem value={"individual"}>Individual</MenuItem>
+                  <MenuItem value={"Wholesale"}>Wholesale</MenuItem>
+                  <MenuItem value={"Retail"}>Retail</MenuItem>
+                  <MenuItem value={"Individual"}>Individual</MenuItem>
                 </Select>
               </FormControl>
             </div>

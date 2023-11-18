@@ -8,17 +8,12 @@ import ReviewContainer from "../../components/reviewcontainer/review.component";
 const ProductDetails = () => {
   const { productId } = useParams();
   const { data, error, isLoading } = useGetAllProductsQuery();
-  const selectedProduct = data?.find(
-    ({ id }) => Number(id) === Number(productId)
-  );
-
-  //console.log(selectedProduct);
+  const selectedProduct = data?.find(({ _id }) => _id === productId);
+  //   console.log(productId);
+  console.log(selectedProduct);
 
   return (
     <div className="productDetail-page-container">
-      {/* <div className="header">
-        <h1>Product Details {productId}</h1>
-      </div> */}
       <ProductDetailContainer selectedProduct={selectedProduct} />
       <ReviewContainer selectedProduct={selectedProduct} />
     </div>

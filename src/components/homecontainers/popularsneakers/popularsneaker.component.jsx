@@ -26,7 +26,7 @@ const PopularSneakersContainer = () => {
 
   const isProductInCart = (product) => {
     const itemIndex = cart.cartItems.findIndex(
-      (item) => item.id === product.id
+      (item) => item._id === product._id
     );
 
     if (itemIndex >= 0) {
@@ -37,7 +37,7 @@ const PopularSneakersContainer = () => {
   };
   const verifyisInWishList = (product) => {
     const itemIndex = wishlist.wishlistItems.findIndex(
-      (item) => item.id === product.id
+      (item) => item._id === product._id
     );
 
     if (itemIndex >= 0) {
@@ -48,20 +48,25 @@ const PopularSneakersContainer = () => {
   };
   const { data, error, isLoading } = useGetAllProductsQuery();
 
-  const ratedProducts = getRatedProducts(data, 4.7);
+  const ratedProducts = getRatedProducts(data, 5);
+  const top3RatedProducts = ratedProducts?.slice(0, 3);
   console.log("top3", ratedProducts);
   return (
-    <div className="PopularSneakersContainer">
+    <div
+      className="PopularSneakersContainer"
+      data-aos="fade-left"
+      data-aos-duration="2500"
+    >
       <h1>#Hot Picks</h1>
       <div>
         {!ratedProducts ? (
           <div>No Products</div>
         ) : (
           <div className="top-three-container">
-            {ratedProducts.map((data) => {
+            {top3RatedProducts.map((data) => {
               console.log("top-3", data);
               return (
-                <div key={data.id} className="single-pick">
+                <div key={data._id} className="single-pick">
                   <div className="inner-details">
                     <h2>{data.name}</h2>
                     <h3>{data.category_name}'s Sports Shoes</h3>
@@ -103,7 +108,7 @@ const PopularSneakersContainer = () => {
                     </div>
                   </div>
                   <div className="z-rotates-img">
-                    <Link to={`/product-details/${data.id}`}>
+                    <Link to={`/product-details/${data._id}`}>
                       <img src={data.img} />
                     </Link>
                   </div>

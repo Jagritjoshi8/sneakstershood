@@ -32,6 +32,9 @@ import authSellerReducer, { loadSeller } from "./features/authSellerSlice";
 import SellerRoot from "./routes/seller/sellerRoot/sellerRoot";
 import SignInSeller from "./routes/sign/seller/signInSeller";
 import SellerProduct from "./routes/seller/sellerProduct/sellerProduct";
+import SellerProfileConatiner from "./routes/seller/sellerProfile/sellerProfile";
+import SellerProfile from "./routes/seller/sellerProfile/sellerProfile";
+import SellerSummary from "./routes/seller/sellerSummary/sellerSummary";
 
 const store = configureStore({
   reducer: {
@@ -105,24 +108,28 @@ const router = createBrowserRouter([
   {
     path: "seller",
     element: <SellerRoot />,
-    children:[
+    children: [
       {
-        path:"summary",
-        element:<div> Summary</div>
-    },
-    {
-      path:"products",
-      element: <SellerProduct />
-    },
-    {
-      path:"orders",
-      element:<div>Orders</div>
-    },
-    {
-      path:"users",
-      element:<div>users</div>
-    }
-    ]
+        path: "seller-profile",
+        element: <SellerProfile />,
+      },
+      {
+        path: "summary",
+        element: <SellerSummary />,
+      },
+      {
+        path: "products",
+        element: <SellerProduct />,
+      },
+      {
+        path: "orders",
+        element: <div>Orders</div>,
+      },
+      {
+        path: "users",
+        element: <div>users</div>,
+      },
+    ],
   },
 ]);
 

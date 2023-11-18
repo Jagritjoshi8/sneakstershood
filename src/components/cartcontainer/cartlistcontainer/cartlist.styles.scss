@@ -2,8 +2,9 @@
   padding: 1em;
   display: flex;
   width: 75vw;
-  height: inherit;
+  height: 95vh;
   flex-flow: column;
+  overflow-y: auto;
   //justify-content: space-evenly;
   // margin-right: 250px; /* Adjust this value to match your sidebar width */
   //padding: 10px;

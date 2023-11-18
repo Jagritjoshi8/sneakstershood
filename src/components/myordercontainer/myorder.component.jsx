@@ -25,6 +25,7 @@ import {
 } from "swiper/modules";
 
 import "swiper/css/bundle";
+import { Link } from "react-router-dom";
 const MyOrderContainer = ({ orderDetails }) => {
   const navigate = useNavigate();
   console.log(orderDetails);
@@ -40,7 +41,29 @@ const MyOrderContainer = ({ orderDetails }) => {
       data-aos-duration="2500"
     >
       {orderDetails.length < 1 ? (
-        <div>You Have No Order Placed </div>
+        <div className="no-order-yet-outer">
+          <img
+            src="https://th.bing.com/th/id/R.323dcb0b2aab1ff58c9bdc0eff03e61f?rik=FY5DQua1UgJ2vw&riu=http%3a%2f%2fwww.valiantica.com%2fimages%2fdigital-technology-img3.png&ehk=tCTevQVbYm6GbYz6bXUaDyMlUAT86IPAmUss%2fN9o220%3d&risl=&pid=ImgRaw&r=0"
+            className="oi1"
+          />
+          <div
+            className="no-order-yet"
+            data-aos="fade-right"
+            // data-aos-easing="linear"
+            data-aos-duration="2500"
+          >
+            <div>
+              <h1>You Have No Order Yet Placed</h1>
+            </div>
+            <button className="start-shopping-button">
+              <Link to="/product"> Start Shopping ⇒</Link>
+            </button>
+          </div>
+          <img
+            src="https://thumbs.dreamstime.com/b/online-shopping-concept-man-chooses-buys-products-store-vector-illustration-211662375.jpg"
+            className="oi2"
+          />
+        </div>
       ) : (
         <div>
           <div className="total-order">
@@ -116,9 +139,17 @@ const MyOrderContainer = ({ orderDetails }) => {
                     centeredSlidesBounds={true}
                   >
                     {order.orderItems.map((product) => {
+                      let bkimg;
+                      if (product) {
+                        if (product.img?.includes("uploads")) {
+                          bkimg = `http://localhost:8000/${product.img}`;
+                        } else {
+                          bkimg = product.img;
+                        }
+                      }
                       return (
                         <SwiperSlide
-                          key={product.id}
+                          key={product._id}
                           className="order-swiperlist"
                         >
                           <Card
@@ -147,9 +178,10 @@ const MyOrderContainer = ({ orderDetails }) => {
                                     className="order-linkbutton"
                                     sx={{ fontSize: 38 }}
                                     color="secondary"
-                      
                                     onClick={() =>
-                                      navigate(`/product-details/${product.id}`)
+                                      navigate(
+                                        `/product-details/${product._id}`
+                                      )
                                     }
                                   />
                                 </IconButton>
@@ -161,7 +193,7 @@ const MyOrderContainer = ({ orderDetails }) => {
                               className="z-rotate-img"
                               component="img"
                               height="204"
-                              image={product.img}
+                              image={bkimg}
                               alt="sneaker"
                             />
                             <CardContent className="order-content">

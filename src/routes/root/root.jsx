@@ -95,7 +95,8 @@ const Root = () => {
             </Link>
           ) : (
             <div>
-              {location.pathname === "/sign-in" ? (
+              {location.pathname === "/sign-up" ||
+              location.pathname === "/sign-up-seller" ? (
                 <Link to="/sign-up" className="navbarlinks">
                   Sign Up
                 </Link>
