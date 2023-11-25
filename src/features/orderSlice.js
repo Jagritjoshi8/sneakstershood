@@ -1,12 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import toast from "react-hot-toast";
 import { url } from "./api";
 
 const initialState = {
   orderDetails: [],
-  status: null,
-  error: null,
+  uStatus: null,
+  uError: null,
+  sellerOrderDetails: [],
+  sStatus: null,
+  sError: null,
+  updateStatus: null,
 };
 
 export const getUserOrder = createAsyncThunk(
@@ -25,23 +29,106 @@ export const getUserOrder = createAsyncThunk(
   }
 );
 
+export const getSellerOrder = createAsyncThunk(
+  "order/getSellerOrder",
+  async (sellerid, { rejectWithValue }) => {
+    try {
+      const sellerOrder = await axios.get(
+        `${url}/payments/getsellerorder/${sellerid}`
+      );
+
+      return sellerOrder?.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateOrder = createAsyncThunk(
+  "order/updateOrder",
+  async ({ orderId, updatedData }, { rejectWithValue }) => {
+    // for (let pair of formData.entries()) {
+    //   // console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
+    // }
+    //console.log(orderId, updatedData);
+    try {
+      const updateOrderdata = await axios.patch(
+        `${url}/payments/${orderId}`,
+        updatedData
+      );
+
+      return updateOrderdata.data;
+    } catch (error) {
+      // console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {},
-  extraReducers: {
-    [getUserOrder.pending]: (state, action) => {
-      state.status = "pending";
-    },
-    [getUserOrder.fulfilled]: (state, action) => {
-      state.status = "success";
-      state.orderDetails = action.payload;
-    },
-    [getUserOrder.rejected]: (state, action) => {
-      state.status = "rejected";
-      state.orderDetails = [];
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(getUserOrder.pending, (state, action) => {
+      return { ...state, uStatus: "pending" };
+    });
+    builder.addCase(getUserOrder.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.orderDetails = action.payload;
+        state.uStatus = "success";
+      } else return state;
+    });
+    builder.addCase(getUserOrder.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        uStatus: "rejected",
+        uError: "Rating is Required",
+      };
+    });
+
+    builder.addCase(getSellerOrder.pending, (state, action) => {
+      return { ...state, sStatus: "pending" };
+    });
+    builder.addCase(getSellerOrder.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.sellerOrderDetails = action.payload;
+        state.sStatus = "success";
+      } else return state;
+    });
+    builder.addCase(getSellerOrder.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        sStatus: "rejected",
+        sError: "Rating is Required",
+      };
+    });
+    builder.addCase(updateOrder.pending, (state, action) => {
+      return { ...state, updateStatus: "pending" };
+    });
+    builder.addCase(updateOrder.fulfilled, (state, action) => {
+      if (action.payload.orderStatus === "Delivered") {
+        toast.success(`Order ${action.payload.orderStatus} Successfully 💚 `);
+      } else {
+        toast(`💛 Order ${action.payload.orderStatus} Successfully`);
+      }
+
+      return {
+        ...state,
+        updateStatus: "success",
+        // name: action.payload.name,
+      };
+    });
+    builder.addCase(updateOrder.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        updateStatus: "rejected",
+      };
+    });
   },
 });
 

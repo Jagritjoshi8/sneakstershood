@@ -7,6 +7,7 @@ import Tab from "@mui/material/Tab";
 import { useState } from "react";
 import CreateProductContainer from "../../../components/SellerComponents/sellerProductComponent/createProductContainer/createProduct.component";
 import GetSellerProductsContainer from "../../../components/SellerComponents/sellerProductComponent/getSellerProducts/getSellerPrducts.comoponent";
+import GetDeletedProductsContainer from "../../../components/SellerComponents/sellerProductComponent/getDeletedProducts/getDeletedProducts";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,8 +60,12 @@ const SellerProduct = () => {
           className="tab1"
         />
         <Tab
-          label={<span className="tabsize">My All Products</span>}
+          label={<span className="tabsize">My Live Products</span>}
           {...a11yProps(1)}
+        />
+        <Tab
+          label={<span className="tabsize">My Deleted Products</span>}
+          {...a11yProps(2)}
         />
       </Tabs>
       <CustomTabPanel value={value} index={0}>
@@ -68,6 +73,9 @@ const SellerProduct = () => {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <GetSellerProductsContainer />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        <GetDeletedProductsContainer />
       </CustomTabPanel>
     </div>
   );

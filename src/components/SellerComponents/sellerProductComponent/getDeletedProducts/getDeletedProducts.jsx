@@ -1,31 +1,36 @@
 import * as React from "react";
-import "./getSellerProducts.styles.scss";
+import "./getDeletedPrducts.styles.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
+  getDeletedSellerProducts,
   getSellerProducts,
+  hardDeleteProduct,
+  restoreDeletedProducts,
   softDeleteProduct,
 } from "../../../../features/productSlice";
 import { useNavigate } from "react-router";
-import EditProductContainer from "../editProduct.jsx/editProduct.component";
 
-const GetSellerProductsContainer = () => {
+const GetDeletedProductsContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const authseller = useSelector((state) => state.authseller);
   const products = useSelector((state) => state.products);
   useEffect(() => {
-    dispatch(getSellerProducts(authseller._id));
+    dispatch(getDeletedSellerProducts(authseller._id));
   }, [products.items]);
-  const { sellerProducts } = products;
-  console.log("sp", sellerProducts);
-  const handleSoftDelete = (productid) => {
-    dispatch(softDeleteProduct(productid));
+  const { deletedSellerProducts } = products;
+  //   console.log("sp", sellerProducts);
+  const handleHardDelete = (productid) => {
+    dispatch(hardDeleteProduct(productid));
+  };
+  const handleRestoreProduct = (productid) => {
+    dispatch(restoreDeletedProducts(productid));
   };
   const rows =
-    sellerProducts &&
-    sellerProducts.map((product) => {
+    deletedSellerProducts &&
+    deletedSellerProducts.map((product) => {
       let bkimg;
       if (product.img.includes("uploads")) {
         bkimg = `http://localhost:8000/${product.img}`;
@@ -78,18 +83,16 @@ const GetSellerProductsContainer = () => {
         return (
           <div className="action-btn-container">
             <div
-              className="dbtn"
-              onClick={() => handleSoftDelete(params.row.id)}
+              className="ebtn"
+              onClick={() => handleRestoreProduct(params.row.id)}
             >
-              Archive
+              Restore
             </div>
-            <EditProductContainer prodId={params.row.id} />
-            {/* <div className="ebtn">Edit</div> */}
             <div
-              className="vbtn"
-              onClick={() => navigate(`/product-details/${params.row.id}`)}
+              className="dbtn"
+              onClick={() => handleHardDelete(params.row.id)}
             >
-              View
+              Delete
             </div>
           </div>
         );
@@ -97,14 +100,7 @@ const GetSellerProductsContainer = () => {
     },
   ];
   return (
-    <div style={{ height: 600, width: "100%" }} className="getsellerproducts">
-      {/* <video
-        src="/assets/video/productbck.mp4"
-        type="video/mp4"
-        autoPlay
-        muted
-        loop
-      ></video> */}
+    <div style={{ height: 600, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -122,4 +118,4 @@ const GetSellerProductsContainer = () => {
   );
 };
 
-export default GetSellerProductsContainer;
+export default GetDeletedProductsContainer;

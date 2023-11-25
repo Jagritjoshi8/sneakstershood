@@ -3,6 +3,7 @@ import Tilt from "react-parallax-tilt";
 import { AiOutlineHeart } from "react-icons/ai";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { AiTwotoneHeart } from "react-icons/ai";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
 import { BsFillStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -135,7 +136,7 @@ const ProductCard = ({ data }) => {
             <button className="wishlist-btn">
               {/* <AiOutlineHeart size={38} /> */}
               {verifyisInWishList(data) ? (
-                <AiTwotoneHeart size={39} />
+                <FavoriteIcon sx={{ fontSize: 38 }} />
               ) : (
                 // <FavoriteTwoToneIcon
                 //   sx={{ fontSize: 38 }}

@@ -44,7 +44,7 @@ const SellerChartContainer = () => {
   ];
   return (
     <div className="SellerChartContainer">
-      <h3>Last 7 days Earnings :</h3>
+      <h2>Last 7 days Earnings :</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -65,8 +65,8 @@ const SellerChartContainer = () => {
           <Line
             type="monotone"
             dataKey="amount"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
+            stroke="#464380"
+            activeDot={{ r: 10 }}
           />
           {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
         </LineChart>

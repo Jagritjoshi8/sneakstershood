@@ -1,11 +1,12 @@
 .LatestTransactionContainer {
-  height: 330px;
+  height: 340px;
   padding: 1rem;
   border-radius: 5px;
   background-color: rgb(48, 51, 78);
   color: aliceblue;
   h2 {
     margin-top: 0px;
+    margin-bottom: -8px;
   }
   .single-transaction {
     display: flex;

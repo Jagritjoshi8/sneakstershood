@@ -2,8 +2,7 @@ import React from "react";
 import "./womencontainer.styles.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-// import "./popularsneaker.styles.scss";
-import { AiTwotoneHeart } from "react-icons/ai";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useGetAllProductsQuery } from "../../../features/productsApi";
@@ -85,7 +84,7 @@ const WomenContainer = () => {
                         >
                           {/* <AiOutlineHeart size={38} /> */}
                           {verifyisInWishList(data) ? (
-                            <AiTwotoneHeart size={29} />
+                            <FavoriteIcon sx={{ fontSize: 28 }} />
                           ) : (
                             <FavoriteBorderOutlinedIcon sx={{ fontSize: 28 }} />
                           )}

@@ -35,6 +35,9 @@ import SellerProduct from "./routes/seller/sellerProduct/sellerProduct";
 import SellerProfileConatiner from "./routes/seller/sellerProfile/sellerProfile";
 import SellerProfile from "./routes/seller/sellerProfile/sellerProfile";
 import SellerSummary from "./routes/seller/sellerSummary/sellerSummary";
+import SellerChannel from "./routes/seller/sellerChannel/sellerChannel";
+import SellerOder from "./routes/seller/sellerOrder/sellerOder";
+import PdfRough from "./components/SellerComponents/sellerOrderComponents/pdfrough/pdfrough";
 
 const store = configureStore({
   reducer: {
@@ -123,13 +126,18 @@ const router = createBrowserRouter([
       },
       {
         path: "orders",
-        element: <div>Orders</div>,
+        element: <SellerOder />,
       },
+
       {
-        path: "users",
-        element: <div>users</div>,
+        path: "channel",
+        element: <SellerChannel />,
       },
     ],
+  },
+  {
+    path: "pdfrough",
+    element: <PdfRough />,
   },
 ]);
 
@@ -146,16 +154,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-{
-  /* <React.StrictMode>
-  <ProductsProvider>
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
-  </ProductsProvider>
-</React.StrictMode>; */
-}
 reportWebVitals();

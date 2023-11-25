@@ -1,0 +1,106 @@
+.editproductbtn {
+  background-color: rgb(0, 162, 255);
+  padding: 1px 10px;
+  margin: 5px;
+  color: aliceblue;
+  font-size: 20px;
+  border-radius: 0.4em;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
+.edit-product-modal {
+  background: linear-gradient(
+    to right bottom,
+    rgba(137, 129, 250, 0.644),
+    rgba(110, 238, 250, 0.356)
+  );
+}
+.edit-modal-header {
+  h1 {
+    margin-top: -2px;
+    margin-bottom: 5px;
+  }
+}
+.edit-form-container {
+  .button-warning-container {
+    margin-top: 10px;
+  }
+
+  .form-inner-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    // margin-left: 170px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    //border: 1px solid #ddd; /* Border */
+    //   border-radius: 5px;
+    //flex-wrap: wrap;
+    //background-color: #0077b6;
+    .profile-img-container {
+      margin-top: 10px;
+      width: 40%;
+      //   display: flex;
+      //   // flex-flow: row-reverse;
+      //   justify-content: center;
+      //   align-items: center;
+      .c1 {
+        width: 80%;
+        height: 80%;
+        border: 2px solid rgb(208, 208, 208); /* Adjust the border color and width as needed */
+        border-radius: 0.6em; /* Make the container circular */
+        background-color: rgba(255, 255, 255, 0.24);
+        opacity: 0.8;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Ensure the image covers the circular container */
+        }
+      }
+    }
+
+    .left-column {
+      width: 55%;
+      display: flex;
+      flex-flow: column;
+      //border: 1px dotted grey;
+      padding: 5px;
+      .c2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: first baseline;
+        label {
+          font-size: 21px;
+          font-weight: 500;
+        }
+      }
+      .formControl {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: first baseline;
+        margin-left: 15px;
+        .formLabel {
+          font-size: 28px;
+          color: black;
+        }
+      }
+      .form-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: first baseline;
+
+        //border: 1px dotted grey;
+        label {
+          padding: 15px;
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}

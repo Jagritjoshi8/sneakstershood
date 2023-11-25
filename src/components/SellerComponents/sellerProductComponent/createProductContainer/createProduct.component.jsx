@@ -26,7 +26,7 @@ const CreateProductContainer = () => {
   const [description, setDescription] = useState("");
   const [productimg, setProductimg] = useState(null);
   const [previewURL, setPreviewURL] = useState(
-    "https://djjpswami.com/images/no_album_cover.jpg"
+    "https://thumbs.dreamstime.com/b/no-picture-available-sign-illustration-255245956.jpg"
   );
   // const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -70,11 +70,20 @@ const CreateProductContainer = () => {
     setDescription("");
     setProductimg("");
     setQualityType("");
-    setPreviewURL("https://djjpswami.com/images/no_album_cover.jpg");
+    setPreviewURL(
+      "https://thumbs.dreamstime.com/b/no-picture-available-sign-illustration-255245956.jpg"
+    );
   };
 
   return (
     <div className="create-product-container">
+      {/* <video
+        src="/assets/video/productbck.mp4"
+        type="video/mp4"
+        autoPlay
+        muted
+        loop
+      ></video> */}
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="profile-img-container">
           <div className="c1">
@@ -110,6 +119,7 @@ const CreateProductContainer = () => {
               onChange={(e) => setName(e.target.value)}
               required
               value={name}
+              className="formInput"
             />
             <FormInput
               label="Original Price"
@@ -169,7 +179,7 @@ const CreateProductContainer = () => {
                   onChange={(e) => setCategoryName(e.target.value)}
                   label=" Select Product Category"
                   sx={{
-                    // backgroundColor: "white",
+                    backgroundColor: "rgba(255, 255, 255, 0.24);",
                     fontSize: "20px",
                     paddingLeft: "10px",
                     border: "1px solid #ccc;",

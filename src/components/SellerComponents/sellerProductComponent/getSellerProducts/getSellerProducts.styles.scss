@@ -1,3 +1,25 @@
+// .getsellerproducts {
+//   //   background-color: rgb(223, 223, 223);
+// }
+.tbsneakerimg {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+// video {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   min-width: 100%;
+//   min-height: 100%;
+//   opacity: 0.7;
+//   z-index: -1;
+
+//   /* left:1%; */
+//   /* width: 200%; */
+//   /* height: 120%; */
+// }
 .action-btn-container {
   display: flex;
   .dbtn {
@@ -7,6 +29,10 @@
     color: aliceblue;
     font-size: 20px;
     border-radius: 0.4em;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
   .ebtn {
     background-color: rgb(0, 162, 255);
@@ -15,6 +41,10 @@
     color: aliceblue;
     font-size: 20px;
     border-radius: 0.4em;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
   .vbtn {
     background-color: rgb(7, 189, 46);
@@ -23,5 +53,9 @@
     color: aliceblue;
     font-size: 20px;
     border-radius: 0.4em;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
 }

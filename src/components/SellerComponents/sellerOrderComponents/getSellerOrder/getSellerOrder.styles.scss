@@ -1,0 +1,72 @@
+.order-action-btn-container {
+  display: flex;
+  .dbtn {
+    background-color: rgb(250, 203, 75);
+    padding: 1px 8px;
+    margin: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 0.4em;
+    border: none;
+    &:hover {
+      //   cursor: pointer;
+      //   cursor: no-drop;
+      opacity: 0.8;
+    }
+  }
+  .ebtn {
+    background-color: rgb(122, 219, 31);
+    padding: 1px 8px;
+    margin: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 0.4em;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+  .vbtn {
+    background-color: rgb(2, 213, 228);
+    padding: 1px 8px;
+    margin: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 0.4em;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}
+.order-status-values {
+  .pending {
+    // background-color: rgba(255, 0, 0, 0.134);
+    color: rgba(255, 0, 0, 0.747);
+    font-weight: 550;
+    // padding: 5px 15px;
+    // border-radius: 0.5em;
+    // font-size: 20px;
+  }
+  .dispatched {
+    // background-color: rgba(255, 230, 0, 0.267);
+    color: rgb(218, 203, 3);
+    // padding: 5px 5px;
+    // border-radius: 0.5em;
+    font-weight: 600;
+    // font-size: 20px;
+  }
+  .delivered {
+    // background-color: rgba(43, 255, 0, 0.2);
+    color: rgb(65, 248, 9);
+    font-weight: 600;
+    // padding: 5px 10px;
+    // border-radius: 0.5em;
+    // font-size: 20px;
+  }
+}
+.order-action-header {
+  display: flex;
+  width: 320px;
+  justify-content: center;
+}

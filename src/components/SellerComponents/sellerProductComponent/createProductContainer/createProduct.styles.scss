@@ -2,20 +2,40 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+
   //justify-content: space-evenly;
   //max-width: 800px;
   // min-height: 100vh;
   // min-width: 100vw;
-  // //background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
-  //background-color:rgb(5, 1, 28);
+  // background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
+  background-color: rgb(209, 202, 248);
+  background: url("https://static.vecteezy.com/system/resources/previews/007/707/394/non_2x/background-from-polygons-abstract-background-of-triangles-wallpaper-vector.jpg");
+  margin-left: -10px;
+  margin-right: -10px;
+  background-size: 100%;
+
   // background-size: 100vw;
 
+  // background: url("https://i.imgur.com/bBBVXiG.mp4") repeat;
+  // background-size: cover;
   // background-color: rgb(255, 255, 255);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #500874;
   font-weight: 600;
+  // video {
+  //   position: fixed;
+  //   top: 30;
+  //   left: 0;
+  //   min-width: 100%;
+  //   min-height: 100%;
+  //   opacity: 0.7;
+  //   z-index: -1;
 
+  //   /* left:1%; */
+  //   /* width: 200%; */
+  //   /* height: 120%; */
+  // }
   .form-inner-container {
     display: flex;
     flex: 1;
@@ -35,18 +55,6 @@
       flex-flow: column;
       //border: 1px dotted grey;
       padding: 5px;
-
-      .form-group {
-        display: flex;
-        justify-content: space-between;
-        align-items: first baseline;
-
-        //border: 1px dotted grey;
-        label {
-          padding: 15px;
-          font-size: 28px;
-        }
-      }
     }
     .right-column {
       width: 45%;
@@ -73,16 +81,18 @@
       MenuItem {
         font-size: 29px;
         border: 1px solid #ccc;
-        background-color: #500874;
+        background-color: rgba(255, 255, 255, 0.24);
       }
       //border: 1px dotted grey;
       FormControl {
         min-width: 50%;
+        background-color: rgba(255, 255, 255, 0.562);
       }
       label {
         padding-left: 10px;
-        font-size: 20px;
-        color: rgb(7, 0, 0);
+        padding-top: 5px;
+        font-size: 18px;
+        color: rgb(116, 113, 113);
         z-index: 1;
       }
       .l1 {
@@ -103,9 +113,11 @@
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      &:focus {
-        border: 2px solid #8e51ad;
-      }
+      background-color: rgba(255, 255, 255, 0.24);
+      // &::after {
+      //   border: 2px solid #8e51ad;
+      //   background-color: rgba(255, 255, 255, 0.24);
+      // }
     }
 
     // select {
@@ -127,10 +139,11 @@
       align-items: center;
       .c1 {
         width: 230px;
-        height: 230px;
+        height: 220px;
         border: 2px solid rgb(208, 208, 208); /* Adjust the border color and width as needed */
         border-radius: 0.6em; /* Make the container circular */
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.24);
+        opacity: 0.8;
         overflow: hidden;
         img {
           width: 100%;
@@ -155,7 +168,7 @@
       display: flex;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 1px;
+      margin-top: -15px;
       width: 95%;
       justify-content: space-between;
       align-items: center;
@@ -170,6 +183,7 @@
         font-size: 18px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.24);
       }
     }
     .button-warning-container {
@@ -179,14 +193,15 @@
       align-items: center;
     }
     button[type="submit"] {
-      background-color: #500874; /* Button background color */
+      background-color: #ad6acf; /* Button background color */
       color: #fff; /* Button text color */
       width: 20%;
       border: none;
       border-radius: 0.4em;
-      padding: 10px 20px;
-      font-size: 26px;
-      margin-top: 10px;
+      padding: 10px 10px;
+      font-size: 28px;
+      margin-top: 19px;
+      margin-bottom: 50px;
       cursor: pointer;
       transition: background-color 0.2s;
 

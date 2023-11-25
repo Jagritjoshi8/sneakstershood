@@ -6,12 +6,16 @@ const initialState = {
   rating: "2.5",
   categories: [],
   sort: "",
+  inputSearch: "",
 };
 
 const productfiltersSlice = createSlice({
   name: "productfilters",
   initialState,
   reducers: {
+    addSearch(state, action) {
+      state.inputSearch = action.payload;
+    },
     addPrice(state, action) {
       const isPricePresent = state.price.find(
         (price) => price.min === action.payload.min
@@ -47,6 +51,7 @@ const productfiltersSlice = createSlice({
       state.sort = newSorting;
     },
     resetFilters(state, action) {
+      state.inputSearch = "";
       state.price = [];
       state.rating = "2.5";
       state.categories = [];
@@ -54,6 +59,12 @@ const productfiltersSlice = createSlice({
     },
   },
 });
-export const { addPrice, addRatings, addCategories, addSort, resetFilters } =
-  productfiltersSlice.actions;
+export const {
+  addSearch,
+  addPrice,
+  addRatings,
+  addCategories,
+  addSort,
+  resetFilters,
+} = productfiltersSlice.actions;
 export default productfiltersSlice.reducer;

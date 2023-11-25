@@ -1,8 +1,10 @@
 import "./filtercontainer.styles.scss";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   addCategories,
   addPrice,
   addRatings,
+  addSearch,
   addSort,
   resetFilters,
 } from "../../features/productfiltersSlice";
@@ -24,6 +26,16 @@ const FilterContainer = () => {
         </button>
       </div>
       <div className="filter-types-container">
+        <div className="search-container bg">
+          <input
+            type="search"
+            placeholder="🔎 Search By Name "
+            id="inputsearch"
+            name="inputserach"
+            value={productfilters.inputSearch}
+            onChange={(e) => dispatch(addSearch(e.target.value))}
+          />
+        </div>
         <div className="price-container bg">
           <h3>Price :</h3>
           <div className="price-input-container">

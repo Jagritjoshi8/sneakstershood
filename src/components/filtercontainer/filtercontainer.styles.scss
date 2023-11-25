@@ -50,7 +50,8 @@
 
     .bg {
       margin-bottom: 0.5rem;
-      border: 1px solid rgb(219, 219, 219);
+      // border: 1px solid rgb(219, 219, 219);
+      border: 1px solid rgb(255, 192, 255);
       padding: 20px 15px 15px 20px;
       border-radius: 10px;
       h3 {
@@ -59,6 +60,15 @@
       }
     }
 
+    .search-container {
+      input {
+        width: 100%;
+        font-size: 18px;
+        padding: 10px 0px 10px 8px;
+        border-radius: 0.8em;
+        border: 2.6px solid black;
+      }
+    }
     .price-input-container {
       display: flex;
       flex-flow: column;

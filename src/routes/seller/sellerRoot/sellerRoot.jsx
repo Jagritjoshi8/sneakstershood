@@ -3,6 +3,10 @@ import { useSelector } from "react-redux";
 import "./sellerRoot.styles.scss";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import ContentPasteIcon from "@mui/icons-material/ContentPaste";
+import SpeedIcon from "@mui/icons-material/Speed";
+import MessageIcon from "@mui/icons-material/Message";
 
 const SellerRoot = () => {
   const authseller = useSelector((state) => state.authseller);
@@ -28,19 +32,20 @@ const SellerRoot = () => {
           </Link>
         </div>
         <NavLink to="summary" className="nl">
-          Summary
+          <SpeedIcon sx={{ fontSize: 30 }} /> Summary<span>➤</span>
         </NavLink>
 
         <NavLink to="products" className="nl">
-          Products
+          <StorefrontIcon sx={{ fontSize: 30 }} /> Products
+          <span>➤</span>
         </NavLink>
 
         <NavLink to="orders" className="nl">
-          Orders
+          <ContentPasteIcon sx={{ fontSize: 30 }} /> Orders <span>➤</span>
         </NavLink>
 
-        <NavLink to="users" className="nl">
-          Users
+        <NavLink to="channel" className="nl">
+          <MessageIcon sx={{ fontSize: 30 }} /> Channel<span>➤</span>
         </NavLink>
       </nav>
       <div className="seller-main-container">

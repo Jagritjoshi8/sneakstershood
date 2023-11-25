@@ -9,17 +9,15 @@ import { getPricedProducts } from "../../../helpers/filter-functions/price";
 import { getRatedProducts } from "../../../helpers/filter-functions/ratings";
 import { getCategoryWiseProducts } from "../../../helpers/filter-functions/category";
 import { getSortedProducts } from "../../../helpers/filter-functions/sort";
+import { getSearchedProducts } from "../../../helpers/filter-functions/productSearch";
 const ProductListContainer = () => {
   // const { products } = useContext(ProductsContext);
-  const { price, rating, categories, sort } = useSelector(
+  const { inputSearch, price, rating, categories, sort } = useSelector(
     (state) => state.productfilters
   );
   const { data, error, isLoading } = useGetAllProductsQuery();
-  const shuffledData = data
-    ?.map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-  const ratedProducts = getRatedProducts(data, rating);
+  const searchedProducts = getSearchedProducts(data, inputSearch);
+  const ratedProducts = getRatedProducts(searchedProducts, rating);
 
   const categoryProducts = getCategoryWiseProducts(ratedProducts, categories);
 
