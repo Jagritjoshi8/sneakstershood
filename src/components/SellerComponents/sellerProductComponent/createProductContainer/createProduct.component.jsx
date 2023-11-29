@@ -76,7 +76,11 @@ const CreateProductContainer = () => {
   };
 
   return (
-    <div className="create-product-container">
+    <div
+      className="create-product-container"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+    >
       {/* <video
         src="/assets/video/productbck.mp4"
         type="video/mp4"
@@ -109,7 +113,7 @@ const CreateProductContainer = () => {
           </div>
         </div>
         <div className="form-inner-container">
-          <div className="left-column">
+          <div className="left-colum">
             <FormInput
               label="Sneaker Name"
               placeHolder="Enter Product Name Here.."

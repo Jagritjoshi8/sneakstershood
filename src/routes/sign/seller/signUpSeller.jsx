@@ -49,7 +49,7 @@ const SignUpSeller = () => {
 
   useEffect(() => {
     if (authseller._id) {
-      navigate("/seller/seller-profile");
+      navigate("/seller/summary");
     }
   }, [authseller, navigate]);
 

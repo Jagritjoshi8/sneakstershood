@@ -58,10 +58,11 @@ const SellerOverviewContainer = () => {
       0
     );
 
-    ordersIncreasePercentage =
+    ordersIncreasePercentage = Math.floor(
       ((todayfilteredOrders?.length - yesterdayfilteredOrders?.length) /
         yesterdayfilteredOrders?.length) *
-      100;
+        100
+    );
     earningsIncreasePercentage = Math.floor(
       ((todaySumOfSellerPrice - yesterdaySumOfSellerPrice) /
         yesterdaySumOfSellerPrice) *
@@ -83,10 +84,11 @@ const SellerOverviewContainer = () => {
       // Compare the order date with today's date
       return productDate === formattedYesterday;
     });
-    productsIncreasePercentage =
+    productsIncreasePercentage = Math.floor(
       ((todayfilteredproducts?.length - yesterdayfilteredproducts?.length) /
         yesterdayfilteredproducts?.length) *
-      100;
+        100
+    );
   }
   const per1 = `${ordersIncreasePercentage}`;
   const per2 = `${productsIncreasePercentage}`;

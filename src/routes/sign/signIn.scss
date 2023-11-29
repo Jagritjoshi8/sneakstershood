@@ -92,133 +92,186 @@
 //   justify-content: center;
 //   min-height: 100vh;
 // }
-
-.container {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  //justify-content: space-evenly;
-  //max-width: 800px;
-  min-height: 100vh;
-  min-width: 100vw;
-  background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
- //background-color:rgb(5, 1, 28);
-  background-size: 100vw;
-
-  // background-color: rgb(255, 255, 255);
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  h2 {
-    font-size: 40px;    
-    margin-bottom: 20px;
-  }
-  h3 {
-    font-size: 22px;
-    margin-top: -2px;
-  }
-  .sign-other-button {
-    font-size: 28px;
-    &:hover {
-      color: #ac0ea4;
-      text-decoration: underline;
-    }
-  }
-}
-
-.form-inner-container {
-  display: flex;
-  flex: 1;
-  width: 95vw;
-  // margin-left: 170px;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px;
-  //border: 1px solid #ddd; /* Border */
-  //   border-radius: 5px;
-  //flex-wrap: wrap;
-  //background-color: #0077b6;
-  .threeD-sneaker-container {
-    visibility: visible;
-  }
-
-  .left-column {
-    width: 40%;
+.user-sign-container {
+  .container {
     display: flex;
     flex-flow: column;
-    //border: 1px dotted grey;
-    padding: 5px;
-
-    .form-group {
-      display: flex;
-      justify-content: space-between;
-      align-items: first baseline;
-
-      //border: 1px dotted grey;
-      label {
-        padding: 15px;
-        font-size: 28px;
-      }
-    }
-  }
-  .right-column {
-    width: 40%;
-    display: flex;
-    flex-flow: column;
-    padding: 5px;
-    //border: 1px dotted grey;
-    .form-group {
-      display: flex;
-      justify-content: space-between;
-      align-items: first baseline;
-      label {
-        padding: 15px;
-        font-size: 28px;
-      }
-    }
-  }
-  .select-group {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    //justify-content: space-evenly;
+    //max-width: 800px;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
+    //background-color:rgb(5, 1, 28);
+    background-size: 100vw;
 
-    MenuItem {
-      font-size: 29px;
-    }
-    //border: 1px dotted grey;
-    .l1 {
-      padding: 15px;
-      font-size: 28px;
-    }
-    FormControl {
-      min-width: 50%;
-    }
-    label {
-      padding-left: 10px;
-      font-size: 20px;
-      color: black;
-      z-index: 1;
-    }
-  }
-  input,
-  select,
-  textarea {
-    //display: block;
-
-    width: 50%;
-    margin-bottom: 35px;
-    margin-left: 15px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    // background-color: rgb(255, 255, 255);
     border-radius: 5px;
-    &:focus {
-      border: 2px solid #8e51ad;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 22px;
+      margin-top: -2px;
+    }
+    .h2or {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    .sign-other-button {
+      font-size: 28px;
+      &:hover {
+        color: #ac0ea4;
+        text-decoration: underline;
+      }
     }
   }
 
-  // select {
-  //   width: 100%;
-  // }
+  .form-inner-container {
+    display: flex;
+    flex: 1;
+    width: 95vw;
+    // margin-left: 170px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    //border: 1px solid #ddd; /* Border */
+    //   border-radius: 5px;
+    //flex-wrap: wrap;
+    //background-color: #0077b6;
+    .threeD-sneaker-container {
+      visibility: visible;
+    }
+
+    .left-column {
+      width: 40%;
+      display: flex;
+      flex-flow: column;
+      //border: 1px dotted grey;
+      padding: 5px;
+      font-weight: 600;
+
+      .form-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: first baseline;
+        margin-bottom: 20px;
+
+        //border: 1px dotted grey;
+        .input-info-container {
+          width: 50%;
+          display: flex;
+          // align-items: flex-start;
+          .info-icon {
+            margin-left: 5px;
+            margin-top: 10px;
+          }
+        }
+        label {
+          padding: 15px;
+          font-size: 28px;
+        }
+      }
+    }
+    .blur-bg {
+      background-color: rgba(253, 206, 255, 0.137);
+      // opacity: 0.9;
+      backdrop-filter: blur(10px);
+      padding: 20px;
+    }
+    .right-column {
+      width: 40%;
+      display: flex;
+      flex-flow: column;
+      padding: 5px;
+
+      font-weight: 600;
+      //border: 1px dotted grey;
+      .form-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: first baseline;
+        // margin-bottom: 20px;
+        .input-info-container {
+          width: 50%;
+          display: flex;
+          // align-items: flex-start;
+          .info-icon {
+            margin-left: 5px;
+            margin-top: 10px;
+          }
+        }
+        label {
+          padding: 15px;
+          font-size: 28px;
+        }
+      }
+    }
+    .select-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0.8;
+      width: 100%;
+      margin-top: -20px;
+      margin-bottom: 30px;
+      .input-info-container {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        .info-icon {
+          margin-left: 1px;
+          // margin-top: 28px;
+        }
+      }
+
+      MenuItem {
+        font-size: 29px;
+        background-color: rgba(255, 206, 247, 0.76);
+      }
+      //border: 1px dotted grey;
+      .l1 {
+        // padding: 15px;
+        font-size: 28px;
+      }
+      FormControl {
+        width: 90%;
+        background-color: rgba(255, 206, 247, 0.76);
+      }
+      label {
+        padding-left: 10px;
+        font-size: 20px;
+        color: black;
+        z-index: 1;
+      }
+    }
+    input,
+    select,
+    textarea {
+      //display: block;
+
+      width: 90%;
+      margin-bottom: 45px;
+      margin-left: 15px;
+      padding: 10px;
+      font-size: 16px;
+      // border: 1px solid #ccc;
+      border: none;
+      background-color: rgba(255, 206, 247, 0.76);
+      border-radius: 5px;
+
+      &:focus {
+        border: 2px solid #8e51ad;
+      }
+    }
+
+    // select {
+    //   width: 100%;
+    // }
+  }
 }
 /* Sign-in button styles */
 form {
@@ -271,7 +324,6 @@ form {
     border-radius: 0.4em;
     padding: 10px 20px;
     font-size: 26px;
-    margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.2s;
 
@@ -284,6 +336,7 @@ form {
     font-size: 20px;
   }
 }
+
 @media (max-width: 1387px) {
   .form-inner-container {
     flex-flow: column;
@@ -318,4 +371,19 @@ form {
       text-decoration: underline;
     }
   }
+}
+[type="file"] {
+  width: 50%;
+  min-width: 14ch;
+}
+
+[type="file"]::file-selector-button {
+  width: 109%;
+  margin-inline-end: 0;
+  padding: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.233);
+  border: 3px solid black;
+  border-radius: 0.6em;
+  color: smoke;
+  text-transform: uppercase;
 }

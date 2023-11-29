@@ -6,8 +6,11 @@ import jwtDecode from "jwt-decode";
 import Badge from "@mui/material/Badge";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import MessageIcon from "@mui/icons-material/Message";
+import MarkUnreadChatAltOutlinedIcon from "@mui/icons-material/MarkUnreadChatAltOutlined";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import shoeimg from "./../../assets/shoelogopic1.png";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { UserContext } from "../../contexts/user.context";
@@ -35,7 +38,7 @@ const Root = () => {
     <div>
       <ScrollToTop />
       <div className="navbar">
-        <Link to="/">
+        <NavLink to="/">
           <div className="sneakershood-logo-name">
             {" "}
             <img
@@ -45,12 +48,12 @@ const Root = () => {
             />
             <p className="sneakershood-name"> Sneakers Hood </p>
           </div>
-        </Link>
+        </NavLink>
         <div className="navbarlinkcontainer">
-          <Link to="product" className="navbarlinks">
+          <NavLink to="product" className="navbarlinks">
             Products
-          </Link>
-          <Link className="navbarlinks" to="wishlist">
+          </NavLink>
+          <NavLink className="navbarlinks" to="wishlist">
             WishList{" "}
             <Badge
               badgeContent={wishlistItems.length}
@@ -61,8 +64,8 @@ const Root = () => {
             >
               <FavoriteBorderOutlinedIcon sx={{ fontSize: 29 }} />
             </Badge>
-          </Link>
-          <Link className="navbarlinks" to="cart">
+          </NavLink>
+          <NavLink className="navbarlinks" to="cart">
             Cart{" "}
             <Badge
               badgeContent={cartTotalQuantity}
@@ -74,9 +77,13 @@ const Root = () => {
               <ShoppingCartOutlinedIcon sx={{ fontSize: 29 }} />
             </Badge>
             {/* {cartTotalQuantity} */}
-          </Link>
+          </NavLink>
+          <NavLink className="navbarlinks" to="channel">
+            Channel <MarkUnreadChatAltOutlinedIcon sx={{ fontSize: 25 }} />
+            {/* {cartTotalQuantity} */}
+          </NavLink>
           {userLoaded ? (
-            <Link to="/profile" className="navbarlinks">
+            <NavLink to="/profile" className="navbarlinks">
               {auth.profileimg ? (
                 <div className="profileimg-view">
                   <img
@@ -87,23 +94,23 @@ const Root = () => {
               ) : (
                 <div className="profileimg-view">
                   <img
-                    src={`https://robohash.org/${auth.name}4?set=set5&size=70x70`}
+                    src={`https://robohash.org/${auth.name}4?set=set5&size=60x60`}
                     alt="img"
                   />
                 </div>
               )}
-            </Link>
+            </NavLink>
           ) : (
             <div>
               {location.pathname === "/sign-up" ||
               location.pathname === "/sign-up-seller" ? (
-                <Link to="/sign-up" className="navbarlinks">
+                <NavLink to="/sign-up" className="navbarlinks">
                   Sign Up
-                </Link>
+                </NavLink>
               ) : (
-                <Link to="/sign-in" className="navbarlinks">
+                <NavLink to="/sign-in" className="navbarlinks">
                   Sign In
-                </Link>
+                </NavLink>
               )}
             </div>
           )}

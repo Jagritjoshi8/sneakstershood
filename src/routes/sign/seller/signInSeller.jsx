@@ -22,7 +22,7 @@ const SignInSeller = () => {
 
   useEffect(() => {
     if (authseller._id) {
-      navigate("/seller/seller-profile");
+      navigate("/seller/summary");
     }
   }, [authseller, navigate]);
   const handleSubmit = async (e) => {

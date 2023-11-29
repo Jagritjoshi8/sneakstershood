@@ -5,7 +5,12 @@ import WishListContainer from "../../components/wishlistcontainer/wishlist.comon
 const Wishlist = () => {
   const wishlist = useSelector((state) => state.wishlist);
   return (
-    <div className="wishlist-page">
+    <div
+      className="wishlist-page"
+      data-aos="fade-right"
+      // data-aos-easing="linear"
+      data-aos-duration="2500"
+    >
       {wishlist.wishlistItems.length === 0 ? (
         <div
           className="wishlist-empty"

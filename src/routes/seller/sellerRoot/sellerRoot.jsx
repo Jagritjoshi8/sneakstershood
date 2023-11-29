@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./sellerRoot.styles.scss";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -7,10 +7,12 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import ContentPasteIcon from "@mui/icons-material/ContentPaste";
 import SpeedIcon from "@mui/icons-material/Speed";
 import MessageIcon from "@mui/icons-material/Message";
+import { signoutSeller } from "../../../features/authSellerSlice";
 
 const SellerRoot = () => {
   const authseller = useSelector((state) => state.authseller);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   console.log(authseller);
   let imageURL;
   if (authseller.logoimg) {
@@ -23,6 +25,11 @@ const SellerRoot = () => {
       navigate("/");
     }
   }, [authseller, navigate]);
+
+  const signOutHandler = async () => {
+    dispatch(signoutSeller());
+    navigate("/");
+  };
   return (
     <div className="seller-dashboard">
       <nav className="side-nav">
@@ -47,6 +54,18 @@ const SellerRoot = () => {
         <NavLink to="channel" className="nl">
           <MessageIcon sx={{ fontSize: 30 }} /> Channel<span>➤</span>
         </NavLink>
+        <button
+          onClick={() => navigate("/product")}
+          className="seller-root-liveproductbtn"
+        >
+          Live Products
+        </button>
+        <button
+          onClick={() => signOutHandler()}
+          className="seller-root-signoutbtn"
+        >
+          Sign Out
+        </button>
       </nav>
       <div className="seller-main-container">
         <div className="seller-header">

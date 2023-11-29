@@ -35,6 +35,11 @@ export default function EditProductContainer({ prodId }) {
     setOpen(true);
     let selectedProd = sellerProducts.filter((prod) => prod._id === prodId);
     selectedProd = selectedProd[0];
+    const discountper = Math.floor(
+      ((selectedProd.original_price - selectedProd.discounted_price) /
+        selectedProd.original_price) *
+        100
+    );
     setCurrentProd(selectedProd);
     let bkimg;
     if (selectedProd.img.includes("uploads")) {
@@ -42,12 +47,8 @@ export default function EditProductContainer({ prodId }) {
     } else {
       bkimg = selectedProd.img;
     }
-    console.log(selectedProd.discounted_price);
-    let discountper = Math.floor(
-      ((selectedProd.original_price - selectedProd.discounted_price) /
-        original_price) *
-        100
-    );
+    //console.log(selectedProd.discounted_price);
+
     setPreviewURL(bkimg);
     setName(selectedProd.name);
     setOriginalPrice(selectedProd.original_price);
@@ -100,7 +101,11 @@ export default function EditProductContainer({ prodId }) {
         Edit
       </button>
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="lg">
-        <div className="edit-product-modal">
+        <div
+          className="edit-product-modal"
+          data-aos="zoom-in"
+          data-aos-duration="1500"
+        >
           <DialogTitle className="edit-modal-header">
             <h1> Edit Your Product:</h1>
           </DialogTitle>

@@ -4,12 +4,24 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
-import FormInput from "../../components/authenticaton/formInput.component";
+import FormInput from "../../components/authenticaton/userformInput.component";
 import { UserContext } from "../../contexts/user.context";
 import "./signIn.scss";
 import { signupUser } from "../../features/authSlice";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+const LightTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "rgba(255, 206, 247, 0.76)",
+    color: "red",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+  },
+}));
 
 const SignUp = () => {
   // State to hold form input values
@@ -114,62 +126,64 @@ const SignUp = () => {
   // }
 
   return (
-    <div className="container">
-      <div
-        className="are-you-seller"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
-        Are You Seller?{" "}
-        <Link to="/sign-up-seller">
-          <p className="sign-up-seller-link">Sign Up As Seller</p>
-        </Link>
-      </div>
-      <h2 data-aos="fade-up" data-aos-duration="2000">
-        Sign Up
-      </h2>
-      <form
-        onSubmit={handleSubmit}
-        encType="multipart/form-data"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
-        <div className="profile-img-container">
-          <div className="c1">
-            <img src={previewURL} alt="Profile Preview" width="250" />
-          </div>
-          <div className="c2">
-            <label>Upload Your Profile Picture: </label>
-            <input
-              type="file"
-              accept="image/*"
-              id="profileimg"
-              name="profileimg"
-              required
-              onChange={(e) => {
-                const selectedFile = e.target.files[0];
-                setProfileimg(selectedFile);
-                if (selectedFile) {
-                  const imageURL = URL.createObjectURL(selectedFile);
-                  setPreviewURL(imageURL);
-                }
-              }}
-            />
-          </div>
+    <div className="user-sign-container">
+      <div className="container">
+        <div
+          className="are-you-seller"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          Are You Seller?{" "}
+          <Link to="/sign-up-seller">
+            <p className="sign-up-seller-link">Sign Up As Seller</p>
+          </Link>
         </div>
-        <div className="form-inner-container">
-          <div className="left-column">
-            <FormInput
-              label="Name"
-              placeHolder="Enter Your Name Here.."
-              type="text"
-              id="name"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+        <h2 data-aos="fade-up" data-aos-duration="2000">
+          Sign Up
+        </h2>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <div className="profile-img-container">
+            <div className="c1">
+              <img src={previewURL} alt="Profile Preview" width="250" />
+            </div>
+            <div className="c2">
+              <label>Upload Your Profile Picture: </label>
+              <input
+                type="file"
+                accept="image/*"
+                id="profileimg"
+                name="profileimg"
+                required
+                onChange={(e) => {
+                  const selectedFile = e.target.files[0];
+                  setProfileimg(selectedFile);
+                  if (selectedFile) {
+                    const imageURL = URL.createObjectURL(selectedFile);
+                    setPreviewURL(imageURL);
+                  }
+                }}
+              />
+            </div>
+          </div>
+          <div className="form-inner-container">
+            <div className="left-column">
+              <FormInput
+                label="Name"
+                title="*should be atleast 6 characters long"
+                placeHolder="Enter Your Name Here.."
+                type="text"
+                id="name"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
 
-            {/* <FormInput
+              {/* <FormInput
               label="Age"
               type="age"
               id="age"
@@ -177,101 +191,136 @@ const SignUp = () => {
               onChange={(e) => setAge(e.target.value)}
               required
             /> */}
-            <div className="select-group">
-              <label className="l1">Age:</label>
-              <FormControl
-                variant="standard"
-                sx={{ m: 1, width: "49%", minHeight: 60 }}
-              >
-                <InputLabel id="demo-simple-select-standard-label">
-                  Select Age
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  label=" Select Age"
-                  sx={{
-                    backgroundColor: "white",
-                    fontSize: "20px",
-                    paddingLeft: "10px",
-                  }}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={15}>15-19</MenuItem>
-                  <MenuItem value={20}>20-24</MenuItem>
-                  <MenuItem value={25}>25-29</MenuItem>
-                  <MenuItem value={30}>30-34</MenuItem>
-                  <MenuItem value={35}>35-39</MenuItem>{" "}
-                  <MenuItem value={40}>40+</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
+              <div className="select-group">
+                <div>
+                  <label className="l1">Age:</label>
+                </div>
+                <div className="input-info-container">
+                  <FormControl
+                    variant="standard"
+                    sx={{
+                      m: 1,
+                      width: "86%",
+                      minHeight: 60,
+                      marginLeft: "15px",
+                      marginTop: "-10px",
+                    }}
+                  >
+                    <InputLabel id="demo-simple-select-standard-label">
+                      Select Age
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-standard-label"
+                      id="demo-simple-select-standard"
+                      value={age}
+                      onChange={(e) => setAge(e.target.value)}
+                      label=" Select Age"
+                      sx={{
+                        backgroundColor: "rgba(255, 206, 247, 0.76)",
+                        fontSize: "20px",
+                        paddingLeft: "10px",
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={15}>15-19</MenuItem>
+                      <MenuItem value={20}>20-24</MenuItem>
+                      <MenuItem value={25}>25-29</MenuItem>
+                      <MenuItem value={30}>30-34</MenuItem>
+                      <MenuItem value={35}>35-39</MenuItem>{" "}
+                      <MenuItem value={40}>40+</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <LightTooltip
+                    title="*should be from given age numbers"
+                    arrow
+                    placement="top-start"
+                  >
+                    <InfoOutlinedIcon className="info-icon" />
+                  </LightTooltip>
+                </div>
+              </div>
 
-            <FormInput
-              label="Phone Number"
-              type="phonenumber"
-              id="phonenumber"
-              name="phonenumber"
-              placeHolder="Enter Your Phone Number Here.."
-              onChange={(e) => setPhonenumber(e.target.value)}
-              required
-            />
+              <FormInput
+                label="Phone Number"
+                title="*should be 10 digit valid indian number"
+                type="phonenumber"
+                id="phonenumber"
+                name="phonenumber"
+                placeHolder="Enter Your Phone Number Here.."
+                onChange={(e) => setPhonenumber(e.target.value)}
+                required
+              />
 
-            <FormInput
-              label="Password"
-              type="password"
-              id="password"
-              name="password"
-              placeHolder="Enter Your Password Here.."
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="right-column">
-            <FormInput
-              label="Email"
-              type="email"
-              id="email"
-              name="email"
-              placeHolder="Enter Your Email Here.."
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <div className="select-group">
-              <label className="l1">Gender:</label>
-              <FormControl
-                variant="standard"
-                sx={{ m: 1, width: "49%", minHeight: 60 }}
-              >
-                <InputLabel id="demo-simple-select-standard-label">
-                  Select Gender
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  label=" Select Gender"
-                  sx={{
-                    backgroundColor: "white",
-                    fontSize: "20px",
-                    paddingLeft: "10px",
-                  }}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={"male"}>Male</MenuItem>
-                  <MenuItem value={"female"}>Female</MenuItem>
-                  <MenuItem value={"others"}>Others</MenuItem>
-                </Select>
-              </FormControl>
+              <FormInput
+                label="Password"
+                title="*should contain at least 1 capital letter, 1 digit, 1 special character & min length of 5"
+                type="password"
+                id="password"
+                name="password"
+                placeHolder="Enter Your Password Here.."
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
-            {/* <FormInput
+            <div className="right-column">
+              <FormInput
+                label="Email"
+                title="*should be valid email including @,.com"
+                type="email"
+                id="email"
+                name="email"
+                placeHolder="Enter Your Email Here.."
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <div className="select-group">
+                <label className="l1">Gender:</label>
+
+                <div className="input-info-container">
+                  <FormControl
+                    variant="standard"
+                    sx={{
+                      m: 1,
+                      width: "87%",
+                      minHeight: 60,
+                      marginLeft: "15px",
+                    }}
+                  >
+                    <InputLabel id="demo-simple-select-standard-label">
+                      Select Gender
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-standard-label"
+                      id="demo-simple-select-standard"
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                      label=" Select Gender"
+                      sx={{
+                        backgroundColor: "rgba(255, 206, 247, 0.76)",
+                        fontSize: "20px",
+                        paddingLeft: "10px",
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={"male"}>Male</MenuItem>
+                      <MenuItem value={"female"}>Female</MenuItem>
+                      <MenuItem value={"others"}>Others</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <LightTooltip
+                    title="*should be from male,female,others"
+                    arrow
+                    placement="top-start"
+                  >
+                    <InfoOutlinedIcon className="info-icon" />
+                  </LightTooltip>
+                </div>
+              </div>
+              {/* <FormInput
               label="Gender"
               type="gender"
               id="gender"
@@ -281,19 +330,29 @@ const SignUp = () => {
               required
             /> */}
 
-            <div className="form-group">
-              <label>Address:</label>
-              <textarea
-                id="address"
-                name="address"
-                placeHolder="Enter Your Address Here.."
-                onChange={(e) => setAddress(e.target.value)}
-                required
-                rows="2"
-                cols="22"
-              ></textarea>
-            </div>
-            {/* <FormInput
+              <div className="form-group">
+                <label>Address:</label>
+
+                <div className="input-info-container">
+                  <textarea
+                    id="address"
+                    name="address"
+                    placeHolder="Enter Your Address Here.."
+                    onChange={(e) => setAddress(e.target.value)}
+                    required
+                    rows="2"
+                    cols="22"
+                  ></textarea>
+                  <LightTooltip
+                    title="*should be a valid address, atleast 10 char long"
+                    arrow
+                    placement="top-start"
+                  >
+                    <InfoOutlinedIcon className="info-icon" />
+                  </LightTooltip>
+                </div>
+              </div>
+              {/* <FormInput
               label="Address"
               type="address"
               id="address"
@@ -302,33 +361,35 @@ const SignUp = () => {
               onChange={(e) => setAddress(e.target.value)}
               required
             /> */}
-            <FormInput
-              label="Confirm Password"
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeHolder="Re-Enter Your Password Here.."
-              onChange={(e) => setPasswordConfirm(e.target.value)}
-              required
-            />
+              <FormInput
+                label="Confirm Password"
+                title="*should be same to original password"
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeHolder="Re-Enter Your Password Here.."
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div className="button-warning-container">
-          <div>
-            {auth.signupStatus === "rejected" ? (
-              <p>Warning: {auth.signupError.message}</p>
-            ) : null}
+          <div className="button-warning-container">
+            <div>
+              {auth.signupStatus === "rejected" ? (
+                <p>Warning: {auth.signupError.message}</p>
+              ) : null}
+            </div>
+            <button type="submit">Sign Up</button>
           </div>
-          <button type="submit">Sign Up</button>
-        </div>
-      </form>
+        </form>
 
-      <h2>OR</h2>
+        <h2>OR</h2>
 
-      <h3>Already have an account? </h3>
-      <Link to="/sign-in">
-        <h3 className="sign-other-button">SIGN IN</h3>
-      </Link>
+        <h3>Already have an account? </h3>
+        <Link to="/sign-in">
+          <h3 className="sign-other-button">SIGN IN</h3>
+        </Link>
+      </div>
     </div>
   );
 };

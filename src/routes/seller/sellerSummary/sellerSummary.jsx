@@ -7,7 +7,11 @@ import AllTimeDataContainer from "../../../components/SellerComponents/summaryCo
 
 const SellerSummary = () => {
   return (
-    <div className="seller-summary-page">
+    <div
+      className="seller-summary-page"
+      data-aos="fade-up"
+      data-aos-duration="1900"
+    >
       <div className="sellerSummary-left-sec">
         <SellerOverviewContainer />
         <SellerChartContainer />

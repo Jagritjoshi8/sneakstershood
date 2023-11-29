@@ -4,6 +4,7 @@ import axios from "axios";
 import { url } from "./api";
 import jwtDecode from "jwt-decode";
 import toast from "react-hot-toast";
+import { clearCart } from "./cartSlice";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -77,7 +78,10 @@ const authSlice = createSlice({
     },
     signoutUser(state, action) {
       localStorage.removeItem("token");
+      localStorage.removeItem("cartItems");
+      localStorage.removeItem("wishlistItems");
       toast.error("Signed Out 💔");
+
       return {
         ...state,
         token: "",

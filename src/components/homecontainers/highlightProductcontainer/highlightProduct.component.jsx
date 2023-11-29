@@ -15,7 +15,7 @@ const HighlightProductContainer = ({ product }) => {
         data-aos="zoom-in-up"
         data-aos-duration="2500"
       >
-        <h1>Highlight Product</h1>
+        <h1>#Highlight Product</h1>
         {!product ? (
           <div>no product</div>
         ) : (

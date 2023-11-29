@@ -25,22 +25,25 @@ const GetSellerProductsContainer = () => {
   };
   const rows =
     sellerProducts &&
-    sellerProducts.map((product) => {
-      let bkimg;
-      if (product.img.includes("uploads")) {
-        bkimg = `http://localhost:8000/${product.img}`;
-      } else {
-        bkimg = product.img;
-      }
-      return {
-        id: product._id,
-        pImg: bkimg,
-        pName: product.name,
-        pOgPrice: product.original_price,
-        pDisPrice: product.discounted_price,
-        inStock: product.is_stock,
-      };
-    });
+    sellerProducts
+      .slice()
+      .reverse()
+      .map((product) => {
+        let bkimg;
+        if (product.img.includes("uploads")) {
+          bkimg = `http://localhost:8000/${product.img}`;
+        } else {
+          bkimg = product.img;
+        }
+        return {
+          id: product._id,
+          pImg: bkimg,
+          pName: product.name,
+          pOgPrice: product.original_price,
+          pDisPrice: product.discounted_price,
+          inStock: product.is_stock,
+        };
+      });
 
   const columns = [
     { field: "id", headerName: <h4>ID</h4>, width: 390 },
@@ -97,7 +100,12 @@ const GetSellerProductsContainer = () => {
     },
   ];
   return (
-    <div style={{ height: 600, width: "100%" }} className="getsellerproducts">
+    <div
+      style={{ height: 750, width: "100%" }}
+      className="getsellerproducts"
+      data-aos="fade-up"
+      data-aos-duration="2500"
+    >
       {/* <video
         src="/assets/video/productbck.mp4"
         type="video/mp4"
@@ -111,10 +119,10 @@ const GetSellerProductsContainer = () => {
         sx={{ fontSize: 25 }}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 10 },
+            paginationModel: { page: 0, pageSize: 13 },
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[10, 13]}
         checkboxSelection
         disableRowSelectionOnClick
       />

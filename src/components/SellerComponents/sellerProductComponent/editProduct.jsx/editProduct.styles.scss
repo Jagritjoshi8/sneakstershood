@@ -70,6 +70,7 @@
       flex-flow: column;
       //border: 1px dotted grey;
       padding: 5px;
+
       .c2 {
         display: flex;
         justify-content: space-between;
@@ -77,6 +78,12 @@
         label {
           font-size: 21px;
           font-weight: 500;
+        }
+        [type="file"]::file-selector-button {
+          color: #500874;
+          font-weight: 600;
+          border: 3px solid purple;
+          width: 103%;
         }
       }
       .formControl {
@@ -90,12 +97,29 @@
           color: black;
         }
       }
+      input,
+      select,
+      textarea {
+        //display: block;
+
+        width: 50%;
+        margin-bottom: 45px;
+        margin-left: 15px;
+        padding: 10px;
+        font-size: 16px;
+        // border: 1px solid #ccc;
+        border: none;
+
+        border-radius: 5px;
+
+        &:focus {
+          border: 2px solid #8e51ad;
+        }
+      }
       .form-group {
         display: flex;
         justify-content: space-between;
         align-items: first baseline;
-
-        //border: 1px dotted grey;
         label {
           padding: 15px;
           font-size: 28px;

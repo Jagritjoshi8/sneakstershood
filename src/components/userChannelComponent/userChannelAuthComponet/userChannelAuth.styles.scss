@@ -6,15 +6,32 @@
 //   width: 100vw;
 //   margin: 0px;
 // }
-
-.channel-backgrounds {
+.first-signin-modal {
+  background: linear-gradient(
+    to right bottom,
+    rgba(161, 7, 233, 0.644),
+    rgba(110, 238, 250, 0.356)
+  );
+  button {
+    border-radius: 0.6em;
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: plum;
+    border: none;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}
+.channel-background {
   width: 100vw;
   height: 92vh;
   margin-left: -30px;
   background: linear-gradient(
     75deg,
     rgb(20, 23, 33) 0%,
-    rgb(20, 23, 33) 20%,
+    rgb(20, 23, 33) 40%,
     rgba(20, 23, 33, 0.8) 100%
   );
   /* Vertical center */

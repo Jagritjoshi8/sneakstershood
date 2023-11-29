@@ -100,7 +100,11 @@ const GetDeletedProductsContainer = () => {
     },
   ];
   return (
-    <div style={{ height: 600, width: "100%" }}>
+    <div
+      style={{ height: 600, width: "100%" }}
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
       <DataGrid
         rows={rows}
         columns={columns}

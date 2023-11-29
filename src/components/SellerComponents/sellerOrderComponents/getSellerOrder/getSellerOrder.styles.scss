@@ -1,8 +1,12 @@
+.getsellerproducts {
+  margin-top: 10px;
+}
 .order-action-btn-container {
   display: flex;
+
   .dbtn {
     background-color: rgb(250, 203, 75);
-    padding: 1px 8px;
+    padding: 3px 8px;
     margin: 5px;
     color: aliceblue;
     font-size: 20px;
@@ -16,13 +20,14 @@
   }
   .ebtn {
     background-color: rgb(122, 219, 31);
-    padding: 1px 8px;
+    padding: 3px 8px;
     margin: 5px;
     color: aliceblue;
     font-size: 20px;
     border-radius: 0.4em;
+    border: none;
     &:hover {
-      cursor: pointer;
+      //   cursor: pointer;
       opacity: 0.8;
     }
   }

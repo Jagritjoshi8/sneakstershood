@@ -11,6 +11,8 @@ import { signoutUser } from "../../features/authSlice";
 import { getUserOrder } from "../../features/orderSlice";
 import MyOrderContainer from "../../components/myordercontainer/myorder.component";
 import MyMapContainer from "../../components/mymapcontainer/mymapcontainer.component";
+import { clearCart } from "../../features/cartSlice";
+import { clearWishList } from "../../features/wishlistSlice";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,6 +72,8 @@ const Profile = () => {
   };
   const signOutHandler = async () => {
     dispatch(signoutUser());
+    dispatch(clearCart());
+    dispatch(clearWishList());
     navigate("/sign-in");
   };
   return (

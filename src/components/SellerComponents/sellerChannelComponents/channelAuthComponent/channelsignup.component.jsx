@@ -1,38 +1,43 @@
 import { useState } from "react";
 import axios from "axios";
 import "./channelAuth.styles.scss";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
-const ChannelAuthContainer = (props) => {
+const ChannelSignupContainer = (props) => {
   const [username, setUsername] = useState();
   const [secret, setSecret] = useState();
+  const [confirmSecret, setConfirmSecret] = useState();
   const [email, setEmail] = useState();
   const [first_name, setFirstName] = useState();
   const [last_name, setLastName] = useState();
-  const [loginError, setLoginError] = useState();
+  const [signUpError, setSignUpError] = useState();
 
-  const onLogin = (e) => {
-    e.preventDefault();
-    console.log(username, secret);
-    axios
-      .post("http://localhost:3001/login", { username, secret })
-      .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
-      .catch((e) => setLoginError("Username Or Secret Invalid"));
-  };
-
+  //   const onLogin = (e) => {
+  //     e.preventDefault();
+  //     console.log(username, secret);
+  //     axios
+  //       .post("http://localhost:3001/login", { username, secret })
+  //       .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
+  //       .catch((e) => setLoginError("Username Or Secret Invalid"));
+  //   };
+  const navigate = useNavigate();
   const onSignup = (e) => {
     e.preventDefault();
     console.log(username, secret, email);
     axios
       .post("http://localhost:3001/signup", {
         username,
-        secret,
         email,
         first_name,
         last_name,
+        secret,
+        confirmSecret,
       })
-      .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
-      .catch((e) => console.log(JSON.stringify(e.response.data)));
+      .then(
+        (r) => props.onAuth({ ...r.data, secret }),
+        navigate("/seller/channel")
+      ) // NOTE: over-ride secret
+      .catch((e) => setSignUpError("invalid inputs"));
   };
   const onSubmit = (e) => {
     e.preventDefault();
@@ -40,41 +45,69 @@ const ChannelAuthContainer = (props) => {
     props.onAuth({ username: value, secret: value });
   };
   return (
-    <div className="channel-backgrounds">
+    <div
+      className="channel-backgrounds"
+      data-aos="fade-zoom-in"
+      data-aos-duration="2000"
+    >
       <form
-        onSubmit={onLogin}
+        onSubmit={onSignup}
         className="form-card"
         data-aos="zoom-in"
-        data-aos-duration="1500"
+        data-aos-duration="2000"
       >
         <div className="form-title">Welcome 👋</div>
-
-        <div className="form-subtitle">Enter your username to get started</div>
+        <div className="form-subtitle">
+          Enter all below details to get started
+        </div>
 
         <div className="auth">
-          <div className="auth-label">Username</div>
+          {/* <div className="auth-label">Username</div> */}
           <input
             className="auth-input"
             name="username"
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter Your UserName Here..."
           />
-          <div className="auth-label2">Secret</div>
+          <input
+            className="auth-input"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter Your Email Here..."
+          />
+          <input
+            className="auth-input"
+            name="first_name"
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter Your First Name Here..."
+          />
+          <input
+            className="auth-input"
+            name="last_name"
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter Your Last Name Here..."
+          />
+          {/* <div className="auth-label2">Secret</div> */}
           <input
             className="auth-input"
             name="secret"
             onChange={(e) => setSecret(e.target.value)}
+            placeholder="Enter Your Secret  Here..."
           />
-          {loginError ? <p>{loginError}</p> : null}
+          <input
+            className="auth-input"
+            name="confirmsecret"
+            onChange={(e) => setConfirmSecret(e.target.value)}
+            placeholder="Re-Enter Your Secret  Here..."
+          />
+          {/* {signUpError ? <p>{signUpError}</p> : null} */}
           <button className="auth-button" type="submit">
             Enter
           </button>
-          <div className="signup-contianer">
+          {/* <div>
             <p>OR</p>
-
-            <Link to="channel-signup">
-              <p className="signuplink">Create New Chat Account? Signup</p>
-            </Link>
-          </div>
+            <p>Signin</p>
+          </div> */}
         </div>
       </form>
     </div>
@@ -146,4 +179,4 @@ const ChannelAuthContainer = (props) => {
   );
 };
 
-export default ChannelAuthContainer;
+export default ChannelSignupContainer;

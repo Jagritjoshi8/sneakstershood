@@ -30,6 +30,43 @@
         //object-fit: cover; /* Ensure the image covers the circular container */
       }
     }
+    .seller-root-liveproductbtn {
+      position: fixed;
+      bottom: 0;
+      margin-bottom: 80px;
+      margin-left: 20px;
+      left: 10;
+      font-size: 25px;
+      width: 300px;
+      background-color: rgb(106, 0, 168);
+      padding: 10px 20px;
+      border: none;
+      color: aliceblue;
+      border-radius: 0.8em;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+    .seller-root-signoutbtn {
+      position: fixed;
+      bottom: 0;
+      margin-bottom: 20px;
+      margin-left: 20px;
+      left: 10;
+      font-size: 25px;
+      width: 300px;
+      // background-color: rgb(241, 121, 121);
+      background-color: rgb(182, 101, 101);
+      padding: 10px 20px;
+      border: none;
+      color: aliceblue;
+      border-radius: 0.8em;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
     .nl {
       margin-left: 40px;
       margin-bottom: 20px;

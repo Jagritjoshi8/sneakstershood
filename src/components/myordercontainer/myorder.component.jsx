@@ -89,7 +89,19 @@ const MyOrderContainer = ({ orderDetails }) => {
                     )}
                   </div>
 
-                  <p className="p2">Pending</p>
+                  <div className="user-order-status">
+                    {order.orderStatus ? (
+                      order.orderStatus === "Pending" ? (
+                        <div className="pending">Pending</div>
+                      ) : order.orderStatus === "Dispatched" ? (
+                        <div className="dispatched">Dispatched</div>
+                      ) : (
+                        <div className="delivered">Delivered</div>
+                      )
+                    ) : (
+                      "Pending"
+                    )}
+                  </div>
                 </div>
                 <div className="delivery-date-address">
                   {" "}

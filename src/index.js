@@ -38,6 +38,8 @@ import SellerSummary from "./routes/seller/sellerSummary/sellerSummary";
 import SellerChannel from "./routes/seller/sellerChannel/sellerChannel";
 import SellerOder from "./routes/seller/sellerOrder/sellerOder";
 import PdfRough from "./components/SellerComponents/sellerOrderComponents/pdfrough/pdfrough";
+import ChannelSignupContainer from "./components/SellerComponents/sellerChannelComponents/channelAuthComponent/channelsignup.component";
+import UserChannel from "./routes/userChannel/userChannel";
 
 const store = configureStore({
   reducer: {
@@ -106,6 +108,10 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
+      {
+        path: "channel",
+        element: <UserChannel />,
+      },
     ],
   },
   {
@@ -132,6 +138,10 @@ const router = createBrowserRouter([
       {
         path: "channel",
         element: <SellerChannel />,
+      },
+      {
+        path: "channel/channel-signup",
+        element: <ChannelSignupContainer />,
       },
     ],
   },

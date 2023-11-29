@@ -10,8 +10,6 @@
   // background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
   background-color: rgb(209, 202, 248);
   background: url("https://static.vecteezy.com/system/resources/previews/007/707/394/non_2x/background-from-polygons-abstract-background-of-triangles-wallpaper-vector.jpg");
-  margin-left: -10px;
-  margin-right: -10px;
   background-size: 100%;
 
   // background-size: 100vw;
@@ -49,12 +47,21 @@
     //flex-wrap: wrap;
     //background-color: #0077b6;
 
-    .left-column {
+    .left-colum {
       width: 45%;
       display: flex;
       flex-flow: column;
       //border: 1px dotted grey;
       padding: 5px;
+      .form-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: first baseline;
+        label {
+          padding: 15px;
+          font-size: 28px;
+        }
+      }
     }
     .right-column {
       width: 45%;
@@ -212,6 +219,11 @@
     p {
       color: red;
       font-size: 20px;
+    }
+    [type="file"]::file-selector-button {
+      color: #500874;
+      font-weight: 600;
+      border: 3px solid purple;
     }
   }
   @media (max-width: 1387px) {

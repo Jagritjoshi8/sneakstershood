@@ -10,20 +10,9 @@ import MensContainer from "../../components/homecontainers/menscontainer/menscon
 import WomenContainer from "../../components/homecontainers/womencontainer/womencontainer";
 import KidsContainer from "../../components/homecontainers/kidscontainer/kidscontainer.component";
 import FooterContainer from "../../components/extra/footer/footer.component";
+import SneakerNewsContainer from "../../components/homecontainers/sneakernews/sneakernews";
 
 const Home = () => {
-  const containeritems = [
-    {
-      id: "1",
-      title: "Nike A1",
-      img: "https://i8.amplience.net/i/jpl/desktop-middle-banner-1704x740-1577bee06e25317e00000efd38bee5b8?qlt=90&amp;fmt=auto",
-    },
-    {
-      id: "2",
-      title: "Nike A2",
-      img: "https://i8.amplience.net/i/jpl/mobile-site-middle-banner-672x672-87f9872e1598a27005807ef8af88f7df?qlt=90&amp;fmt=auto",
-    },
-  ];
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const od1 = data?.find((product) => product.name === "Enigma Pro X");
@@ -41,6 +30,7 @@ const Home = () => {
       <WomenContainer />
       <HighlightProductContainer product={od2} />
       <KidsContainer />
+      <SneakerNewsContainer />
       <FooterContainer />
 
       <div></div>

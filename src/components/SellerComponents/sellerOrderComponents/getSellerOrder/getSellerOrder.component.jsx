@@ -99,7 +99,7 @@ const GetSellerOrderContainer = () => {
             >
               Dispatched
             </button>
-            <div
+            <button
               className="ebtn"
               onClick={() => handleUpdateOrder(params.row.id, "Delivered")}
               disabled={params.row.oStatus === "Delivered"}
@@ -111,7 +111,7 @@ const GetSellerOrderContainer = () => {
               }}
             >
               Delivered
-            </div>
+            </button>
             {/* <div className="vbtn" onClick={() => navigate(`/pdfrough`)}>
               pdf
             </div> */}
@@ -122,11 +122,11 @@ const GetSellerOrderContainer = () => {
     },
   ];
   return (
-    <div style={{ height: 600, width: "100%" }} className="getsellerproducts">
+    <div style={{ height: 700, width: "100%" }} className="getsellerproducts">
       {!sellerOrderDetails ? (
         <div>no orders</div>
       ) : (
-        <div>
+        <div data-aos="fade-up" data-aos-duration="2000">
           {" "}
           <DataGrid
             rows={rows}
@@ -134,10 +134,10 @@ const GetSellerOrderContainer = () => {
             sx={{ fontSize: 25 }}
             initialState={{
               pagination: {
-                paginationModel: { page: 0, pageSize: 10 },
+                paginationModel: { page: 0, pageSize: 13 },
               },
             }}
-            pageSizeOptions={[5, 10]}
+            pageSizeOptions={[10, 13]}
             checkboxSelection
             disableRowSelectionOnClick
           />

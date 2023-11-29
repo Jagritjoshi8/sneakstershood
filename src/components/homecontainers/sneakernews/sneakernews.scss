@@ -1,0 +1,22 @@
+.sneakerNewsContainer {
+  margin-top: 50px;
+  width: 96vw;
+  margin-left: auto;
+  margin-right: auto;
+  h1 {
+    margin-left: 20px;
+  }
+  .top-news-container {
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    .news-readmore {
+      margin-bottom: 1px;
+      width: 100%;
+      background-color: rgb(93, 90, 95);
+      color: aliceblue;
+      border-radius: 0.7em;
+    }
+  }
+}

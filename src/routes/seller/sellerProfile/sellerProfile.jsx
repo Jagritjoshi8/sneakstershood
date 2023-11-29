@@ -24,7 +24,11 @@ const SellerProfile = () => {
   };
   return (
     <div>
-      <div className="seller-profile-section">
+      <div
+        className="seller-profile-section"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
         <div className="seller-profile-header">
           <div className="logo-container">
             <img src={imageURL} alt="Profile Preview" width="250" />
