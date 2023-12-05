@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
 const initialState = {
-  // wishlistItems: [],
   wishlistItems: localStorage.getItem("wishlistItems")
     ? JSON.parse(localStorage.getItem("wishlistItems"))
     : [],

@@ -43,7 +43,6 @@ const AllTimeDataContainer = () => {
     },
     { name: "Current Pending Orders", amount: `${pendingOrders?.length}` },
     { name: "Total Earning", amount: `$${totalEarnings}` },
-    // { name: "john", amount: "500", time: "7" },
   ];
   return (
     <div className="allTimeDataContainer">

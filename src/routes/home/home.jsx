@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import "./home.scss";
-import HeroContainer from "../../components/homecontainers/herocontainer/herocontainer.component";
 import PromotionalLinesContainer from "../../components/homecontainers/promtionallinescontainer/promotionalLines.component";
 import HeroVideoContainer from "../../components/homecontainers/herovideocontainer/herovideocontainer.component";
 import PopularSneakersContainer from "../../components/homecontainers/popularsneakers/popularsneaker.component";
@@ -15,14 +13,11 @@ import GenderSectionContainer from "../../components/homecontainers/genderSectio
 
 const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
-
   const od1 = data?.find((product) => product.name === "Enigma Pro X");
   const od2 = data?.find((product) => product.name === "Luminary Synthesis");
-  //console.log("od1", od1);
 
   return (
     <div className="app">
-      {/* <HeroContainer container={containeritems} /> */}
       <HeroVideoContainer />
       <PromotionalLinesContainer />
       <PopularSneakersContainer />
@@ -34,8 +29,6 @@ const Home = () => {
       <SneakerNewsContainer />
       <GenderSectionContainer />
       <FooterContainer />
-
-      <div></div>
     </div>
   );
 };

@@ -69,7 +69,6 @@ const WomenContainer = () => {
           ) : (
             <div className="top-three-container">
               {categoryProducts?.map((data) => {
-                //console.log("top-3", data);
                 return (
                   <div key={data._id} className="single-pick">
                     <div className="inner-details">
@@ -82,7 +81,6 @@ const WomenContainer = () => {
                           className="single-pick-wishlist"
                           onClick={() => wishlistHandler(data)}
                         >
-                          {/* <AiOutlineHeart size={38} /> */}
                           {verifyisInWishList(data) ? (
                             <FavoriteIcon sx={{ fontSize: 28 }} />
                           ) : (

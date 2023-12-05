@@ -1,9 +1,14 @@
 import React from "react";
+import { CouponsContainer } from "../../coupons/coupons.component";
 import "./footer.styles.scss";
+import { useSelector } from "react-redux";
+import { UserMailFormContainer } from "../../userMailForm/userMailForm";
 
 const FooterContainer = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <footer data-aos="zoom-in-down" data-aos-duration="2500">
+      <UserMailFormContainer />
       <div className="footer-content">
         <div className="footer-section">
           <h2>Contact Us</h2>

@@ -21,7 +21,6 @@ const GetDeletedProductsContainer = () => {
     dispatch(getDeletedSellerProducts(authseller._id));
   }, [products.items]);
   const { deletedSellerProducts } = products;
-  //   console.log("sp", sellerProducts);
   const handleHardDelete = (productid) => {
     dispatch(hardDeleteProduct(productid));
   };

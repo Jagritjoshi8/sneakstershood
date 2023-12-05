@@ -1,13 +1,10 @@
 import React from "react";
-// import { MdDiscount } from "react-icons/md";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import "./coupons.styles.scss";
 import DiscountIcon from "@mui/icons-material/Discount";
 import { setCouponSelected } from "../../features/cartSlice";
-
-// import { useUserData } from "../../../../contexts/UserDataProvider";
 
 export const CouponsContainer = ({ cart }) => {
   const { couponSelected, cartTotalAmount } = cart;
@@ -16,7 +13,6 @@ export const CouponsContainer = ({ cart }) => {
   const handleSetCouponSelected = (coupon) => {
     dispatch(setCouponSelected(coupon));
   };
-  //   const { userDataState } = useUserData();
 
   const couponsData = [
     {

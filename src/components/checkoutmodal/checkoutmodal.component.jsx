@@ -63,18 +63,10 @@ const CheckoutModal = ({ open, onClose }) => {
             button: "Aww yess!",
           });
           navigate("/profile");
-          // swal({
-          //   title: "Hurray!!!",
-          //   text: "Your Order is Placed !",
-          //   icon: "success",
-          //   button: "Aww yess!",
-          // });
         } catch (error) {
           console.log(error);
         }
       },
-
-      //   callback_url: "http://localhost:8000/payments/verification",
       prefill: {
         name: tokendata.name,
         email: tokendata.email,
@@ -89,7 +81,6 @@ const CheckoutModal = ({ open, onClose }) => {
     };
     const razor = new window.Razorpay(options);
     razor.open();
-    //console.log(data);
   };
   if (!open) return null;
   return (

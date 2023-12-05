@@ -68,7 +68,6 @@ const SellerChartContainer = () => {
             stroke="#464380"
             activeDot={{ r: 10 }}
           />
-          {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
         </LineChart>
       </ResponsiveContainer>
     </div>

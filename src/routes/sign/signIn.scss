@@ -1,97 +1,3 @@
-// /* Base styles for the sign-in form container */
-// .sign-form {
-//   background-color: #f5f5f5; /* Background color */
-//   border: 1px solid #ddd; /* Border */
-//   border-radius: 5px;
-//   padding: 20px;
-//   //max-width: 400px;
-//   margin: 0 auto;
-//   margin-top: 30px;
-//   //text-align: center;
-//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
-// }
-
-// /* Form header styles */
-// h2 {
-//   text-align: center;
-//   color: #333; /* Header text color */
-// }
-
-// .form-dual-group {
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-start;
-// }
-
-// /* Form input styles */
-// .form-group {
-//   margin-bottom: 15px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-right: 250px;
-
-//   label {
-//     display: block;
-//     font-weight: bold;
-//     margin-bottom: 5px;
-//     margin-right: 25px;
-//   }
-
-//   input {
-//     width: auto;
-//     padding: 10px;
-//     border: 1px solid #ccc;
-//     border-radius: 3px;
-//     transition: border-color 0.2s;
-//     font-size: 16px;
-
-//     &:focus {
-//       outline: none;
-//       border-color: #0078d4; /* Highlight color on focus */
-//     }
-//   }
-// }
-
-// /* Sign-in button styles */
-// button[type="submit"] {
-//   background-color: #0078d4; /* Button background color */
-//   color: #fff; /* Button text color */
-//   border: none;
-//   border-radius: 3px;
-//   padding: 10px 20px;
-//   font-size: 16px;
-//   cursor: pointer;
-//   transition: background-color 0.2s;
-
-//   &:hover {
-//     background-color: #005aa3; /* Hover background color */
-//   }
-// }
-/* Import any additional fonts or styles you need */
-
-// body {
-//   font-family: Arial, sans-serif;
-//   background-color: #f0f0f0;
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-// }
-/* Import any additional fonts or styles you need */
-
-// body {
-//   font-family: Arial, sans-serif;
-//   background-color: #f0f0f0;
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-// }
 .user-sign-container {
   video {
     position: fixed;
@@ -106,16 +12,10 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    //justify-content: space-evenly;
-    //max-width: 800px;
+
     min-height: 100vh;
     min-width: 100vw;
-    // background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
 
-    //background-color:rgb(5, 1, 28);
-    // background-size: 100vw;
-
-    // background-color: rgb(255, 255, 255);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     h2 {
@@ -157,18 +57,13 @@
     display: flex;
     flex: 1;
     width: 95vw;
-    // margin-left: 170px;
+
     justify-content: space-around;
     align-items: center;
     padding: 20px;
     margin-top: 20px;
 
-    //border: 1px solid #ddd; /* Border */
-    //   border-radius: 5px;
-    //flex-wrap: wrap;
-    //background-color: #0077b6;
     .threeD-sneaker-container {
-      // visibility: visible;
       border: none;
     }
 
@@ -176,7 +71,7 @@
       width: 40%;
       display: flex;
       flex-flow: column;
-      //border: 1px dotted grey;
+
       padding: 5px;
       font-weight: 600;
 
@@ -186,11 +81,10 @@
         align-items: first baseline;
         margin-bottom: 20px;
 
-        //border: 1px dotted grey;
         .input-info-container {
           width: 50%;
           display: flex;
-          // align-items: flex-start;
+
           .info-icon {
             margin-left: 5px;
             margin-top: 10px;
@@ -204,7 +98,7 @@
     }
     .blur-bg {
       background-color: rgba(253, 206, 255, 0.137);
-      // opacity: 0.9;
+
       backdrop-filter: blur(10px);
       padding: 20px;
     }
@@ -214,16 +108,16 @@
       flex-flow: column;
       padding: 5px;
       font-weight: 600;
-      //border: 1px dotted grey;
+
       .form-group {
         display: flex;
         justify-content: space-between;
         align-items: first baseline;
-        // margin-bottom: 20px;
+
         .input-info-container {
           width: 50%;
           display: flex;
-          // align-items: flex-start;
+
           .info-icon {
             margin-left: 5px;
             margin-top: 10px;
@@ -238,9 +132,9 @@
     .select-group {
       display: flex;
       justify-content: space-between;
-      // align-items: center;
+
       opacity: 0.8;
-      // width: 100%;
+
       margin-top: -20px;
       margin-bottom: 30px;
       .input-info-container {
@@ -249,7 +143,6 @@
         align-items: center;
         .info-icon {
           margin-left: 1px;
-          // margin-top: 28px;
         }
       }
 
@@ -257,9 +150,8 @@
         font-size: 29px;
         background-color: rgba(255, 206, 247, 0.76);
       }
-      //border: 1px dotted grey;
+
       .l1 {
-        // padding: 15px;
         font-size: 28px;
         color: black;
       }
@@ -274,14 +166,12 @@
     input,
     select,
     textarea {
-      //display: block;
-
       width: 90%;
       margin-bottom: 45px;
       margin-left: 15px;
       padding: 10px;
       font-size: 16px;
-      // border: 1px solid #ccc;
+
       border: none;
       background-color: rgba(255, 206, 247, 0.76);
       border-radius: 5px;
@@ -290,34 +180,25 @@
         border: 2px solid #8e51ad;
       }
     }
-
-    // select {
-    //   width: 100%;
-    // }
   }
 }
-/* Sign-in button styles */
+
 form {
-  //display: flex;
-  //flex-flow: row;
-  // flex-flow: column;
-  //justify-content: center;
-  //align-items: center;
   .profile-img-container {
     display: flex;
-    // flex-flow: row-reverse;
+
     justify-content: center;
     align-items: center;
     .c1 {
       width: 200px;
       height: 200px;
-      border: 5px solid rgb(109, 15, 138); /* Adjust the border color and width as needed */
-      border-radius: 50%; /* Make the container circular */
+      border: 5px solid rgb(109, 15, 138);
+      border-radius: 50%;
       overflow: hidden;
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Ensure the image covers the circular container */
+        object-fit: cover;
       }
     }
     .c2 {
@@ -340,8 +221,8 @@ form {
     align-items: center;
   }
   button[type="submit"] {
-    background-color: #8e51ad; /* Button background color */
-    color: #fff; /* Button text color */
+    background-color: #8e51ad;
+    color: #fff;
     width: 20%;
     border: none;
     border-radius: 0.4em;
@@ -351,7 +232,7 @@ form {
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: #ac0ea4; /* Hover background color */
+      background-color: #ac0ea4;
     }
   }
   p {

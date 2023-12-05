@@ -21,9 +21,7 @@
       height: 200px;
       border-radius: 0.8em;
       color: white;
-
       background: linear-gradient(to right, #8b5cf6, #4f46e5);
-      //   background: linear-gradient(to right, #8e44ad, #e27e68);
       .inner-details {
         padding: 12px;
         margin-bottom: 15px;
@@ -74,8 +72,7 @@
       .single-pick {
         margin-top: 30px;
         justify-content: space-between;
-        // height: 100px;
-        // width: 200px;
+
         img {
           height: 250px;
         }
@@ -90,8 +87,6 @@
     }
     .top-three-container {
       .single-pick {
-        // height: 100px;
-        // width: 200px;
         img {
           height: 150px;
         }
@@ -107,8 +102,6 @@
     .top-three-container {
       flex-flow: column;
       .single-pick {
-        // height: 100px;
-        // width: 200px;
         img {
           height: 350px;
         }

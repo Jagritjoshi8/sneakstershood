@@ -33,33 +33,27 @@
     display: flex;
     flex: 1;
     width: 100%;
-    // margin-left: 170px;
+
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    //border: 1px solid #ddd; /* Border */
-    //   border-radius: 5px;
-    //flex-wrap: wrap;
-    //background-color: #0077b6;
+
     .profile-img-container {
       margin-top: 10px;
       width: 40%;
-      //   display: flex;
-      //   // flex-flow: row-reverse;
-      //   justify-content: center;
-      //   align-items: center;
+
       .c1 {
         width: 80%;
         height: 80%;
-        border: 2px solid rgb(208, 208, 208); /* Adjust the border color and width as needed */
-        border-radius: 0.6em; /* Make the container circular */
+        border: 2px solid rgb(208, 208, 208);
+        border-radius: 0.6em;
         background-color: rgba(255, 255, 255, 0.24);
         opacity: 0.8;
         overflow: hidden;
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Ensure the image covers the circular container */
+          object-fit: cover;
         }
       }
     }
@@ -68,7 +62,7 @@
       width: 55%;
       display: flex;
       flex-flow: column;
-      //border: 1px dotted grey;
+
       padding: 5px;
 
       .c2 {
@@ -100,14 +94,12 @@
       input,
       select,
       textarea {
-        //display: block;
-
         width: 50%;
         margin-bottom: 45px;
         margin-left: 15px;
         padding: 10px;
         font-size: 16px;
-        // border: 1px solid #ccc;
+
         border: none;
 
         border-radius: 5px;

@@ -172,28 +172,12 @@ const ProductDetailContainer = ({ selectedProduct }) => {
                       </span>
                     )}
                   </button>
-                  {/* <p className="remove-from-wishlist-txt">
-                    <b>Remove From Wishlist</b>
-                  </p> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       )}
-
-      {/* {!sortedProducts ? (
-        <p>no matching products</p>
-      ) : (
-        <>
-          {sortedProducts.map((selectedProduct) => {
-            return <ProductCard data={data} key={data._id} />;
-          })}
-        </>
-      )}
-      {/* {products.map((data) => {
-        return <ProductCard data={data} key={data._id} />;
-      })} */}
     </div>
   );
 };

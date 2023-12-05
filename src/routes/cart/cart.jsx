@@ -39,20 +39,6 @@ const Cart = () => {
           </div>
         </div>
       )}
-
-      {/* <ProductListContainer className="products-container" /> */}
-      {/* {products.map((data) => {
-        return (
-          <div key={data.id}>
-            <h2>{data.name}</h2>
-            <p>{data.original_price}</p>
-          </div>
-        );
-      })} */}
-
-      {/* <h2>this is product section</h2>
-      <Outlet />
-      <h3>this is fixed filter component</h3> */}
     </div>
   );
 };

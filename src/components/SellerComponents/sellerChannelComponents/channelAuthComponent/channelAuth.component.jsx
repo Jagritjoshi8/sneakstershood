@@ -16,7 +16,7 @@ const ChannelAuthContainer = (props) => {
     console.log(username, secret);
     axios
       .post("http://localhost:8000/channel/login", { username, secret })
-      .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
+      .then((r) => props.onAuth({ ...r.data, secret }))
       .catch((e) => setLoginError("UserName Or Secrect is Invalid"));
   };
 

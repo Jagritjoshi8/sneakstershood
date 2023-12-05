@@ -13,7 +13,6 @@ const ReviewFormContainer = ({ selectedProduct }) => {
   const [hover, setHover] = React.useState(-1);
   const auth = useSelector((state) => state.auth);
   const review = useSelector((state) => state.review);
-  //console.log("review State", review);
   let user;
   if (auth.name) {
     user = auth.name;
@@ -70,7 +69,6 @@ const ReviewFormContainer = ({ selectedProduct }) => {
                 size="large"
                 required
                 sx={{ fontSize: 50 }}
-                // defaultValue={2}
                 onChange={(event, newValue) => {
                   console.log("nwvalue", newValue);
                   setRating(newValue);

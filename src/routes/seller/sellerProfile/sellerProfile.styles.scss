@@ -13,13 +13,12 @@
     .logo-container {
       width: 450px;
       height: 380px;
-      border: 5px solid rgb(113, 90, 172); /* Adjust the border color and width as needed */
-      border-radius: 0.6em; /* Make the container circular */
+      border: 5px solid rgb(113, 90, 172);
+      border-radius: 0.6em;
       overflow: hidden;
       img {
         width: 100%;
         height: 100%;
-        //object-fit: cover; /* Ensure the image covers the circular container */
       }
     }
     .seller-profile-id {
@@ -63,9 +62,6 @@
     font-size: 25px;
 
     p {
-      //   background-color: rgb(70, 59, 129);
-      //   background-color: rgb(14, 138, 168);
-      //   background-color: rgb(102, 108, 255);
       background-color: rgb(48, 51, 78);
       padding: 18px 30px;
       border-radius: 0.6em;

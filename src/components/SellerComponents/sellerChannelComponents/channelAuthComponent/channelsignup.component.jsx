@@ -28,7 +28,6 @@ const ChannelSignupContainer = (props) => {
       .then((r) => {
         if (!r.data.error) {
           navigate("/seller/channel");
-          //   props.onAuth({ ...r.data, secret });
         }
       })
       .catch((e) => setSignUpError(e.response.data));
@@ -90,10 +89,6 @@ const ChannelSignupContainer = (props) => {
             <button className="auth-button" type="submit">
               Enter
             </button>
-            {/* <div>
-            <p>OR</p>
-            <p>Signin</p>
-          </div> */}
           </div>
         </form>
       </div>

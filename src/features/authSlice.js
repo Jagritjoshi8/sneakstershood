@@ -78,16 +78,12 @@ export const forgotPassword = createAsyncThunk(
 export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
   async ({ userId, resetData }, { rejectWithValue }) => {
-    //console.log("kk", productId, reviewData);
-    // for (let pair of formData.entries()) {
-    //   console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
-    // }
     try {
       const reset = await axios.patch(
         `${url}/users/resetPassword/${userId}`,
         resetData
       );
-      //   localStorage.setItem("token", userdata.data.token);
+
       return reset.data;
     } catch (error) {
       console.log(error.response.data);
@@ -157,7 +153,6 @@ const authSlice = createSlice({
       } else return state;
     });
     builder.addCase(signupUser.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         signupStatus: "rejected",
@@ -185,7 +180,6 @@ const authSlice = createSlice({
       } else return state;
     });
     builder.addCase(signinUser.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         signinStatus: "rejected",
@@ -203,7 +197,6 @@ const authSlice = createSlice({
       };
     });
     builder.addCase(forgotPassword.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         fpStatus: "rejected",
@@ -222,7 +215,6 @@ const authSlice = createSlice({
       };
     });
     builder.addCase(resetPassword.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         rpStatus: "rejected",

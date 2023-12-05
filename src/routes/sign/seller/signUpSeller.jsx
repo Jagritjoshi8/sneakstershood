@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,26 +7,10 @@ import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../../components/authenticaton/formInput.component";
-import { UserContext } from "../../../contexts/user.context";
 import "./signSeller.scss";
-import { signupUser } from "../../../features/authSlice";
 import { signupSeller } from "../../../features/authSellerSlice";
 
 const SignUpSeller = () => {
-  // State to hold form input values
-  // const [user, setUser] = useState({
-  //   name: "",
-  //   email: "",
-  //   age: "",
-  //   gender: "",
-  //   phonenumber: "",
-  //   address: "",
-  //   password: "",
-  //   passwordConfirm: "",
-  //   profileimg: null,
-  // });
-  // console.log("pimg", user.profileimg);
-
   const [businessName, setBusinessName] = useState("");
   const [businessEmail, setBusinessEmail] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
@@ -39,13 +23,11 @@ const SignUpSeller = () => {
   const [previewURL, setPreviewURL] = useState(
     "https://png.pngtree.com/png-clipart/20210912/original/pngtree-your-logo-poster-png-image_6728130.jpg"
   );
-  // const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const authseller = useSelector((state) => state.authseller);
   console.log(authseller);
-  //   console.log(auth);
 
   useEffect(() => {
     if (authseller._id) {
@@ -53,21 +35,9 @@ const SignUpSeller = () => {
     }
   }, [authseller, navigate]);
 
-  // // Handle form submission
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Replace this with your registration logic
-  //   console.log("Name:", name);
-  //   console.log("Email:", email);
-  //   console.log("Password:", password);
-  //   console.log("Confirm Password:", confirmPassword);
-  //   // You can send a request to your backend for user registration here
-  // };
-  //   const handleSubmit = async (e) => {};
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    //console.log("inner name", name);
 
     formData.append("businessName", businessName);
     formData.append("businessEmail", businessEmail);
@@ -79,41 +49,8 @@ const SignUpSeller = () => {
     formData.append("passwordConfirm", passwordConfirm);
     formData.append("logoimg", logoimg);
 
-    // for (let pair of formData.entries()) {
-    //   console.log(`actulformdata:${pair[0]}: ${pair[1]}`);
-    // }
     dispatch(signupSeller(formData));
   };
-  // let result = await fetch("http://localhost:8000/users/signup", {
-  //   method: "post",
-  //   body: JSON.stringify({
-  //     name,
-  //     email,
-  //     age,
-  //     gender,
-  //     phonenumber,
-  //     address,
-  //     password,
-  //     passwordConfirm,
-  //   }),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-  // result = await result.json();
-  // console.warn(result);
-  // //console.log(result.token);
-  // if (result.status === "success") {
-  //   alert("Data saved succesfully");
-  //   setEmail("");
-  //   setName("");
-  //   setPassword("");
-  //   setPasswordConfirm("");
-  //   setCurrentUser(result);
-  //   navigate("/profile");
-  // } else {
-  //   alert(`Warning: ${result.message}`);
-  // }
 
   return (
     <div className="containers">
@@ -221,15 +158,6 @@ const SignUpSeller = () => {
                 </Select>
               </FormControl>
             </div>
-            {/* <FormInput
-              label="Gender"
-              type="gender"
-              id="gender"
-              name="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              required
-            /> */}
 
             <div className="form-group">
               <label>Business Address:</label>
@@ -243,15 +171,7 @@ const SignUpSeller = () => {
                 cols="22"
               ></textarea>
             </div>
-            {/* <FormInput
-              label="Address"
-              type="address"
-              id="address"
-              name="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            /> */}
+
             <FormInput
               label="Confirm Password"
               type="password"

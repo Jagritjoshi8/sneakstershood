@@ -1,0 +1,65 @@
+.user-mail-section {
+  margin: 10px;
+  padding: 10px;
+  //   background-color: aliceblue;
+  //   color: red;
+  //   width: 100%;
+  .mailer-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-size: 25px;
+      margin: 1px;
+      &:hover {
+        cursor: pointer;
+        color: rgb(226, 176, 255);
+      }
+    }
+  }
+  .mailer-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .mailer-center-section {
+      width: 50%;
+      display: flex;
+      flex-flow: column;
+      .button-warning-containers {
+        margin-top: 10px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        button {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(121, 4, 175);
+          }
+        }
+      }
+      .form-group {
+        margin-top: 10px;
+        .input-info-container {
+          display: flex;
+          align-items: center;
+        }
+      }
+      input,
+      textarea {
+        width: 95%;
+        border-radius: 0.6em;
+        font-size: 25px;
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.541);
+        color: rgb(78, 78, 78);
+      }
+    }
+  }
+}

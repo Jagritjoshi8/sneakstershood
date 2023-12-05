@@ -48,10 +48,6 @@ export const getSellerOrder = createAsyncThunk(
 export const updateOrder = createAsyncThunk(
   "order/updateOrder",
   async ({ orderId, updatedData }, { rejectWithValue }) => {
-    // for (let pair of formData.entries()) {
-    //   // console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
-    // }
-    //console.log(orderId, updatedData);
     try {
       const updateOrderdata = await axios.patch(
         `${url}/payments/${orderId}`,
@@ -60,7 +56,6 @@ export const updateOrder = createAsyncThunk(
 
       return updateOrderdata.data;
     } catch (error) {
-      // console.log(error.response.data);
       return rejectWithValue(error.response.data);
     }
   }
@@ -81,7 +76,6 @@ const orderSlice = createSlice({
       } else return state;
     });
     builder.addCase(getUserOrder.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         uStatus: "rejected",
@@ -99,7 +93,6 @@ const orderSlice = createSlice({
       } else return state;
     });
     builder.addCase(getSellerOrder.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         sStatus: "rejected",
@@ -119,11 +112,9 @@ const orderSlice = createSlice({
       return {
         ...state,
         updateStatus: "success",
-        // name: action.payload.name,
       };
     });
     builder.addCase(updateOrder.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         updateStatus: "rejected",

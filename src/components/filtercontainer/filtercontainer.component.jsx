@@ -176,7 +176,6 @@ const FilterContainer = () => {
           </div>
         </div>
       </div>
-      {/* //innerfiltercontainer */}
     </div>
   );
 };

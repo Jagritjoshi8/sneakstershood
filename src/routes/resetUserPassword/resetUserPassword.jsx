@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router";
-
 import jwtDecode from "jwt-decode";
 import FormInput from "../../components/authenticaton/userformInput.component";
 import "./resetUserPassword.scss";
@@ -34,7 +32,6 @@ const ResetUserPassword = () => {
 
   const [newpassword, setNewPassword] = useState("");
   const [confirmnewpassword, setConfirmNewPassword] = useState("");
-  // const { setCurrentUser } = useContext(UserContext);
 
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
@@ -99,21 +96,6 @@ const ResetUserPassword = () => {
                     ) : null}
                   </div>
                   <button type="submit">Reset Password</button>
-                  {/* <h3 className="user-forgot-password">
-                Forgot Password?{" "}
-                <span
-                    onClick={handleForgotPassword}
-                    className="forgot-password-link"
-                  >
-                    click here
-                  </span>
-              </h3>
-              <h2 className="h2or">OR</h2>
-
-              <h3>Create New Account? </h3>
-              <Link to="/sign-up">
-                <h3 className="sign-other-button">SIGN UP</h3>
-              </Link> */}
                 </div>
               </div>
             </form>

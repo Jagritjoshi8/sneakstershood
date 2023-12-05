@@ -4,16 +4,14 @@
   min-height: 93vh;
   .productDetail-card-image {
     background-color: rgb(255, 255, 255);
-    // width: 50vw;
-    // height: 90%;
+
     padding-top: 0px;
     border-radius: 0.8em;
     margin-top: 10px;
     img {
       width: 800px;
       margin: -3em;
-      //   bottom: -2em;
-      //   width: 140%;
+
       object-fit: cover;
       &:hover {
         cursor: -webkit-zoom-in;
@@ -21,9 +19,6 @@
     }
   }
   .product-description-container {
-    // display: flex;
-    // flex-flow: column;
-    // justify-content: space-between;
     margin-left: 70px;
     width: 45vw;
     h1 {
@@ -85,10 +80,9 @@
     .details-cart-buttons {
       margin: 45px 35px 10px 15px;
       display: flex;
-      //   width: 500px;
+
       justify-content: space-between;
       z-index: 5;
-      //   width: 130%;
     }
     .cart-btn {
       display: flex;
@@ -98,7 +92,7 @@
       margin: 0px auto;
       border: none;
       flex-grow: 1;
-      //   justify-self: stretch;
+
       border-radius: 10px;
       font-size: 1.39em;
       height: 65px;

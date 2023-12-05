@@ -42,11 +42,6 @@ const HighlightProductContainer = ({ product }) => {
               </Tilt>
             </div>
 
-            {/* <Link to={`/product-details/${product.id}`}>
-              <img src={product.img} />
-            </Link> */}
-
-            {/* <div className="description">{product.description}</div> */}
             <div className="highlight-details">
               <div className="p2">
                 <span className="s1"> Price:</span>
@@ -63,13 +58,6 @@ const HighlightProductContainer = ({ product }) => {
                 <span className="s1"> Rating:</span>
                 <span className="s2">{product.rating}</span>
                 <BsFillStarFill color="orange" />
-                {/* <Rating
-                name="read-only"
-                precision={0.5}
-                size="large"
-                value={product.rating}
-                readOnly
-              /> */}
               </div>
               <div className="p2">
                 <span className="s1"> Category:</span>

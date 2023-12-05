@@ -15,8 +15,6 @@
   align-items: center;
   justify-content: center;
   .clearwishlist {
-    // width: 97%;
-    //   height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,9 +22,9 @@
     border-radius: 0.6em;
     padding: 5px 10px;
     color: dimgray;
-    // background-color: lightcoral;
+
     border: 3px solid dimgrey;
-    // margin-bottom: 10px;
+
     &:hover {
       cursor: pointer;
       opacity: 0.8;
@@ -38,14 +36,13 @@
 .wishlist-container {
   padding: 1em;
   display: flex;
-  // flex-flow: column wrap;
+
   justify-content: space-evenly;
-  //align-items: center;
-  // margin-bottom: 50px;
+
   width: inherit;
-  //width: 97vw;
+
   height: 680px;
-  //   margin-left: 250px; /* Adjust this value to match your sidebar width */
+
   padding: 15px;
   .wishlist-swiperslide {
     width: 310px;
@@ -86,11 +83,4 @@
       color: rgb(70, 67, 67);
     }
   }
-
-  //   .wishlist-btn {
-  //     visibility: hidden;
-  //   }
-  //   .remove-wishlist-btn {
-  //     visibility: visible;
-  //   }
 }

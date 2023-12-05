@@ -13,9 +13,6 @@ const SellerOverviewContainer = () => {
   const authseller = useSelector((state) => state.authseller);
   const { sellerProducts } = useSelector((state) => state.products);
 
-  // useEffect(() => {
-  //   dispatch(getSellerOrder(authseller._id));
-  // }, []);
   let todayfilteredOrders = [];
   let yesterdayfilteredOrders = [];
   let ordersIncreasePercentage = 0;
@@ -26,17 +23,15 @@ const SellerOverviewContainer = () => {
   let yesterdaySumOfSellerPrice = 0;
   let earningsIncreasePercentage = 0;
   const today = new Date();
-  const formattedToday = today.toISOString().split("T")[0]; // Get today's date in the format "YYYY-MM-DD"
+  const formattedToday = today.toISOString().split("T")[0];
   const yesterday = new Date(today);
   yesterday.setDate(today.getDate() - 1);
-  const formattedYesterday = yesterday.toISOString().split("T")[0]; // Get yesterday's date in the format "YYYY-MM-DD"
+  const formattedYesterday = yesterday.toISOString().split("T")[0];
 
   if (sellerOrderDetails) {
     todayfilteredOrders = sellerOrderDetails?.sellerOrder?.filter((order) => {
-      // Extract the date part from the order's createdAt timestamp
       const orderDate = order.createdAt.split("T")[0];
 
-      // Compare the order date with today's date
       return orderDate === formattedToday;
     });
     todaySumOfSellerPrice = todayfilteredOrders?.reduce((sum, order) => {
@@ -44,10 +39,8 @@ const SellerOverviewContainer = () => {
     }, 0);
     yesterdayfilteredOrders = sellerOrderDetails?.sellerOrder?.filter(
       (order) => {
-        // Extract the date part from the order's createdAt timestamp
         const orderDate = order.createdAt.split("T")[0];
 
-        // Compare the order date with yesterday's date
         return orderDate === formattedYesterday;
       }
     );
@@ -71,17 +64,13 @@ const SellerOverviewContainer = () => {
   }
   if (sellerProducts) {
     todayfilteredproducts = sellerProducts?.filter((product) => {
-      // Extract the date part from the order's createdAt timestamp
       const productDate = product.createdAt.split("T")[0];
 
-      // Compare the order date with today's date
       return productDate === formattedToday;
     });
     yesterdayfilteredproducts = sellerProducts?.filter((product) => {
-      // Extract the date part from the order's createdAt timestamp
       const productDate = product.createdAt.split("T")[0];
 
-      // Compare the order date with today's date
       return productDate === formattedYesterday;
     });
     productsIncreasePercentage = Math.floor(

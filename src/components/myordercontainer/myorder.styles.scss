@@ -4,13 +4,11 @@
     margin-top: 30px;
     height: 10%;
     width: 32%;
-    // margin-bottom: -41px;
   }
   .oi2 {
     margin-top: 5px;
     height: 10%;
     width: 28%;
-    // margin-bottom: -41px;
   }
   .no-order-yet {
     width: 96vw;
@@ -49,9 +47,7 @@
 .full-order-container:nth-child(even) {
   background-color: #dddddd;
 }
-// .full-order-container:nth-child(odd) {
-//   background-color: #bce4ee;
-// }
+
 .orderid-pending {
   display: flex;
   justify-content: space-between;
@@ -104,8 +100,6 @@
 }
 .order-items-container {
   height: 500px;
-  //   display: flex;
-  //   justify-content: space-evenly;
 }
 
 .order-swiperlist {
@@ -115,7 +109,6 @@
 .order-card {
   transition: all 1.9s ease-in-out;
 
-  //   border: 2px solid purple;
   &:hover {
     transform: scale(1.02);
   }

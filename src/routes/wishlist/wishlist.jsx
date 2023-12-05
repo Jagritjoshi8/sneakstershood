@@ -8,15 +8,10 @@ const Wishlist = () => {
     <div
       className="wishlist-page"
       data-aos="fade-right"
-      // data-aos-easing="linear"
       data-aos-duration="2500"
     >
       {wishlist.wishlistItems.length === 0 ? (
-        <div
-          className="wishlist-empty"
-          // data-aos="fade-up"
-          // data-aos-duration="2500"
-        >
+        <div className="wishlist-empty">
           <h1>Your wishlist is Empty</h1>
           <button className="start-shopping-button">
             <Link to="/product"> Start Shopping ⇒</Link>

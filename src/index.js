@@ -8,15 +8,11 @@ import Root from "./routes/root/root";
 import Product from "./routes/product/product";
 import SignUp from "./routes/sign/signUp";
 import SignIn from "./routes/sign/signIn";
-import { UserProvider } from "./contexts/user.context";
-import { ProductsProvider } from "./contexts/products.context";
 import AOSInitializer from "./components/extra/aosInitalizer/aosInitializer";
 import Profile from "./routes/profile/profile";
 import Cart from "./routes/cart/cart";
-
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
 import productsReducer, { productsFetch } from "./features/productSlice";
 import { productsApi } from "./features/productsApi";
 import cartReducer, { getTotals } from "./features/cartSlice";
@@ -32,12 +28,10 @@ import authSellerReducer, { loadSeller } from "./features/authSellerSlice";
 import SellerRoot from "./routes/seller/sellerRoot/sellerRoot";
 import SignInSeller from "./routes/sign/seller/signInSeller";
 import SellerProduct from "./routes/seller/sellerProduct/sellerProduct";
-import SellerProfileConatiner from "./routes/seller/sellerProfile/sellerProfile";
 import SellerProfile from "./routes/seller/sellerProfile/sellerProfile";
 import SellerSummary from "./routes/seller/sellerSummary/sellerSummary";
 import SellerChannel from "./routes/seller/sellerChannel/sellerChannel";
 import SellerOder from "./routes/seller/sellerOrder/sellerOder";
-import PdfRough from "./components/SellerComponents/sellerOrderComponents/pdfrough/pdfrough";
 import ChannelSignupContainer from "./components/SellerComponents/sellerChannelComponents/channelAuthComponent/channelsignup.component";
 import UserChannel from "./routes/userChannel/userChannel";
 import ResetUserPassword from "./routes/resetUserPassword/resetUserPassword";
@@ -150,21 +144,15 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "pdfrough",
-    element: <PdfRough />,
-  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <UserProvider>
-        <AOSInitializer>
-          <RouterProvider router={router} />
-        </AOSInitializer>
-      </UserProvider>
+      <AOSInitializer>
+        <RouterProvider router={router} />
+      </AOSInitializer>
     </Provider>
   </React.StrictMode>
 );

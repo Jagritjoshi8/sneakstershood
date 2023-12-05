@@ -1,18 +1,10 @@
-// .heroVideo-container {
-//   //   background-color: rgba(0, 0, 0, 0.295);
-//   //   z-index: -10;
-//   //   min-height: 90vh;
-// }
 .vid {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: relative  ; */
+
   width: 100%;
   height: 90vh;
-  /* background-color: aqua; */
-  /* z-index: -1; */
-  //   top: 10%;
 }
 video {
   min-width: 100%;
@@ -20,15 +12,12 @@ video {
   opacity: 0.7;
   z-index: -1;
   position: relative;
-  /* left:1%; */
-  /* width: 200%; */
-  /* height: 120%; */
 }
 
 .hero-text {
   height: 100%;
   position: absolute;
-  /* z-index: 99; */
+
   text-align: center;
   color: white;
   filter: drop-shadow(0 0 0.75rem #dadada);
@@ -46,7 +35,6 @@ video {
   color: transparent;
   -webkit-text-stroke: 1.5px white;
   transition: all 0.3s linear;
-  //   filter: drop-shadow(0 0 0.75rem #dadada);
 }
 .hero-two:hover {
   color: white;
@@ -64,9 +52,6 @@ video {
     .hero-two {
       font-size: 10rem;
     }
-    // video {
-    //   min-width: 80%;
-    // }
   }
 }
 @media (max-width: 990px) {
@@ -74,7 +59,6 @@ video {
     margin-top: 0px;
     height: 40vh;
     video {
-      //   margin-top: -50px;
       min-width: 80%;
     }
   }

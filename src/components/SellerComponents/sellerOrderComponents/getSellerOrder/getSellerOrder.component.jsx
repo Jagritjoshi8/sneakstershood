@@ -112,9 +112,6 @@ const GetSellerOrderContainer = () => {
             >
               Delivered
             </button>
-            {/* <div className="vbtn" onClick={() => navigate(`/pdfrough`)}>
-              pdf
-            </div> */}
             <ViewSellerModal orderId={params.row.id} />
           </div>
         );

@@ -1,8 +1,5 @@
 import "./productlist.styles.scss";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ProductsContext } from "../../../contexts/products.context";
 import ProductCard from "../productcardcontainer/productcard.component";
 import { useGetAllProductsQuery } from "../../../features/productsApi";
 import { getPricedProducts } from "../../../helpers/filter-functions/price";
@@ -11,7 +8,6 @@ import { getCategoryWiseProducts } from "../../../helpers/filter-functions/categ
 import { getSortedProducts } from "../../../helpers/filter-functions/sort";
 import { getSearchedProducts } from "../../../helpers/filter-functions/productSearch";
 const ProductListContainer = () => {
-  // const { products } = useContext(ProductsContext);
   const { inputSearch, price, rating, categories, sort } = useSelector(
     (state) => state.productfilters
   );
@@ -30,14 +26,12 @@ const ProductListContainer = () => {
     <div
       className="product-card-container"
       data-aos="fade-right"
-      // data-aos-easing="linear"
       data-aos-duration="2500"
     >
       {sortedProducts?.length < 1 ? (
         <div
           className="no-matching-product"
           data-aos="fade-right"
-          // data-aos-easing="linear"
           data-aos-duration="2500"
         >
           <h1>Oops..!! No Matching Product</h1>
@@ -51,9 +45,6 @@ const ProductListContainer = () => {
           })}
         </>
       )}
-      {/* {products.map((data) => {
-        return <ProductCard data={data} key={data.id} />;
-      })} */}
     </div>
   );
 };

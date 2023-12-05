@@ -3,11 +3,9 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  margin-left: 270px; /* Adjust this value to match your sidebar width */
+  margin-left: 270px;
   padding: 10px;
   .no-matching-product {
-    // margin-left: auto;
-    // margin-right: auto;
     width: 80vw;
     display: flex;
     flex-flow: column;
@@ -30,14 +28,7 @@
     }
   }
 }
-// .footercontainer {
-//   background-color: rgb(215, 196, 252);
-//   margin-left: 240px;
-//   height: 150px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+
 .footercontainer {
   display: flex;
   justify-content: center;

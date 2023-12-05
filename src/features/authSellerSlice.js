@@ -81,7 +81,6 @@ const authSellerSlice = createSlice({
     },
     signoutSeller(state, action) {
       localStorage.removeItem("sellertoken");
-      //   toast.error("Signed Out 💔");
       return {
         ...state,
         sellertoken: "",
@@ -124,7 +123,6 @@ const authSellerSlice = createSlice({
       } else return state;
     });
     builder.addCase(signupSeller.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         signupStatus: "rejected",
@@ -158,7 +156,6 @@ const authSellerSlice = createSlice({
       } else return state;
     });
     builder.addCase(signinSeller.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         signinStatus: "rejected",

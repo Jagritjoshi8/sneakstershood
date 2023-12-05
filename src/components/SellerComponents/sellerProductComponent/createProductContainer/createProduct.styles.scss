@@ -2,56 +2,27 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-
-  //justify-content: space-evenly;
-  //max-width: 800px;
-  // min-height: 100vh;
-  // min-width: 100vw;
-  // background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
   background-color: rgb(209, 202, 248);
   background: url("https://static.vecteezy.com/system/resources/previews/007/707/394/non_2x/background-from-polygons-abstract-background-of-triangles-wallpaper-vector.jpg");
   background-size: 100%;
-
-  // background-size: 100vw;
-
-  // background: url("https://i.imgur.com/bBBVXiG.mp4") repeat;
-  // background-size: cover;
-  // background-color: rgb(255, 255, 255);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #500874;
   font-weight: 600;
-  // video {
-  //   position: fixed;
-  //   top: 30;
-  //   left: 0;
-  //   min-width: 100%;
-  //   min-height: 100%;
-  //   opacity: 0.7;
-  //   z-index: -1;
 
-  //   /* left:1%; */
-  //   /* width: 200%; */
-  //   /* height: 120%; */
-  // }
   .form-inner-container {
     display: flex;
     flex: 1;
     width: 75vw;
-    // margin-left: 170px;
     justify-content: space-around;
     align-items: center;
     padding: 0px;
-    //border: 1px solid #ddd; /* Border */
-    //   border-radius: 5px;
-    //flex-wrap: wrap;
-    //background-color: #0077b6;
 
     .left-colum {
       width: 45%;
       display: flex;
       flex-flow: column;
-      //border: 1px dotted grey;
+
       padding: 5px;
       .form-group {
         display: flex;
@@ -68,7 +39,7 @@
       display: flex;
       flex-flow: column;
       padding: 5px;
-      //border: 1px dotted grey;
+
       .form-group {
         display: flex;
         justify-content: space-between;
@@ -90,7 +61,7 @@
         border: 1px solid #ccc;
         background-color: rgba(255, 255, 255, 0.24);
       }
-      //border: 1px dotted grey;
+
       FormControl {
         min-width: 50%;
         background-color: rgba(255, 255, 255, 0.562);
@@ -111,8 +82,6 @@
     input,
     select,
     textarea {
-      //display: block;
-
       width: 50%;
       margin-bottom: 35px;
       margin-left: 15px;
@@ -121,41 +90,28 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       background-color: rgba(255, 255, 255, 0.24);
-      // &::after {
-      //   border: 2px solid #8e51ad;
-      //   background-color: rgba(255, 255, 255, 0.24);
-      // }
     }
-
-    // select {
-    //   width: 100%;
-    // }
   }
-  /* Sign-in button styles */
+
   form {
-    //display: flex;
-    //flex-flow: row;
-    // flex-flow: column;
-    //justify-content: center;
-    //align-items: center;
     .profile-img-container {
       margin-top: 10px;
       display: flex;
-      // flex-flow: row-reverse;
+
       justify-content: center;
       align-items: center;
       .c1 {
         width: 230px;
         height: 220px;
-        border: 2px solid rgb(208, 208, 208); /* Adjust the border color and width as needed */
-        border-radius: 0.6em; /* Make the container circular */
+        border: 2px solid rgb(208, 208, 208);
+        border-radius: 0.6em;
         background-color: rgba(255, 255, 255, 0.24);
         opacity: 0.8;
         overflow: hidden;
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Ensure the image covers the circular container */
+          object-fit: cover;
         }
       }
       .c2 {
@@ -180,7 +136,6 @@
       justify-content: space-between;
       align-items: center;
 
-      //border: 1px dotted grey;
       label {
         padding: 15px;
         font-size: 28px;
@@ -200,8 +155,8 @@
       align-items: center;
     }
     button[type="submit"] {
-      background-color: #ad6acf; /* Button background color */
-      color: #fff; /* Button text color */
+      background-color: #ad6acf;
+      color: #fff;
       width: 20%;
       border: none;
       border-radius: 0.4em;
@@ -213,7 +168,7 @@
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #8339a2; /* Hover background color */
+        background-color: #8339a2;
       }
     }
     p {

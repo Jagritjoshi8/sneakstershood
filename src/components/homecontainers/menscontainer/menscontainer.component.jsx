@@ -81,7 +81,6 @@ const MensContainer = () => {
                           className="single-pick-wishlist"
                           onClick={() => wishlistHandler(data)}
                         >
-                          {/* <AiOutlineHeart size={38} /> */}
                           {verifyisInWishList(data) ? (
                             <FavoriteIcon sx={{ fontSize: 28 }} />
                           ) : (

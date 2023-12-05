@@ -38,12 +38,7 @@ const CartCard = ({ product }) => {
     dispatch(addToCart(product));
   };
   return (
-    <div
-      className="cart-card"
-      // data-aos="flip-up"
-      // data-aos-easing="ease-out-cubic"
-      // data-aos-duration="1800"
-    >
+    <div className="cart-card">
       <DeleteIcon
         sx={{ fontSize: 38 }}
         color="secondary"
@@ -76,7 +71,6 @@ const CartCard = ({ product }) => {
         />
         <b>{cartQuantity}</b>
         <AddCircleIcon
-          // sx={{ fontSize: 38 }}
           color="secondary"
           className="cart-icon"
           onClick={() => handleIncreaseCart(product)}

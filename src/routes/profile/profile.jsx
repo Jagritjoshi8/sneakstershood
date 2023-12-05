@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UserContext } from "../../contexts/user.context";
 import { useNavigate } from "react-router";
 import jwtDecode from "jwt-decode";
 import PropTypes from "prop-types";
@@ -44,12 +43,9 @@ function a11yProps(index) {
 }
 
 const Profile = () => {
-  // State to hold form input values
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+
   const auth = useSelector((state) => state.auth);
 
   const token = auth.token;
@@ -62,7 +58,6 @@ const Profile = () => {
   } else {
     imageURL = `https://robohash.org/${tokendata.name}4?set=set5&size=250x250`;
   }
-  //console.log(imageURL);
 
   useEffect(() => {
     dispatch(getUserOrder(tokendata.id));
@@ -83,16 +78,11 @@ const Profile = () => {
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1500"
     >
-      {/* <h2>Profile</h2> */}
       <div className="profile-details">
         <div className="profile-hero-section">
           <div className="profileimg-view">
             <img src={imageURL} />
           </div>
-
-          {/* <img
-            src={`https://robohash.org/${tokendata.name}4?set=set5&size=250x250`}
-          /> */}
           <div className="profile-hero-details">
             <p>
               <strong>Name:</strong> {tokendata.name}
@@ -173,12 +163,6 @@ const Profile = () => {
           <MyMapContainer />
         </CustomTabPanel>
       </div>
-      {/* <button className="sign-out-button" onClick={signOutHandler}>
-        Sign Out
-      </button> */}
-      {/* <Link to="/" className="back-link">
-        Back to Home
-      </Link> */}
     </div>
   );
 };

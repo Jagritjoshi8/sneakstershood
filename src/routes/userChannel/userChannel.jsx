@@ -7,13 +7,12 @@ import UserChannelAuthContainer from "../../components/userChannelComponent/user
 
 const UserChannel = () => {
   const [user, setUser] = useState();
-  // return <ChatsPage user={user} />;
+
   if (!user) {
     return (
-      <UserChannelAuthContainer onAuth={(user) => setUser(user)} />
-      //   <div className="userchannelbackground">
-      //     <UserChannelAuthContainer onAuth={(user) => setUser(user)} />
-      //   </div>
+      <div className="userchannelbackground">
+        <UserChannelAuthContainer onAuth={(user) => setUser(user)} />
+      </div>
     );
   } else {
     return <ChannelChatContainer user={user} />;

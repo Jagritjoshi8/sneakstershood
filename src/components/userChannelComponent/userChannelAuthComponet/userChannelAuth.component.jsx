@@ -32,7 +32,7 @@ const UserChannelAuthContainer = (props) => {
     const { value } = e.target[0];
     axios
       .post("http://localhost:8000/channel/authenticate", { username: value })
-      .then((r) => props.onAuth({ ...r.data, secret: value })) // NOTE: over-ride secret
+      .then((r) => props.onAuth({ ...r.data, secret: value }))
       .catch((e) => console.log(JSON.stringify(e.response.data)));
   };
 

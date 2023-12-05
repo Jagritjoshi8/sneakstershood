@@ -12,7 +12,6 @@ const GetReviewContainer = ({ selectedProduct }) => {
   useEffect(() => {
     dispatch(getProductReviews(selectedProduct._id));
   }, []);
-  //   console.log("final review", review);
   return (
     <div>
       {!selectedProduct ? (

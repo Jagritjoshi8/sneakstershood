@@ -78,7 +78,6 @@ export const createProduct = createAsyncThunk(
   "products/createProduct",
   async (formData, { rejectWithValue }) => {
     for (let pair of formData.entries()) {
-      // console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
     }
     try {
       const productdata = await axios.post(
@@ -88,7 +87,6 @@ export const createProduct = createAsyncThunk(
 
       return productdata.data;
     } catch (error) {
-      // console.log(error.response.data);
       return rejectWithValue(error.response.data);
     }
   }
@@ -96,9 +94,6 @@ export const createProduct = createAsyncThunk(
 export const editProduct = createAsyncThunk(
   "products/editProduct",
   async ({ productId, updatedData }, { rejectWithValue }) => {
-    // for (let pair of formData.entries()) {
-    //   // console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
-    // }
     try {
       const productdata = await axios.patch(
         `${url}/sneakers/${productId}`,
@@ -107,7 +102,6 @@ export const editProduct = createAsyncThunk(
 
       return productdata.data;
     } catch (error) {
-      // console.log(error.response.data);
       return rejectWithValue(error.response.data);
     }
   }
@@ -158,7 +152,6 @@ const productsSlice = createSlice({
       } else return state;
     });
     builder.addCase(productsFetch.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         fetchingStatus: "rejected",
@@ -179,7 +172,6 @@ const productsSlice = createSlice({
       } else return state;
     });
     builder.addCase(createProduct.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         creatingStatus: "rejected",
@@ -200,7 +192,6 @@ const productsSlice = createSlice({
       } else return state;
     });
     builder.addCase(getSellerProducts.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         sFetchingStatus: "rejected",
@@ -221,7 +212,6 @@ const productsSlice = createSlice({
       } else return state;
     });
     builder.addCase(getDeletedSellerProducts.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         sFetchingStatus: "rejected",
@@ -244,7 +234,6 @@ const productsSlice = createSlice({
       } else return state;
     });
     builder.addCase(restoreDeletedProducts.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         restoreStatus: "rejected",
@@ -260,12 +249,10 @@ const productsSlice = createSlice({
         return {
           ...state,
           editStatus: "success",
-          // name: action.payload.name,
         };
       } else return state;
     });
     builder.addCase(editProduct.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         editStatus: "rejected",
@@ -284,12 +271,11 @@ const productsSlice = createSlice({
           (item) => item._id !== action.payload.deletedProduct._id
         );
         state.sellerProducts = newItems ? newItems : [];
-        // state.items.push(action.payload.deletedProduct);
+
         state.deleteStatus = "success";
       } else return state;
     });
     builder.addCase(softDeleteProduct.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         deleteStatus: "rejected",
@@ -312,7 +298,6 @@ const productsSlice = createSlice({
       } else return state;
     });
     builder.addCase(hardDeleteProduct.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         deleteStatus: "rejected",

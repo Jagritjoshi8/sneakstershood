@@ -47,7 +47,6 @@ export default function EditProductContainer({ prodId }) {
     } else {
       bkimg = selectedProd.img;
     }
-    //console.log(selectedProd.discounted_price);
 
     setPreviewURL(bkimg);
     setName(selectedProd.name);
@@ -64,19 +63,15 @@ export default function EditProductContainer({ prodId }) {
     setIsStock(event.target.value);
   };
 
-  // const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const authseller = useSelector((state) => state.authseller);
   const products = useSelector((state) => state.products);
-  //   console.log("name", authseller);
-  //   console.log("pro", products);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    //console.log("inner name", name);
 
     formData.append("name", name);
     formData.append("original_price", original_price);

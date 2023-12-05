@@ -87,7 +87,6 @@ const GetSellerProductsContainer = () => {
               Archive
             </div>
             <EditProductContainer prodId={params.row.id} />
-            {/* <div className="ebtn">Edit</div> */}
             <div
               className="vbtn"
               onClick={() => navigate(`/product-details/${params.row.id}`)}

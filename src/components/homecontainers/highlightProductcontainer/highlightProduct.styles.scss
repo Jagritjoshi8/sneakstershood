@@ -7,7 +7,7 @@
   width: 25vw;
   margin-top: 80px;
   background-color: rgb(240, 213, 255);
-  //background-color: rgb(214, 234, 252);
+
   filter: blur(50px);
   display: flex;
   align-items: center;
@@ -25,10 +25,9 @@
   padding-bottom: -30px;
   background-color: #faeeff;
 
-  //border: 1px solid #ddd;
   border-radius: 0.9em;
   box-shadow: 0px 0px 12px rgba(0.2, 0.2, 1.8, 1.9);
-  //   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   h1 {
     font-size: 70px;
     color: purple;
@@ -59,8 +58,7 @@
       border-radius: 0.4em;
       padding: 10px 20px;
       font-size: 25px;
-      //   margin-top: 10px;
-      //   margin-bottom: 20px;
+
       cursor: pointer;
       transition: background-color 0.2s;
       a {
@@ -69,7 +67,6 @@
 
       &:hover {
         opacity: 0.7;
-        // z-index: 130;
       }
     }
     .highlight-details {
@@ -99,7 +96,7 @@
       width: 110%;
       overflow: hidden;
       padding-left: 25px;
-      //   box-shadow: 0px 2px 8px rgba(0.2, 0.2, 0.8, 0.9);
+
       img {
         margin-top: -120px;
         height: 800px;

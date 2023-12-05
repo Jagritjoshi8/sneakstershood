@@ -5,7 +5,6 @@ import ChannelChatContainer from "../../../components/SellerComponents/sellerCha
 
 const SellerChannel = () => {
   const [user, setUser] = useState();
-  // return <ChatsPage user={user} />;
   if (!user) {
     return (
       <div className="seller-channel-background">

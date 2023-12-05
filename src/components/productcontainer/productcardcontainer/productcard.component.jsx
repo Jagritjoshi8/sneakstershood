@@ -78,13 +78,7 @@ const ProductCard = ({ data }) => {
       transitionSpeed={2000}
       scale={1.02}
     >
-      <div
-        className="product-card"
-        key={_id}
-        // data-aos="fade-right"
-        // // data-aos-easing="linear"
-        // data-aos-duration="2500"
-      >
+      <div className="product-card" key={_id}>
         <Link to={`/product-details/${_id}`}>
           <div className="product-card-image">
             <Tilt
@@ -134,16 +128,10 @@ const ProductCard = ({ data }) => {
             onClick={() => wishlistHandler(data)}
           >
             <button className="wishlist-btn">
-              {/* <AiOutlineHeart size={38} /> */}
               {verifyisInWishList(data) ? (
                 <FavoriteIcon sx={{ fontSize: 38 }} />
               ) : (
-                // <FavoriteTwoToneIcon
-                //   sx={{ fontSize: 38 }}
-                //   color="disabled.dark"
-                // />
                 <FavoriteBorderOutlinedIcon sx={{ fontSize: 38 }} />
-                // <AiOutlineHeart size={38} />
               )}
             </button>
             <h3 className="remove-from-wishlist-txt">Remove From Wishlist</h3>
@@ -168,11 +156,6 @@ const ProductCard = ({ data }) => {
         </div>
       </div>
     </Tilt>
-    // <div key={id}>
-    //   <h2>{name}</h2>
-    //   <p>{id}</p>
-    //   <p>{original_price}</p>
-    // </div>
   );
 };
 export default ProductCard;

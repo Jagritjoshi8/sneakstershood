@@ -23,8 +23,6 @@
 .info > * {
   margin-right: 1em;
 }
-// .no-products-found {
-// }
 
 .product-card-image {
   background-color: rgb(246, 246, 246);
@@ -118,20 +116,13 @@
   border: none;
   background-color: rgb(255, 255, 255);
   padding: 0.6em;
-
-  //border-radius: 10px;
-  // box-shadow: 0px 0px 46px -4px rgb(205, 205, 205);
-  // border: 0.1px solid white;
 }
 
 .wishlist-btn:hover {
   color: black;
   cursor: pointer;
 }
-// .remove-wishlist-btn {
-//   background-color: rgb(66, 66, 66);
-//   visibility: collapse;
-// }
+
 .original-price {
   color: rgb(105, 105, 105);
   text-decoration: line-through;

@@ -9,16 +9,13 @@ import { Link } from "react-router-dom";
 import { signinSeller } from "../../../features/authSellerSlice";
 
 const SignInSeller = () => {
-  // State to hold form input values
   const [businessEmail, setBusinessEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { setCurrentUser } = useContext(UserContext);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
   const authseller = useSelector((state) => state.authseller);
   console.log(authseller);
-  //   console.log(auth);
 
   useEffect(() => {
     if (authseller._id) {

@@ -67,11 +67,7 @@ const SellerProfile = () => {
             </p>
           </div>
         </div>
-        <div className="profile-hero-details">
-          {/* <button className="sign-out-button" onClick={signOutHandler}>
-            Sign Out
-          </button> */}
-        </div>
+        <div className="profile-hero-details"></div>
       </div>
     </div>
   );

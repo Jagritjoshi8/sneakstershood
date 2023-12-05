@@ -1,17 +1,13 @@
 .filter-container {
   width: 280px;
   height: 90%;
-
   position: fixed;
   top: 10;
   left: 0;
   padding: 5px;
   margin-right: 10px;
-  // background-color: #333;
-  // color: #fff;
   overflow-y: auto;
   .filter-header {
-    // height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -21,23 +17,18 @@
 
     .reset-btn {
       color: black;
-      //padding: 0.35rem 1.2rem;
       background-color: white;
       color: rgb(0, 0, 0);
       border: 2.6px solid rgb(43, 43, 43);
       font-size: 1.2rem;
       font-weight: bold;
       border-radius: 1rem;
-
       padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-      // padding: 0.4rem 1.3rem 0.4rem 1.3rem;
+
       &:hover {
         cursor: pointer;
         color: white;
         background-color: rgb(70, 70, 70);
-        // background-color: rgb(203, 108, 247);
-        // border: 3px solid rgb(118, 16, 165);
-
         cursor: pointer;
       }
     }
@@ -50,7 +41,6 @@
 
     .bg {
       margin-bottom: 0.5rem;
-      // border: 1px solid rgb(219, 219, 219);
       border: 1px solid rgb(255, 192, 255);
       padding: 20px 15px 15px 20px;
       border-radius: 10px;

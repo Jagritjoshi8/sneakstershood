@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { Navigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../components/authenticaton/userformInput.component";
 import "./signIn.scss";
@@ -8,10 +7,8 @@ import { forgotPassword, signinUser } from "../../features/authSlice";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-  // State to hold form input values
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { setCurrentUser } = useContext(UserContext);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -29,7 +26,6 @@ const SignIn = () => {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     dispatch(forgotPassword({ email }));
-    // dispatch(signinUser({ email, password }));
   };
   return (
     <div className="user-sign-container">
@@ -41,11 +37,7 @@ const SignIn = () => {
         loop
       ></video>
       <div className="container">
-        <div
-          className="are-you-seller"
-          // data-aos="fade-up"
-          // data-aos-duration="2000"
-        >
+        <div className="are-you-seller">
           Are You Seller?{" "}
           <Link to="/sign-in-seller">
             <p className="sign-up-seller-link">Sign In As Seller</p>
@@ -60,26 +52,6 @@ const SignIn = () => {
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="form-inner-container">
-            {/* <div className="sketchfab-embed-wrapper threeD-sneaker-container">
-              {" "}
-              <iframe
-                height="500"
-                width="750"
-                title="Sneakers"
-                frameborder="0"
-                allowfullscreen
-                mozallowfullscreen="true"
-                webkitallowfullscreen="true"
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                xr-spatial-tracking
-                execution-while-out-of-viewport
-                execution-while-not-rendered
-                web-share
-                src="https://sketchfab.com/models/50725ef7d75d4898be0640700cd31c8d/embed?autospin=1&autostart=1&transparent=1&ui_hint=0"
-              >
-                {" "}
-              </iframe>{" "}
-            </div> */}
             <div class="sketchfab-embed-wrapper threeD-sneaker-container">
               {" "}
               <iframe

@@ -16,16 +16,11 @@ const initialState = {
 export const addReview = createAsyncThunk(
   "review/addReview",
   async ({ productId, reviewData }, { rejectWithValue }) => {
-    //console.log("kk", productId, reviewData);
-    // for (let pair of formData.entries()) {
-    //   console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
-    // }
     try {
       const review = await axios.post(
         `${url}/comments/${productId}`,
         reviewData
       );
-      //   localStorage.setItem("token", userdata.data.token);
       return review.data;
     } catch (error) {
       console.log(error.response.data);
@@ -40,8 +35,6 @@ export const getProductReviews = createAsyncThunk(
       const ProductReviews = await axios.get(
         `${url}/comments/getAllComments/${productId}`
       );
-
-      //   localStorage.setItem("token", userdata.data.token);
 
       return ProductReviews?.data;
     } catch (error) {
@@ -67,7 +60,6 @@ const reviewSlice = createSlice({
       } else return state;
     });
     builder.addCase(addReview.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         postingStatus: "rejected",
@@ -85,7 +77,6 @@ const reviewSlice = createSlice({
       } else return state;
     });
     builder.addCase(getProductReviews.rejected, (state, action) => {
-      //   alert(`${action.payload.message}`);
       return {
         ...state,
         gettingStatus: "rejected",
@@ -95,5 +86,4 @@ const reviewSlice = createSlice({
   },
 });
 
-//  export const { addReview} = reviewSlice.actions;
 export default reviewSlice.reducer;

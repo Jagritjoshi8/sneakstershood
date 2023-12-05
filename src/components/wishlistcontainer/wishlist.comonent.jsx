@@ -43,23 +43,12 @@ const WishListContainer = ({ wishlist }) => {
           spaceBetween={30}
           slidesPerView={"auto"}
           navigation
-          //   pagination={{ type: "progressbar" }}
           freeMode={true}
           pagination={{ dynamicBullets: true }}
-          // loop={true}
-          // centeredSlides={true}
-          // centeredSlidesBounds={true}
-          // autoplay={{
-          //   delay: 1500,
-          //   disableOnInteraction: false,
-          // }}
           keyboard={{
             enabled: true,
           }}
           mousewheel={true}
-          //   scrollbar={{ draggable: true }}
-          //   onSlideChange={() => console.log("slide change")}
-          //   onSwiper={(swiper) => console.log(swiper)}
         >
           {wishlist.map((data) => {
             return (
@@ -71,12 +60,7 @@ const WishListContainer = ({ wishlist }) => {
         </Swiper>
       </div>
       <div className="clear-wishlist-btn">
-        <button
-          className="clearwishlist"
-          // data-aos="fade-left"
-          // data-aos-duration="2000"
-          onClick={() => handleClearWishlist()}
-        >
+        <button className="clearwishlist" onClick={() => handleClearWishlist()}>
           Clear Wishlist <DeleteIcon sx={{ fontSize: 32 }} />
         </button>
       </div>

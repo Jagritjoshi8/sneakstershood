@@ -1,6 +1,5 @@
 import React from "react";
 import "./sellerProduct.scss";
-import { Link, NavLink, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";

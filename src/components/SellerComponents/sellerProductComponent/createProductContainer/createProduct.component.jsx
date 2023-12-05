@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,10 +7,7 @@ import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../../authenticaton/formInput.component";
-import { UserContext } from "../../../../contexts/user.context";
 import "./createProduct.styles.scss";
-import { signupUser } from "../../../../features/authSlice";
-import { signupSeller } from "../../../../features/authSellerSlice";
 import { createProduct } from "../../../../features/productSlice";
 
 const CreateProductContainer = () => {
@@ -28,7 +25,6 @@ const CreateProductContainer = () => {
   const [previewURL, setPreviewURL] = useState(
     "https://thumbs.dreamstime.com/b/no-picture-available-sign-illustration-255245956.jpg"
   );
-  // const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,7 +36,6 @@ const CreateProductContainer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    //console.log("inner name", name);
 
     formData.append("name", name);
     formData.append("original_price", original_price);
@@ -56,9 +51,6 @@ const CreateProductContainer = () => {
     formData.append("sellerId", authseller._id);
     formData.append("sellerName", authseller.businessName);
 
-    // for (let pair of formData.entries()) {
-    //   console.log(`actulformdata:${pair[0]}: ${pair[1]}`);
-    // }
     dispatch(createProduct(formData));
     setName("");
     setOriginalPrice("");
@@ -81,13 +73,6 @@ const CreateProductContainer = () => {
       data-aos="fade-up"
       data-aos-duration="1500"
     >
-      {/* <video
-        src="/assets/video/productbck.mp4"
-        type="video/mp4"
-        autoPlay
-        muted
-        loop
-      ></video> */}
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="profile-img-container">
           <div className="c1">
@@ -198,15 +183,6 @@ const CreateProductContainer = () => {
                 </Select>
               </FormControl>
             </div>
-            {/* <FormInput
-              label="Gender"
-              type="gender"
-              id="gender"
-              name="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              required
-            /> */}
 
             <FormInput
               label="Quality Type"

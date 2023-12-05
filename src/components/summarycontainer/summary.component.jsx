@@ -14,17 +14,10 @@ const SummaryContainer = ({ cart }) => {
   const isCouponApplied = cart.couponSelected.length ? true : false;
 
   const auth = useSelector((state) => state.auth);
-  // const cart = useSelector((state) => state.cart);
+
   const userLoaded = auth.userLoaded;
 
   const [openModal, setOpenModal] = useState(false);
-  // const handleSetOpenModal = () => {
-  //   if (cart.openModal) {
-  //     cart.openModal = false;
-  //   } else {
-  //     cart.openModal = true;
-  //   }
-  // };
 
   return (
     <div className="summary-container">
@@ -69,9 +62,6 @@ const SummaryContainer = ({ cart }) => {
         <div className="titlevaluepair total-amount">
           <h1>Total Amount</h1>
           <b className="fprice">${cart.cartFTotalAmount}</b>
-          {/* <b className="fprice">
-            ${cart.cartTotalAmount - totalCouponDiscount + 50}
-          </b> */}
         </div>
       </div>
       {cart.cartOgTotalAmount - cart.cartFTotalAmount > 0 ? (
