@@ -111,3 +111,39 @@
     }
   }
 }
+@media (max-width: 1730px) {
+  .blur-background {
+    width: 15vw;
+  }
+  .HighlightProductContainer {
+    width: 70vw;
+  }
+}
+@media (max-width: 1330px) {
+  .blur-background {
+    width: 0vw;
+  }
+  .HighlightProductContainer {
+    width: 90vw;
+  }
+}
+@media (max-width: 1000px) {
+  .blur-background {
+    width: 0vw;
+  }
+  .HighlightProductContainer {
+    width: 100vw;
+    .c1 {
+      .highlight-details {
+        width: 100%;
+        font-size: 20px;
+      }
+      .highlight-card-images {
+        img {
+          margin-top: -35px;
+          height: 500px;
+        }
+      }
+    }
+  }
+}

@@ -10,9 +10,10 @@ const UserChannel = () => {
   // return <ChatsPage user={user} />;
   if (!user) {
     return (
-      <div className="userchannelbackground">
-        <UserChannelAuthContainer onAuth={(user) => setUser(user)} />
-      </div>
+      <UserChannelAuthContainer onAuth={(user) => setUser(user)} />
+      //   <div className="userchannelbackground">
+      //     <UserChannelAuthContainer onAuth={(user) => setUser(user)} />
+      //   </div>
     );
   } else {
     return <ChannelChatContainer user={user} />;

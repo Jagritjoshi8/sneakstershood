@@ -75,3 +75,8 @@
     transform: translateX(-200%);
   }
 }
+@media (max-width: 1400px) {
+  .line {
+    width: 135%;
+  }
+}

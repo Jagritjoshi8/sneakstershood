@@ -16,6 +16,11 @@ const initialState = {
   signupError: "",
   signinStatus: "",
   signinError: "",
+  fpStatus: "",
+  fpError: "",
+  fpMsg: "",
+  rpStatus: "",
+  rpError: "",
   userLoaded: false,
 };
 
@@ -50,6 +55,40 @@ export const signinUser = createAsyncThunk(
       localStorage.setItem("token", userdata.data.token);
 
       return userdata.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const forgotPassword = createAsyncThunk(
+  "auth/forgotPassword",
+  async (values, { rejectWithValue }) => {
+    try {
+      const userdata = await axios.post(`${url}/users/forgotPassword`, {
+        email: values.email,
+      });
+      return userdata.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async ({ userId, resetData }, { rejectWithValue }) => {
+    //console.log("kk", productId, reviewData);
+    // for (let pair of formData.entries()) {
+    //   console.log(`actulformdata2:${pair[0]}: ${pair[1]}`);
+    // }
+    try {
+      const reset = await axios.patch(
+        `${url}/users/resetPassword/${userId}`,
+        resetData
+      );
+      //   localStorage.setItem("token", userdata.data.token);
+      return reset.data;
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);
@@ -151,6 +190,43 @@ const authSlice = createSlice({
         ...state,
         signinStatus: "rejected",
         signinError: action.payload,
+      };
+    });
+    builder.addCase(forgotPassword.pending, (state, action) => {
+      return { ...state, fpStatus: "pending" };
+    });
+    builder.addCase(forgotPassword.fulfilled, (state, action) => {
+      return {
+        ...state,
+        fpStatus: "success",
+        fpMsg: action.payload.msg,
+      };
+    });
+    builder.addCase(forgotPassword.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        fpStatus: "rejected",
+        fpError: action.payload,
+      };
+    });
+
+    builder.addCase(resetPassword.pending, (state, action) => {
+      return { ...state, rpStatus: "pending" };
+    });
+    builder.addCase(resetPassword.fulfilled, (state, action) => {
+      toast.success("Your Password is Reseted Successfully 🤩 ");
+      return {
+        ...state,
+        rpStatus: "success",
+      };
+    });
+    builder.addCase(resetPassword.rejected, (state, action) => {
+      //   alert(`${action.payload.message}`);
+      return {
+        ...state,
+        rpStatus: "rejected",
+        rpError: action.payload,
       };
     });
   },

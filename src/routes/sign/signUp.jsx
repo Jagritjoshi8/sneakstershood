@@ -127,6 +127,13 @@ const SignUp = () => {
 
   return (
     <div className="user-sign-container">
+      <video
+        src="/assets/video/signinbgvideo.mp4"
+        type="video/mp4"
+        autoPlay
+        muted
+        loop
+      ></video>
       <div className="container">
         <div
           className="are-you-seller"

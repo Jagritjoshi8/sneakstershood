@@ -45,7 +45,7 @@ const CheckoutModal = ({ open, onClose }) => {
       key: key_id,
       amount: order.amount,
       currency: "INR",
-      name: "Sneaksters Hood",
+      name: "Sneakers Hood",
       description: "Payment for Sneakers ",
       image:
         "https://i.pinimg.com/originals/11/34/70/113470616e0bdea3c1cf26e4726e74ad.jpg",

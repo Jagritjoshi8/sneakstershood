@@ -93,6 +93,15 @@
 //   min-height: 100vh;
 // }
 .user-sign-container {
+  video {
+    position: fixed;
+    top: 30;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0.7;
+    z-index: -1;
+  }
   .container {
     display: flex;
     flex-flow: column;
@@ -101,9 +110,10 @@
     //max-width: 800px;
     min-height: 100vh;
     min-width: 100vw;
-    background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
+    // background-image: url("https://img.freepik.com/premium-vector/abstract-gradient-light-purplish-pink-background-with-molecular-pattern_8087-5733.jpg?w=2000");
+
     //background-color:rgb(5, 1, 28);
-    background-size: 100vw;
+    // background-size: 100vw;
 
     // background-color: rgb(255, 255, 255);
     border-radius: 5px;
@@ -117,11 +127,25 @@
       margin-top: -2px;
     }
     .h2or {
+      margin-top: 5px;
       font-size: 30px;
       margin-bottom: 20px;
     }
+    .user-forgot-password {
+      font-size: 20px;
+      margin-top: 20px;
+      .forgot-password-link {
+        color: rgb(109, 15, 138);
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+
     .sign-other-button {
       font-size: 28px;
+      color: rgb(109, 15, 138);
       &:hover {
         color: #ac0ea4;
         text-decoration: underline;
@@ -138,12 +162,14 @@
     align-items: center;
     padding: 20px;
     margin-top: 20px;
+
     //border: 1px solid #ddd; /* Border */
     //   border-radius: 5px;
     //flex-wrap: wrap;
     //background-color: #0077b6;
     .threeD-sneaker-container {
-      visibility: visible;
+      // visibility: visible;
+      border: none;
     }
 
     .left-column {
@@ -187,7 +213,6 @@
       display: flex;
       flex-flow: column;
       padding: 5px;
-
       font-weight: 600;
       //border: 1px dotted grey;
       .form-group {
@@ -213,9 +238,9 @@
     .select-group {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      // align-items: center;
       opacity: 0.8;
-      width: 100%;
+      // width: 100%;
       margin-top: -20px;
       margin-bottom: 30px;
       .input-info-container {
@@ -236,15 +261,13 @@
       .l1 {
         // padding: 15px;
         font-size: 28px;
+        color: black;
       }
-      FormControl {
-        width: 90%;
-        background-color: rgba(255, 206, 247, 0.76);
-      }
+
       label {
         padding-left: 10px;
         font-size: 20px;
-        color: black;
+        color: rgb(110, 110, 110);
         z-index: 1;
       }
     }
@@ -335,22 +358,54 @@ form {
     color: red;
     font-size: 20px;
   }
+  .success-warning {
+    color: rgb(30, 173, 30);
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 1387px) {
-  .form-inner-container {
-    flex-flow: column;
-    .left-column {
-      width: 80%;
-    }
-    .right-column {
-      width: 80%;
-    }
+  .user-sign-container {
+    .form-inner-container {
+      flex-flow: column;
+      padding: 0px;
+      .left-column {
+        width: 80%;
 
-    .threeD-sneaker-container {
-      width: 0px;
-      height: 0px;
-      visibility: collapse;
+        .form-group {
+          flex-flow: column;
+          .input-info-container {
+            width: 80%;
+          }
+        }
+      }
+      .right-column {
+        width: 80%;
+        display: flex;
+        flex-flow: column-reverse;
+
+        .form-group {
+          flex-flow: column;
+          .input-info-container {
+            width: 80%;
+          }
+        }
+      }
+      .select-group {
+        flex-flow: column;
+        .input-info-container {
+          width: 83%;
+        }
+      }
+
+      .threeD-sneaker-container {
+        width: 0px;
+        height: 0px;
+        visibility: collapse;
+      }
+      button[type="submit"] {
+        width: 60%;
+      }
     }
   }
 }
@@ -386,4 +441,8 @@ form {
   border-radius: 0.6em;
   color: smoke;
   text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
 }

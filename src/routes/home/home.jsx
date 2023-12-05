@@ -11,6 +11,7 @@ import WomenContainer from "../../components/homecontainers/womencontainer/women
 import KidsContainer from "../../components/homecontainers/kidscontainer/kidscontainer.component";
 import FooterContainer from "../../components/extra/footer/footer.component";
 import SneakerNewsContainer from "../../components/homecontainers/sneakernews/sneakernews";
+import GenderSectionContainer from "../../components/homecontainers/genderSectionContainer/genderSectionContainer";
 
 const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -31,6 +32,7 @@ const Home = () => {
       <HighlightProductContainer product={od2} />
       <KidsContainer />
       <SneakerNewsContainer />
+      <GenderSectionContainer />
       <FooterContainer />
 
       <div></div>

@@ -4,7 +4,7 @@ import { Navigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import FormInput from "../../components/authenticaton/userformInput.component";
 import "./signIn.scss";
-import { signinUser } from "../../features/authSlice";
+import { forgotPassword, signinUser } from "../../features/authSlice";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
@@ -16,7 +16,6 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
 
   useEffect(() => {
     if (auth._id) {
@@ -27,14 +26,25 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(signinUser({ email, password }));
   };
-
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    dispatch(forgotPassword({ email }));
+    // dispatch(signinUser({ email, password }));
+  };
   return (
     <div className="user-sign-container">
+      <video
+        src="/assets/video/signinbgvideo.mp4"
+        type="video/mp4"
+        autoPlay
+        muted
+        loop
+      ></video>
       <div className="container">
         <div
           className="are-you-seller"
-          data-aos="fade-up"
-          data-aos-duration="2000"
+          // data-aos="fade-up"
+          // data-aos-duration="2000"
         >
           Are You Seller?{" "}
           <Link to="/sign-in-seller">
@@ -50,7 +60,7 @@ const SignIn = () => {
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="form-inner-container">
-            <div className="sketchfab-embed-wrapper threeD-sneaker-container">
+            {/* <div className="sketchfab-embed-wrapper threeD-sneaker-container">
               {" "}
               <iframe
                 height="500"
@@ -66,6 +76,26 @@ const SignIn = () => {
                 execution-while-not-rendered
                 web-share
                 src="https://sketchfab.com/models/50725ef7d75d4898be0640700cd31c8d/embed?autospin=1&autostart=1&transparent=1&ui_hint=0"
+              >
+                {" "}
+              </iframe>{" "}
+            </div> */}
+            <div class="sketchfab-embed-wrapper threeD-sneaker-container">
+              {" "}
+              <iframe
+                title="Purple Sneakers Basketball Shoes"
+                height="500"
+                width="750"
+                frameborder="0"
+                allowfullscreen
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true"
+                allow="autoplay; fullscreen; xr-spatial-tracking"
+                xr-spatial-tracking
+                execution-while-out-of-viewport
+                execution-while-not-rendered
+                web-share
+                src="https://sketchfab.com/models/31fa2a898742444fbcf4fcd784dd70a8/embed?autospin=1&autostart=1&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_hint=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&dnt=1"
               >
                 {" "}
               </iframe>{" "}
@@ -100,12 +130,24 @@ const SignIn = () => {
               />
               <div className="button-warning-container">
                 <div>
-                  {auth.signinStatus === "rejected" ? (
+                  {auth.fpStatus === "rejected" ? (
+                    <p>Warning: {auth.fpError.message}</p>
+                  ) : auth.fpStatus === "success" ? (
+                    <p className="success-warning">{auth.fpMsg}</p>
+                  ) : auth.signinStatus === "rejected" ? (
                     <p>Warning: {auth.signinError.message}</p>
                   ) : null}
                 </div>
-
                 <button type="submit">Sign In</button>
+                <h3 className="user-forgot-password">
+                  Forgot Password?{" "}
+                  <span
+                    onClick={handleForgotPassword}
+                    className="forgot-password-link"
+                  >
+                    click here
+                  </span>
+                </h3>
                 <h2 className="h2or">OR</h2>
 
                 <h3>Create New Account? </h3>

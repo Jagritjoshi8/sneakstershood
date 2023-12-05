@@ -103,7 +103,7 @@ export default function EditProductContainer({ prodId }) {
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="lg">
         <div
           className="edit-product-modal"
-          data-aos="zoom-in"
+          data-aos="fade-in"
           data-aos-duration="1500"
         >
           <DialogTitle className="edit-modal-header">
