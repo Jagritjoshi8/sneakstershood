@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./coupons.styles.scss";
 import DiscountIcon from "@mui/icons-material/Discount";
 import { setCouponSelected } from "../../features/cartSlice";
+import Tooltip from "@mui/material/Tooltip";
 
 export const CouponsContainer = ({ cart }) => {
   const { couponSelected, cartTotalAmount } = cart;
@@ -47,17 +48,19 @@ export const CouponsContainer = ({ cart }) => {
       data-aos="fade-left"
       data-aos-duration="2000"
     >
-      <div
-        className="coupon-header"
-        onClick={() => setIsCouponClicked(!isCouponClicked)}
-      >
-        <DiscountIcon
-          sx={{ fontSize: 28 }}
-          color="secondary"
-          className="cart-icon"
-        />
-        <h2>Apply Coupons ?</h2>
-      </div>
+      <Tooltip title="click to view coupons" placement="right" arrow>
+        <div
+          className="coupon-header"
+          onClick={() => setIsCouponClicked(!isCouponClicked)}
+        >
+          <DiscountIcon
+            sx={{ fontSize: 28 }}
+            color="secondary"
+            className="cart-icon"
+          />
+          <h2>Apply Coupons ?</h2>
+        </div>
+      </Tooltip>
 
       {isCouponClicked && (
         <div className="coupon-list-container">

@@ -9,7 +9,8 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import { Navigate, useNavigate } from "react-router";
-
+import Tooltip from "@mui/material/Tooltip";
+import ReceiptUserModal from "../receiptUserModal/receiptUserModal";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/effect-coverflow";
 import {
@@ -25,6 +26,7 @@ import {
 
 import "swiper/css/bundle";
 import { Link } from "react-router-dom";
+
 const MyOrderContainer = ({ orderDetails }) => {
   const navigate = useNavigate();
   console.log(orderDetails);
@@ -87,17 +89,23 @@ const MyOrderContainer = ({ orderDetails }) => {
                   </div>
 
                   <div className="user-order-status">
-                    {order.orderStatus ? (
-                      order.orderStatus === "Pending" ? (
-                        <div className="pending">Pending</div>
-                      ) : order.orderStatus === "Dispatched" ? (
-                        <div className="dispatched">Dispatched</div>
+                    <Tooltip title="Order Status">
+                      {order.orderStatus ? (
+                        order.orderStatus === "Pending" ? (
+                          <div className="pending">Pending</div>
+                        ) : order.orderStatus === "Dispatched" ? (
+                          <div className="dispatched">Dispatched</div>
+                        ) : (
+                          <div className="delivered">Delivered</div>
+                        )
                       ) : (
-                        <div className="delivered">Delivered</div>
-                      )
-                    ) : (
-                      "Pending"
-                    )}
+                        "Pending"
+                      )}
+                    </Tooltip>
+                    <ReceiptUserModal
+                      orderId={order._id}
+                      orderNo={orderDetails.userOrder.length - index}
+                    />
                   </div>
                 </div>
                 <div className="delivery-date-address">

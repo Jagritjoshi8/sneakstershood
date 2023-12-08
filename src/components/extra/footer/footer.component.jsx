@@ -3,6 +3,9 @@ import { CouponsContainer } from "../../coupons/coupons.component";
 import "./footer.styles.scss";
 import { useSelector } from "react-redux";
 import { UserMailFormContainer } from "../../userMailForm/userMailForm";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 const FooterContainer = () => {
   const cart = useSelector((state) => state.cart);
@@ -17,9 +20,15 @@ const FooterContainer = () => {
         </div>
         <div className="footer-section">
           <h2>Follow Us</h2>
-          <p>Twitter</p>
-          <p>Instagram</p>
-          <p>Facebook</p>
+          <p>
+            Twitter <TwitterIcon sx={{ fontSize: 18 }} />
+          </p>
+          <p>
+            Instagram <InstagramIcon sx={{ fontSize: 18 }} />
+          </p>
+          <p>
+            Facebook <FacebookIcon sx={{ fontSize: 18 }} />
+          </p>
         </div>
         <div className="footer-section">
           <h2>Address</h2>

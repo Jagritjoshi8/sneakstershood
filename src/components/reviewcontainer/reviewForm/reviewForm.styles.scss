@@ -14,6 +14,7 @@
   h1 {
     font-size: 40px;
     margin-top: 1px;
+    color: rgb(212, 0, 255);
   }
   .add-rating {
     display: flex;
@@ -35,7 +36,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
   margin-bottom: 40px;
+  margin-left: 65px;
   .rating-label {
     width: 30px;
     margin-left: 25px;

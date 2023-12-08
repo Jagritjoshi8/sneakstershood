@@ -4,10 +4,40 @@
     align-items: center;
     justify-content: center;
     margin-bottom: -20px;
+    position: relative;
   }
-  h1 {
-    font-size: 40px;
-    padding: 7px;
+  .whishlist-header-inner-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    h1 {
+      font-size: 45px;
+      padding: 7px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+  }
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    animation: marquee 10s linear infinite;
+  }
+
+  .marquee-text {
+    display: flex;
+    align-items: center;
+  }
+
+  @keyframes marquee {
+    0% {
+      margin-left: 150%;
+    }
+    100% {
+      margin-left: -100%;
+    }
   }
 }
 .clear-wishlist-btn {
@@ -41,7 +71,7 @@
 
   width: inherit;
 
-  height: 680px;
+  height: 690px;
 
   padding: 15px;
   .wishlist-swiperslide {

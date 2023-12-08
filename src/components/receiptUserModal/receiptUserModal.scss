@@ -1,0 +1,51 @@
+.recipt-icon-btn {
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+.receipt-user-modal {
+  .viewSeller-order-container {
+    .deliverydetail-qrcode {
+      display: flex;
+      .userqrcode-container {
+        margin-top: 20px;
+        width: 30%;
+        margin-left: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .delivery-details {
+        margin-top: 20px;
+        background-color: rgba(127, 91, 175, 0.363);
+        padding: 0.5px 10px 25px 10px;
+        width: 70%;
+        border-radius: 0.7em;
+        color: rgb(109, 51, 177);
+        .bd-info-container {
+          display: flex;
+          flex-flow: column;
+          justify-content: space-around;
+
+          .bd-single-info {
+            h3 {
+              margin: 0px;
+              margin-right: 10px;
+            }
+            span {
+              font-size: 20px;
+            }
+            display: flex;
+            justify-content: center;
+            background-color: rgba(118, 72, 161, 0.199);
+            color: rgb(109, 51, 177);
+            padding: 5px 15px;
+            border-radius: 0.9em;
+            margin: 10px;
+          }
+        }
+      }
+    }
+  }
+}

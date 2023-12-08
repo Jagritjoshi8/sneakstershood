@@ -1,8 +1,15 @@
-.productDetail-second-page {
-  border-top: 4px solid purple;
-  display: flex;
-  justify-content: space-evenly;
-  height: 89vh;
+.product-detail-reviewSection {
+  h2 {
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 35px;
+  }
+  .productDetail-second-page {
+    // border-top: 4px solid purple;
+    display: flex;
+    justify-content: space-evenly;
+    height: 89vh;
+  }
 }
 @media (max-width: 1740px) {
   .productDetail-second-page {

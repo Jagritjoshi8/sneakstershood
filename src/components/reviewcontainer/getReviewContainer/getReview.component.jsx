@@ -17,7 +17,11 @@ const GetReviewContainer = ({ selectedProduct }) => {
       {!selectedProduct ? (
         <div>Product doesnt exist</div>
       ) : (
-        <div className="get-review">
+        <div
+          className="get-review"
+          data-aos="zoom-in-up"
+          data-aos-duration="2500"
+        >
           <div className="header">
             <h1>Latest Reviews About "{selectedProduct.name}"</h1>
           </div>

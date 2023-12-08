@@ -1,10 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
 import { url } from "./api";
 import jwtDecode from "jwt-decode";
 import toast from "react-hot-toast";
-import { clearCart } from "./cartSlice";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -21,6 +19,8 @@ const initialState = {
   fpMsg: "",
   rpStatus: "",
   rpError: "",
+  mQueryStatus: "",
+  mQueryError: "",
   userLoaded: false,
 };
 
@@ -85,6 +85,22 @@ export const resetPassword = createAsyncThunk(
       );
 
       return reset.data;
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const userMailQuery = createAsyncThunk(
+  "auth/userMailQuery",
+  async (values, { rejectWithValue }) => {
+    try {
+      const querydata = await axios.post(`${url}/users/userMailQuery`, {
+        name: values.name,
+        email: values.email,
+        query: values.query,
+      });
+      return querydata.data;
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);
@@ -219,6 +235,23 @@ const authSlice = createSlice({
         ...state,
         rpStatus: "rejected",
         rpError: action.payload,
+      };
+    });
+    builder.addCase(userMailQuery.pending, (state, action) => {
+      return { ...state, mQueryStatus: "pending" };
+    });
+    builder.addCase(userMailQuery.fulfilled, (state, action) => {
+      toast.success("Your query is sent successfully to admin ✅");
+      return {
+        ...state,
+        mQueryStatus: "success",
+      };
+    });
+    builder.addCase(userMailQuery.rejected, (state, action) => {
+      return {
+        ...state,
+        mQueryStatus: "rejected",
+        mQueryError: action.payload,
       };
     });
   },

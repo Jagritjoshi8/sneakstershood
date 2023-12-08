@@ -5,6 +5,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Tilt from "react-parallax-tilt";
+import Tooltip from "@mui/material/Tooltip";
 import {
   addToCart,
   decreaseCart,
@@ -39,12 +40,14 @@ const CartCard = ({ product }) => {
   };
   return (
     <div className="cart-card">
-      <DeleteIcon
-        sx={{ fontSize: 38 }}
-        color="secondary"
-        className="cart-icon"
-        onClick={() => handleRemoveFromCart(product)}
-      />
+      <Tooltip title="Delete" arrow>
+        <DeleteIcon
+          sx={{ fontSize: 38 }}
+          color="secondary"
+          className="cart-icon"
+          onClick={() => handleRemoveFromCart(product)}
+        />
+      </Tooltip>
       <Link to={`/product-details/${_id}`}>
         <div className="cart-card-image">
           <Tilt
@@ -64,17 +67,21 @@ const CartCard = ({ product }) => {
       <p>Price:${discounted_price}</p>
       <div className="quantity-card">
         Qunatity:
-        <RemoveCircleIcon
-          color="secondary"
-          className="cart-icon"
-          onClick={() => handleDecreaseCart(product)}
-        />
+        <Tooltip title="Remove 1 Product" arrow>
+          <RemoveCircleIcon
+            color="secondary"
+            className="cart-icon"
+            onClick={() => handleDecreaseCart(product)}
+          />
+        </Tooltip>
         <b>{cartQuantity}</b>
-        <AddCircleIcon
-          color="secondary"
-          className="cart-icon"
-          onClick={() => handleIncreaseCart(product)}
-        />
+        <Tooltip title="Add 1 Product" arrow>
+          <AddCircleIcon
+            color="secondary"
+            className="cart-icon"
+            onClick={() => handleIncreaseCart(product)}
+          />
+        </Tooltip>
       </div>
       <p>Total Price: ${discounted_price * cartQuantity}</p>
     </div>

@@ -7,6 +7,7 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import ContentPasteIcon from "@mui/icons-material/ContentPaste";
 import SpeedIcon from "@mui/icons-material/Speed";
 import MessageIcon from "@mui/icons-material/Message";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
 import { signoutSeller } from "../../../features/authSellerSlice";
 
 const SellerRoot = () => {
@@ -53,6 +54,9 @@ const SellerRoot = () => {
 
         <NavLink to="channel" className="nl">
           <MessageIcon sx={{ fontSize: 30 }} /> Channel<span>➤</span>
+        </NavLink>
+        <NavLink to="seller-blog" className="nl">
+          <NewspaperIcon sx={{ fontSize: 30 }} /> Blog<span>➤</span>
         </NavLink>
         <button
           onClick={() => navigate("/product")}

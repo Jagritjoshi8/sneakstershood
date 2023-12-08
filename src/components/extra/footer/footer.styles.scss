@@ -13,6 +13,7 @@ footer {
     .footer-section {
       flex: 1;
       padding: 0 20px;
+      font-size: 18px;
 
       h2 {
         font-size: 1.5rem;
@@ -20,7 +21,8 @@ footer {
       }
 
       p {
-        margin: 0;
+        margin-top: 5px;
+        margin-bottom: 0px;
       }
     }
   }

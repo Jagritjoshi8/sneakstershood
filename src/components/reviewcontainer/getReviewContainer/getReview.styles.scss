@@ -4,10 +4,10 @@
   width: 50vw;
   height: 85vh;
   overflow-y: auto;
-  outline: 3px dashed rgb(212, 0, 255);
-  border: 6px dotted gold;
+  outline: 3px dashed rgb(168, 17, 255);
+  // border: 3px solid gold;
 
-  border-radius: 0.9em;
+  //border-radius: 0.9em;
   margin-top: 15px;
   margin-left: auto;
   margin-right: auto;
@@ -16,11 +16,13 @@
     margin-right: auto;
     margin-bottom: 30px;
     font-size: 22px;
+    color: rgb(168, 17, 255);
   }
   .not-reviewed {
     display: flex;
     flex-flow: column;
     align-items: center;
+    color: rgb(168, 17, 255);
     h1 {
       margin-top: -20px;
     }

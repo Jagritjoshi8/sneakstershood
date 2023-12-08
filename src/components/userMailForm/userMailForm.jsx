@@ -9,6 +9,7 @@ import { setCouponSelected } from "../../features/cartSlice";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import { userMailQuery } from "../../features/authSlice";
 const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -21,61 +22,31 @@ const LightTooltip = styled(({ className, ...props }) => (
 }));
 
 export const UserMailFormContainer = () => {
-  //   const { couponSelected, cartTotalAmount } = cart;
-  const [isCouponClicked, setIsCouponClicked] = useState(false);
+  const [isMailerClicked, setIsMailerClicked] = useState(false);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [query, setQuery] = useState(null);
-  //   const dispatch = useDispatch();
-  //   const handleSetCouponSelected = (coupon) => {
-  //     dispatch(setCouponSelected(coupon));
-  //   };
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //   dispatch(
-    //     resetPassword({
-    //       userId: tokenData.id,
-    //       resetData: { resettoken, newpassword, confirmnewpassword },
-    //     })
-    //   );
+    dispatch(userMailQuery({ name, email, query }));
+    setName("");
+    setEmail("");
+    setQuery("");
+    setIsMailerClicked(false);
   };
-  const couponsData = [
-    {
-      id: 1,
-      name: "BUDGET FRIENDLY OFFER",
-      description: "Get $50 off on a minimum purchase of $350",
-      minimumPurchase: 350,
-      amount: 50,
-    },
-    {
-      id: 2,
-      name: "BULK PURCHASE OFFER",
-      description: "Get 20% off on a minimum purchase of $500",
-      minimumPurchase: 500,
-      discount: 20,
-    },
-  ];
-
-  //   const couponHandler = (e, coupon) => {
-  //     if (e.target.checked) {
-  //       toast.success(`Woohoo! ${coupon.name} applied successfully!`);
-  //       handleSetCouponSelected(coupon);
-  //     } else {
-  //       toast(`🔶 ${coupon.name} removed!`);
-  //       handleSetCouponSelected(coupon);
-  //     }
-  //   };
 
   return (
     <div className="user-mail-section">
       <div
         className="mailer-header"
-        onClick={() => setIsCouponClicked(!isCouponClicked)}
+        onClick={() => setIsMailerClicked(!isMailerClicked)}
       >
         <h2>Any Queries? Contact Now ▼</h2>
       </div>
 
-      {isCouponClicked && (
+      {isMailerClicked && (
         <div
           className="mailer-section"
           data-aos="fade-down"
@@ -115,6 +86,7 @@ export const UserMailFormContainer = () => {
                     name="query"
                     placeHolder="Enter Your Query Here.."
                     onChange={(e) => setQuery(e.target.value)}
+                    value={query}
                     required
                     rows="4"
                   ></textarea>
@@ -124,11 +96,6 @@ export const UserMailFormContainer = () => {
                 </div>
               </div>
               <div className="button-warning-containers">
-                {/* <div className="warning-container">
-                  {auth.rpStatus === "rejected" ? (
-                    <p> {auth.rpError.message}</p>
-                  ) : null}
-                </div> */}
                 <button type="submit">Send Query</button>
               </div>
             </div>

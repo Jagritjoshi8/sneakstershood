@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ProductCard from "../productcontainer/productcardcontainer/productcard.component";
+import Tooltip from "@mui/material/Tooltip";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -26,7 +27,15 @@ const WishListContainer = ({ wishlist }) => {
   return (
     <div className="wishlist-page">
       <div className="wishlist-page-header">
-        <h1>WishList</h1> <FavoriteBorderOutlinedIcon sx={{ fontSize: 35 }} />{" "}
+        <div className="whishlist-header-inner-container">
+          <h1>WishList</h1> <FavoriteBorderOutlinedIcon sx={{ fontSize: 38 }} />{" "}
+        </div>
+        <div className="marquee-container">
+          <p className="marquee-text">
+            <img src="https://img.freepik.com/premium-vector/single-one-line-drawing-liver-anatomy-human-organ-vector-illustration-medical-concept_505956-707.jpg?w=900" />{" "}
+            <img src="https://thumbs.dreamstime.com/b/adidas-jordan-nike-under-armour-converse-puma-popular-sportwear-brands-logos-sports-equipment-sportswear-company-logo-icon-222305820.jpg" />{" "}
+          </p>
+        </div>
       </div>
       <div className="wishlist-container">
         <Swiper
@@ -60,9 +69,18 @@ const WishListContainer = ({ wishlist }) => {
         </Swiper>
       </div>
       <div className="clear-wishlist-btn">
-        <button className="clearwishlist" onClick={() => handleClearWishlist()}>
-          Clear Wishlist <DeleteIcon sx={{ fontSize: 32 }} />
-        </button>
+        <Tooltip
+          title="clear all products from wishlist"
+          placement="right"
+          arrow
+        >
+          <button
+            className="clearwishlist"
+            onClick={() => handleClearWishlist()}
+          >
+            Clear Wishlist <DeleteIcon sx={{ fontSize: 32 }} />
+          </button>
+        </Tooltip>
       </div>
     </div>
   );

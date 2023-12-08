@@ -1,0 +1,49 @@
+.sellerDropContainer {
+  margin-top: 50px;
+  width: 96vw;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+  h1 {
+    margin-left: 20px;
+  }
+  .top-seller-drop {
+    margin: 30px;
+    display: flex;
+    // justify-content: space-between;
+
+    .order-card {
+      transition: all 0.9s ease-in-out;
+      margin: 10px;
+
+      &:hover {
+        transform: scale(1.08);
+        cursor: cell;
+      }
+    }
+
+    // .z-rotate-img {
+    //   transition: transform 0.7s ease-in-out;
+    //   &:hover {
+    //     transform: rotate(18deg);
+    //   }
+    // }
+
+    .order-content {
+      div {
+        font-size: 18px;
+        color: black;
+        span {
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+      .purchase-content {
+        display: flex;
+        .inner-purchase {
+          margin-left: 13px;
+        }
+      }
+    }
+  }
+}

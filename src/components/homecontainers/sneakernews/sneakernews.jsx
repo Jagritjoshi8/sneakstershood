@@ -13,7 +13,7 @@ const SneakerNewsContainer = () => {
   const [newsData, setNewsDtata] = useState([]);
   const fetchData = async () => {
     const url =
-      "https://newsapi.org/v2/everything?from=2023-11-29&to=2023-11-29&sortBy=popularity&apiKey=961915f9b4704edfb1854ff5d0c69f1e&language=en&q=nike&searchIn=title&domains=nicekicks.com,sneakernews.com,trendhunter.com,footwearnews.com";
+      "https://newsapi.org/v2/everything?from=2023-12-7&to=2023-12-7&sortBy=popularity&apiKey=961915f9b4704edfb1854ff5d0c69f1e&language=en&q=nike&searchIn=title&domains=nicekicks.com,sneakernews.com,trendhunter.com,footwearnews.com";
 
     try {
       const response = await fetch(url);

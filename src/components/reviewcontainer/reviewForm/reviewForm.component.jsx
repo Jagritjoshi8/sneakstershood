@@ -53,7 +53,11 @@ const ReviewFormContainer = ({ selectedProduct }) => {
       {!selectedProduct ? (
         <div>Product doesnt exist</div>
       ) : (
-        <div className="review-form">
+        <div
+          className="review-form"
+          data-aos="zoom-in-up"
+          data-aos-duration="2500"
+        >
           <h1>Post Your Review About "{selectedProduct.name}"</h1>
           <form onSubmit={handleSubmit}>
             <div className="add-rating">

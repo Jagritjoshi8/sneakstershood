@@ -49,7 +49,7 @@ const KidsContainer = () => {
   };
   const { data, error, isLoading } = useGetAllProductsQuery();
 
-  const ratedProducts = getRatedProducts(data, 4.5);
+  const ratedProducts = getRatedProducts(data, 4);
   console.log("top3", ratedProducts);
   const categoryProducts = getCategoryWiseProducts(ratedProducts, [
     "kid",

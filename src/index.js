@@ -35,6 +35,7 @@ import SellerOder from "./routes/seller/sellerOrder/sellerOder";
 import ChannelSignupContainer from "./components/SellerComponents/sellerChannelComponents/channelAuthComponent/channelsignup.component";
 import UserChannel from "./routes/userChannel/userChannel";
 import ResetUserPassword from "./routes/resetUserPassword/resetUserPassword";
+import SellerBLog from "./routes/seller/sellerBlog/sellerBLog";
 
 const store = configureStore({
   reducer: {
@@ -141,6 +142,10 @@ const router = createBrowserRouter([
       {
         path: "channel/channel-signup",
         element: <ChannelSignupContainer />,
+      },
+      {
+        path: "seller-blog",
+        element: <SellerBLog />,
       },
     ],
   },

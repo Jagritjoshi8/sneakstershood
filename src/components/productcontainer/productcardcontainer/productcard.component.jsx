@@ -13,6 +13,7 @@ import { addToCart } from "../../../features/cartSlice";
 import { Snackbar } from "@mui/material";
 import { useSelector } from "react-redux";
 import { setWishList } from "../../../features/wishlistSlice";
+import Tooltip from "@mui/material/Tooltip";
 
 const ProductCard = ({ data }) => {
   const {
@@ -129,30 +130,17 @@ const ProductCard = ({ data }) => {
           >
             <button className="wishlist-btn">
               {verifyisInWishList(data) ? (
-                <FavoriteIcon sx={{ fontSize: 38 }} />
+                <Tooltip title="click to remove from wishlist">
+                  <FavoriteIcon sx={{ fontSize: 38 }} />
+                </Tooltip>
               ) : (
-                <FavoriteBorderOutlinedIcon sx={{ fontSize: 38 }} />
+                <Tooltip title="click to add in wishlist">
+                  <FavoriteBorderOutlinedIcon sx={{ fontSize: 38 }} />
+                </Tooltip>
               )}
             </button>
             <h3 className="remove-from-wishlist-txt">Remove From Wishlist</h3>
           </div>
-          {/* <button
-            disabled={cartLoading}
-            onClick={() => addToCartHandler(product)}
-            className="cart-btn"
-          >
-            {!isProductInCart(product) ? "Add To Cart" : "Go to Cart"}
-          </button>
-          <button
-            onClick={() => wishlistHandler(product)}
-            className="wishlist-btn"
-          >
-            {!isProductInWishlist(product) ? (
-              <AiOutlineHeart size={30} />
-            ) : (
-              <AiTwotoneHeart size={30} />
-            )}
-          </button> */}
         </div>
       </div>
     </Tilt>
