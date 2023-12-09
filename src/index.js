@@ -21,8 +21,9 @@ import Wishlist from "./routes/wishlist/wishlist";
 import authReducer, { loadUser } from "./features/authSlice";
 import orderReducer from "./features/orderSlice";
 import productfiltersReducer from "./features/productfiltersSlice";
-import ProductDetails from "./routes/productDetails/productDetails";
 import reviewReducer from "./features/reviewSlice";
+import sellerBlogReducer from "./features/sellerBlogSlice";
+import ProductDetails from "./routes/productDetails/productDetails";
 import SignUpSeller from "./routes/sign/seller/signUpSeller";
 import authSellerReducer, { loadSeller } from "./features/authSellerSlice";
 import SellerRoot from "./routes/seller/sellerRoot/sellerRoot";
@@ -47,6 +48,7 @@ const store = configureStore({
     cart: cartReducer,
     wishlist: wishlistReducer,
     order: orderReducer,
+    sellerblog: sellerBlogReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {

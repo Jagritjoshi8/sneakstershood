@@ -59,7 +59,8 @@ const KidsContainer = () => {
       <div
         className="PopularSneakersContainer"
         data-aos="fade-right"
-        data-aos-duration="2000"
+        data-aos-easing="linear"
+        data-aos-duration="2100"
       >
         <h1>#Kid's Wear</h1>
         <div>

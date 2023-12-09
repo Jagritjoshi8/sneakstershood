@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import "./sellerBlog.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../../../components/authenticaton/formInput.component";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import SellerDropModal from "../../../components/homecontainers/sellerDropModal/sellerDropModal.component";
+import { uploadBlog } from "../../../features/sellerBlogSlice";
 
 const SellerBLog = () => {
-  const [imageUrl, SetImageUrl] = useState("null");
-  const [posterImageUrl, setPosterImageUrl] = useState("null");
-  const [hashTags, setHashTags] = useState("null");
-  const [blogContent, setBlogContent] = useState("null");
+  const [imageUrl, setImageUrl] = useState(null);
+  const [posterImageUrl, setPosterImageUrl] = useState(null);
+  const [hashTags, setHashTags] = useState(null);
+  const [blogContent, setBlogContent] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImageUrl, setSelectedImageUrl] = useState("");
-
+  const dispatch = useDispatch();
   const openModal = (imageUrl) => {
     setSelectedImageUrl(imageUrl);
     setModalOpen(true);
@@ -29,7 +28,26 @@ const SellerBLog = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  const handleSubmit = () => {};
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(
+      uploadBlog({
+        sellerLogoimg: authseller?.logoimg,
+        sellerName: authseller?.businessName,
+        imageUrl,
+        posterImageUrl,
+        hashTags,
+        blogContent,
+      })
+    );
+
+    setImageUrl("");
+    setPosterImageUrl("");
+    setHashTags("");
+    setBlogContent("");
+  };
+
   const authseller = useSelector((state) => state.authseller);
   let sellerLogo;
   if (authseller?.logoimg) {
@@ -41,6 +59,7 @@ const SellerBLog = () => {
     month: "short",
     year: "numeric",
   }).format(todaysDate);
+
   return (
     <div>
       <div className="seller-blog-container">
@@ -53,27 +72,29 @@ const SellerBLog = () => {
                 type="text"
                 id="imageUrl"
                 name="imageUrl"
-                onChange={(e) => SetImageUrl(e.target.value)}
+                onChange={(e) => setImageUrl(e.target.value)}
+                value={imageUrl}
                 required
               />
               <FormInput
                 label="Blog Poster URL"
                 type="text"
-                id="original_price"
-                name="original_price"
+                id="posterUrl"
+                name="posterUrl"
                 placeHolder="Paste Blog Poster URL Here..."
                 onChange={(e) => setPosterImageUrl(e.target.value)}
+                value={posterImageUrl}
                 required
               />
               <FormInput
                 label="Blog Hashtags"
                 type="text"
-                id="discountper"
-                name="discountper"
+                id="hashtags"
+                name="hashtags"
                 placeHolder="Enter Hastags For Your Blog Here..."
                 onChange={(e) => setHashTags(e.target.value)}
                 required
-                //   value={discountper}
+                value={hashTags}
               />
 
               <div className="form-group">
@@ -81,11 +102,11 @@ const SellerBLog = () => {
 
                 <div className="input-info-container">
                   <textarea
-                    id="query"
-                    name="query"
+                    id="content"
+                    name="content"
                     placeHolder="Enter Your Blog Content Here.."
                     onChange={(e) => setBlogContent(e.target.value)}
-                    // value={query}
+                    value={blogContent}
                     required
                     rows="6"
                     maxLength={200}
@@ -99,7 +120,7 @@ const SellerBLog = () => {
 
         <div>
           <h2>Your Blog Preview:</h2>
-          <Card sx={{ maxWidth: 400 }} raised="true" className="order-card">
+          <Card sx={{ width: 400 }} raised="true" className="order-card">
             <CardHeader
               titleTypographyProps={{
                 fontSize: 21,
@@ -118,31 +139,36 @@ const SellerBLog = () => {
                     className="order-linkbutton"
                     sx={{ fontSize: 38 }}
                     color="secondary"
-                    onClick={() => openModal(`${posterImageUrl}`)}
+                    onClick={() =>
+                      openModal(
+                        posterImageUrl
+                          ? posterImageUrl
+                          : "/assets/images/valley.jpeg"
+                      )
+                    }
                   />
                 </IconButton>
               }
-              // title={product.name}
               title={authseller?.businessName}
               subheader={formattedTodaysDate}
             />
             <CardMedia
               component="img"
               height="400"
-              //   image="https://i.pinimg.com/originals/77/52/0b/77520bcc3fd917f45da9abc125148f8d.jpg"
-              image={imageUrl}
+              image={!imageUrl ? "/assets/images/valley.jpeg" : imageUrl}
               alt="sneaker"
             />
             <CardContent className="order-content">
               <div>
-                <span>{hashTags}</span>
+                <span>
+                  {hashTags ? hashTags : "#hashtag1  #hashtag2  #hashtag3"}
+                </span>
               </div>
               <div>
                 {" "}
-                {blogContent}
-                {/* Wolaa..!! 🤯 There is new nike sneaker in the town,so hold up
-                your seat buddies we are going launch Nike Electric 2.0 soon 🤩.
-                So, pre-order now your #Nike_Electric_2.0. */}
+                {blogContent
+                  ? blogContent
+                  : "Yippee...!!🤩 This is dummy content here, provide any content related to your blog. New Launching 🎉 Holiday Discount 🤑  Trending Product 🔥 Top Rated Product🤯"}
               </div>
             </CardContent>
           </Card>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./sellerDrop.styles.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,12 +10,18 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import SellerDropModal from "../sellerDropModal/sellerDropModal.component";
+import { getAllBlogs } from "../../../features/sellerBlogSlice";
 
 const SellerDropContainer = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImageUrl, setSelectedImageUrl] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllBlogs());
+  }, []);
 
   const openModal = (imageUrl) => {
     setSelectedImageUrl(imageUrl);
@@ -24,12 +31,81 @@ const SellerDropContainer = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+  const sellerBlogs = useSelector((state) => state.sellerblog.sellerBlogs);
+  console.log(sellerBlogs);
+  const latestBlogs = sellerBlogs?.slice().reverse();
   return (
-    <div className="sellerDropContainer">
+    <div
+      className="sellerDropContainer"
+      data-aos="fade-left"
+      //   data-aos-easing="ease-in-back"
+      data-aos-offset="500"
+      data-aos-duration="2900"
+    >
       <h1># Seller Drop</h1>
       <div className="top-seller-drop">
         {" "}
-        <Card sx={{ maxWidth: 400 }} raised="true" className="order-card">
+        {latestBlogs.map((blog) => {
+          let sellerLogo;
+          if (blog?.sellerLogo) {
+            sellerLogo = `http://localhost:8000/${blog?.sellerLogo}`;
+          }
+          const formattedDate = new Intl.DateTimeFormat("en-US", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          }).format(new Date(blog?.createdAt));
+          return (
+            <Card
+              sx={{ width: 400 }}
+              raised="true"
+              className="order-card"
+              key={blog._id}
+            >
+              <CardHeader
+                titleTypographyProps={{
+                  fontSize: 21,
+                }}
+                subheaderTypographyProps={{
+                  fontSize: 15,
+                }}
+                avatar={
+                  <Avatar sx={{ bgcolor: "purple" }} aria-label="recipe">
+                    <img src={sellerLogo} alt="" height="50px" width="50px" />
+                  </Avatar>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <Tooltip title="View Poster" placement="top" arrow>
+                      <KeyboardDoubleArrowRightIcon
+                        className="order-linkbutton"
+                        sx={{ fontSize: 38 }}
+                        color="secondary"
+                        onClick={() => openModal(blog.blogPosterUrl)}
+                      />
+                    </Tooltip>
+                  </IconButton>
+                }
+                // title={product.name}
+                title={blog.sellerName}
+                subheader={formattedDate}
+              />
+              <CardMedia
+                component="img"
+                height="400"
+                image={blog.blogImageUrl}
+                alt="sneaker"
+              />
+              <CardContent className="order-content">
+                <div>
+                  <span>{blog?.blogHashTags}</span>
+                </div>
+                <div> {blog?.blogContent}</div>
+              </CardContent>
+            </Card>
+          );
+        })}
+        {/* <Card sx={{ maxWidth: 400 }} raised="true" className="order-card">
           <CardHeader
             titleTypographyProps={{
               fontSize: 21,
@@ -39,58 +115,7 @@ const SellerDropContainer = () => {
             }}
             avatar={
               <Avatar sx={{ bgcolor: "purple" }} aria-label="recipe">
-                {/* {product.name.slice(0, 1)} */}S
-              </Avatar>
-            }
-            action={
-              <IconButton aria-label="settings">
-                <KeyboardDoubleArrowRightIcon
-                  className="order-linkbutton"
-                  sx={{ fontSize: 38 }}
-                  color="secondary"
-                  onClick={() =>
-                    openModal(
-                      "https://i.pinimg.com/originals/77/52/0b/77520bcc3fd917f45da9abc125148f8d.jpg"
-                    )
-                  }
-                />
-              </IconButton>
-            }
-            // title={product.name}
-            title="Sneaker Stash"
-            subheader="Date: Nike"
-          />
-          <CardMedia
-            component="img"
-            height="400"
-            image="https://i.pinimg.com/originals/77/52/0b/77520bcc3fd917f45da9abc125148f8d.jpg"
-            alt="sneaker"
-          />
-          <CardContent className="order-content">
-            <div>
-              <span>#Nike #New #Sneaker_Stash</span>
-            </div>
-            <div>
-              {" "}
-              Wolaa..!! 🤯 There is new nike sneaker in the town,so hold up your
-              seat buddies we are going launch Nike Electric 2.0 soon 🤩. So,
-              pre-order now your #Nike_Electric_2.0.
-            </div>
-          </CardContent>
-        </Card>
-        <Card sx={{ maxWidth: 400 }} raised="true" className="order-card">
-          <CardHeader
-            titleTypographyProps={{
-              fontSize: 21,
-            }}
-            subheaderTypographyProps={{
-              fontSize: 15,
-            }}
-            avatar={
-              <Avatar sx={{ bgcolor: "purple" }} aria-label="recipe">
-                {/* {product.name.slice(0, 1)} */}S
-              </Avatar>
-            }
+              </Avatar> }
             action={
               <IconButton aria-label="settings">
                 <KeyboardDoubleArrowRightIcon
@@ -117,13 +142,11 @@ const SellerDropContainer = () => {
           />
           <CardContent className="order-content">
             <div>
-              <span>#Adidas #New #Sneaker_Stash</span>
+              <span>#Adidas #New #UltraBoost</span>
             </div>
             <div>
               {" "}
-              Wolaa..!! 🤯 There is new nike sneaker in the town,so hold up your
-              seat buddies we are going launch Nike Electric 2.0 soon 🤩. So,
-              pre-order now your #Nike_Electric_2.0.
+             Whoopee..!!🥳 Hold your excitement buddies🤙, we are going to launch most awaited sneaker🤩 of this year Adidas's new Ultra Boost 🔥 running sneakers. So, share your reviews on #Adidas_UltraBoost🤯
             </div>
           </CardContent>
         </Card>
@@ -137,7 +160,6 @@ const SellerDropContainer = () => {
             }}
             avatar={
               <Avatar sx={{ bgcolor: "purple" }} aria-label="recipe">
-                {/* {product.name.slice(0, 1)} */}S
               </Avatar>
             }
             action={
@@ -186,7 +208,6 @@ const SellerDropContainer = () => {
             }}
             avatar={
               <Avatar sx={{ bgcolor: "purple" }} aria-label="recipe">
-                {/* {product.name.slice(0, 1)} */}S
               </Avatar>
             }
             action={
@@ -276,7 +297,7 @@ const SellerDropContainer = () => {
               pre-order now your #Nike_Electric_2.0.
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
         <SellerDropModal
           isOpen={modalOpen}
           imageUrl={selectedImageUrl}

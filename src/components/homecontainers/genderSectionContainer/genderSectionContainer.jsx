@@ -7,8 +7,13 @@ import { addCategories } from "../../../features/productfiltersSlice";
 const GenderSectionContainer = () => {
   const dispatch = useDispatch();
   return (
-    <div className="genderSectionContainer">
-      <h1>#Categories Section</h1>
+    <div
+      className="genderSectionContainer"
+      data-aos="zoom-in-up"
+      data-aos-offset="500"
+      data-aos-duration="2700"
+    >
+      <h1>#Categories Section v</h1>
       <div className="all-gender-boxes-container">
         <div className="single-gender-box">
           <video

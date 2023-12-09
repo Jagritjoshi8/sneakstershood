@@ -13,21 +13,20 @@
     // justify-content: space-between;
 
     .order-card {
-      transition: all 0.9s ease-in-out;
+      //   transition: all 0.9s ease-in-out;
       margin: 10px;
-
+      .order-linkbutton {
+        border-radius: 0.8em;
+        padding: 1px;
+        &:hover {
+          background-color: rgb(241, 214, 255);
+        }
+      }
       &:hover {
-        transform: scale(1.08);
+        transform: scale(1.04);
         cursor: cell;
       }
     }
-
-    // .z-rotate-img {
-    //   transition: transform 0.7s ease-in-out;
-    //   &:hover {
-    //     transform: rotate(18deg);
-    //   }
-    // }
 
     .order-content {
       div {
