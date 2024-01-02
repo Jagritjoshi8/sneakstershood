@@ -11,6 +11,7 @@ import FooterContainer from "../../components/extra/footer/footer.component";
 import SneakerNewsContainer from "../../components/homecontainers/sneakernews/sneakernews";
 import GenderSectionContainer from "../../components/homecontainers/genderSectionContainer/genderSectionContainer";
 import SellerDropContainer from "../../components/homecontainers/sellerDrop/sellerDrop.component";
+import Chatbot from "../../components/homecontainers/chatbotContainer/chatbot.compoent";
 
 const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -30,6 +31,7 @@ const Home = () => {
       <SellerDropContainer />
       <SneakerNewsContainer />
       <GenderSectionContainer />
+      <Chatbot />
       <FooterContainer />
     </div>
   );

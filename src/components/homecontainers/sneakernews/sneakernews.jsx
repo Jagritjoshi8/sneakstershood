@@ -31,8 +31,6 @@ const SneakerNewsContainer = () => {
     <div
       className="sneakerNewsContainer"
       data-aos="fade-right"
-      // data-aos-offset="900"
-      data-aos-easing="linear"
       data-aos-duration="2900"
     >
       <h1>#Sneaker News</h1>

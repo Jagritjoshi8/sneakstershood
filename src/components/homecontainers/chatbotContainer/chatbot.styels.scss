@@ -1,0 +1,79 @@
+/* Chatbot.scss */
+
+.chat-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #3498db;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid purple;
+  img {
+    width: 95px;
+    height: 91px;
+    object-fit: cover;
+  }
+  .closebtnimg {
+    width: 150%;
+    height: 155%;
+    margin-left: -25px;
+    margin-top: -24px;
+    object-fit: cover;
+  }
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+
+  .circle {
+    background-color: white;
+    border-radius: 50%;
+  }
+  animation: shake 2s infinite; /* 2s duration for the shake, infinite loop */
+  transition: background-color 0.3s ease;
+}
+/* Chatbot.scss */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Adjust the distance of the shake */
+  }
+}
+.chatbot {
+  position: fixed;
+  bottom: 132px;
+  right: 10px;
+  z-index: 1000;
+  //   border: 2px solid purple;
+  /* Higher than other sections */
+  //   background-color: #3498db; /* Your desired background color for the icon */
+  //   border-radius: 50%;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  //   &:hover {
+  //     background-color: #2980b9; /* Change color on hover */
+  //   }
+
+  iframe {
+    display: none; /* Hide iframe by default */
+    /* Set initial opacity to 0 */
+  }
+}
+.open {
+  iframe {
+    display: block;
+  } /* Show iframe when 'open' class is present */
+
+  border: 2px solid grey;
+}

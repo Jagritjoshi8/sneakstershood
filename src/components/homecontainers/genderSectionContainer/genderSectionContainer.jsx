@@ -13,7 +13,7 @@ const GenderSectionContainer = () => {
       data-aos-offset="500"
       data-aos-duration="2700"
     >
-      <h1>#Categories Section v</h1>
+      <h1>#Categories Section</h1>
       <div className="all-gender-boxes-container">
         <div className="single-gender-box">
           <video

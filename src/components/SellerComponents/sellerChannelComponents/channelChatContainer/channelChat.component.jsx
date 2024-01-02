@@ -6,7 +6,7 @@ const ChannelChatContainer = (props) => {
   return (
     <div className="channelChatContainer">
       <PrettyChatWindow
-        projectId="c18b96cf-f444-4fa1-b996-67a97fb9ca86"
+        projectId="437ba3a6-aee0-4454-b279-9b6e778ce49b"
         username={props.user.username}
         secret={props.user.secret}
         style={{ height: "100%" }}
