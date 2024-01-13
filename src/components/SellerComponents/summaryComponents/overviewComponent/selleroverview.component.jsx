@@ -95,11 +95,13 @@ const SellerOverviewContainer = () => {
             <p>{todayfilteredOrders?.length}</p>
             <p className="p2"> Orders</p>
           </div>{" "}
-          {!per1.includes("-") ? (
-            <div className="greenPer">{per1}%</div>
-          ) : (
-            <div className="redPer">{per1}%</div>
-          )}
+          {!isNaN(per1) && isFinite(per1) ? (
+            !per1.toString().includes("-") ? (
+              <div className="greenPer">{per1}%</div>
+            ) : (
+              <div className="redPer">{per1}%</div>
+            )
+          ) : null}
         </div>
         <div className="dt">
           <div className="icon2">
@@ -108,11 +110,13 @@ const SellerOverviewContainer = () => {
           <div className="idt">
             <p>{todayfilteredproducts?.length}</p> <p className="p2"> Launch</p>
           </div>{" "}
-          {!per2.includes("-") ? (
-            <div className="greenPer">{per2}%</div>
-          ) : (
-            <div className="redPer">{per2}%</div>
-          )}
+          {!isNaN(per2) && isFinite(per2) ? (
+            !per2.toString().includes("-") ? (
+              <div className="greenPer">{per2}%</div>
+            ) : (
+              <div className="redPer">{per2}%</div>
+            )
+          ) : null}
         </div>
         <div className="dt">
           <div className="icon3">
@@ -123,11 +127,13 @@ const SellerOverviewContainer = () => {
             <p>${todaySumOfSellerPrice}</p>
             <p className="p2">Earnings</p>
           </div>{" "}
-          {!per3.includes("-") ? (
-            <div className="greenPer">{per3}%</div>
-          ) : (
-            <div className="redPer">{per3}%</div>
-          )}
+          {!isNaN(per3) && isFinite(per3) ? (
+            !per3.toString().includes("-") ? (
+              <div className="greenPer">{per3}%</div>
+            ) : (
+              <div className="redPer">{per3}%</div>
+            )
+          ) : null}
         </div>
       </div>
     </div>

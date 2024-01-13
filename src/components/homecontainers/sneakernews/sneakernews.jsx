@@ -11,9 +11,21 @@ import Typography from "@mui/material/Typography";
 
 const SneakerNewsContainer = () => {
   const [newsData, setNewsDtata] = useState([]);
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  // Get yesterday's date
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  // Format yesterday's date in YYYY-MM-DD format
+  const formattedYesterday = formatDate(yesterday);
   const fetchData = async () => {
-    const url =
-      "https://newsapi.org/v2/everything?from=2023-12-7&to=2023-12-7&sortBy=popularity&apiKey=961915f9b4704edfb1854ff5d0c69f1e&language=en&q=nike&searchIn=title&domains=nicekicks.com,sneakernews.com,trendhunter.com,footwearnews.com";
+    const url = `https://newsapi.org/v2/everything?from=${formattedYesterday}&to=${formattedYesterday}&sortBy=popularity&apiKey=961915f9b4704edfb1854ff5d0c69f1e&language=en&q=nike&searchIn=title&domains=hip2save.com,sneakerfiles.com,nicekicks.com,sneakernews.com,trendhunter.com,footwearnews.com`;
 
     try {
       const response = await fetch(url);

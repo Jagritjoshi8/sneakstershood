@@ -266,7 +266,7 @@ const productsSlice = createSlice({
         toast.error(
           `"${action.payload.deletedProduct.name}" Deleted From Live 😟`
         );
-        console.log("sde", action.payload);
+        //console.log("sde", action.payload);
         const newItems = state.sellerProducts.filter(
           (item) => item._id !== action.payload.deletedProduct._id
         );

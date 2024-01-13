@@ -19,7 +19,7 @@ const GetSellerProductsContainer = () => {
     dispatch(getSellerProducts(authseller._id));
   }, [products.items]);
   const { sellerProducts } = products;
-  console.log("sp", sellerProducts);
+  //console.log("sp", sellerProducts);
   const handleSoftDelete = (productid) => {
     dispatch(softDeleteProduct(productid));
   };
@@ -105,13 +105,6 @@ const GetSellerProductsContainer = () => {
       data-aos="fade-up"
       data-aos-duration="2500"
     >
-      {/* <video
-        src="/assets/video/productbck.mp4"
-        type="video/mp4"
-        autoPlay
-        muted
-        loop
-      ></video> */}
       <DataGrid
         rows={rows}
         columns={columns}

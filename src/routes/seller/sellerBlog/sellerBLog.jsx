@@ -62,7 +62,11 @@ const SellerBLog = () => {
 
   return (
     <div>
-      <div className="seller-blog-container">
+      <div
+        className="seller-blog-container"
+        data-aos="zoom-in"
+        data-aos-duration="2500"
+      >
         <div className="seller-blog-form">
           <form onSubmit={handleSubmit}>
             <div className="left-coloumn">
